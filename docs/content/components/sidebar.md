@@ -976,6 +976,8 @@ The `Sidebar.Trigger` component must be used within a `Sidebar.Provider`.
 </Sidebar.Provider>
 ```
 
+`Sidebar.Trigger` stops click propagation before toggling the sidebar. This keeps a trigger inside a broader `Dialog.Root` or `Drawer.Root` tree from accidentally activating those parent overlays. If you build a custom trigger, avoid wrapping it in `Dialog.Trigger` or `Drawer.Trigger` unless that overlay should also open.
+
 ## Custom Trigger
 
 To create a custom trigger, you can use the `useSidebar` hook.

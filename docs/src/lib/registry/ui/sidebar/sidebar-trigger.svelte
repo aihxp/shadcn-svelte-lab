@@ -27,7 +27,8 @@
 	type="button"
 	onclick={(e) => {
 		onclick?.(e);
-		sidebar.toggle();
+		e.stopPropagation();
+		if (!e.defaultPrevented) sidebar.toggle();
 	}}
 	{...restProps}
 >

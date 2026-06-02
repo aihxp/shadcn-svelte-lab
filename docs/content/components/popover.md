@@ -70,3 +70,15 @@ Copy and paste the following code into your project.
   <Popover.Content>Place content for the popover here.</Popover.Content>
 </Popover.Root>
 ```
+
+## Troubleshooting Floating Layers
+
+Popover, Tooltip, Select, Dropdown Menu, Context Menu, and related overlays use floating primitives from Bits UI. If floating layers stop opening, block navigation, or leave inline positioning styles behind, start with these checks:
+
+- Keep each `Root`, `Trigger`, `Content`, and `Portal` imported from the same shadcn-svelte component entrypoint.
+- Avoid mixing multiple Bits UI major versions or different wrapped UI libraries on the same route.
+- Avoid wrapping one trigger component in another trigger unless both overlays should open.
+- For long-lived layout components, bind `open` and close the overlay when the route or owning data changes.
+- In SvelteKit SSR or monorepos, follow the [SvelteKit dependency setup](/docs/installation/sveltekit#configure-vite-ssr-dependencies) so Vite processes Bits UI through the Svelte plugin.
+
+If the issue persists, capture the smallest route that can reproduce it before changing overlay styles globally.

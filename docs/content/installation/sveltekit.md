@@ -58,6 +58,18 @@ export default defineConfig({
 
 See the [Vite SSR noExternal option](https://vite.dev/config/ssr-options.html#ssr-noexternal) for more details.
 
+### Debug undefined primitive exports
+
+If the dev server throws `Cannot read properties of undefined (reading 'Root')` or a similar error from a generated `ui/*/index.ts` file, treat it as an SSR dependency resolution problem first. This can happen during the first cold SSR evaluation of Bits UI or another Svelte primitive package.
+
+Use the `ssr.noExternal` config above, dedupe `svelte`, and make sure your lockfile resolves a single compatible version of `bits-ui`. After changing dependency or Vite config, stop the dev server and clear Vite's cache if the error only disappears after saving the generated component file.
+
+```bash
+rm -rf node_modules/.vite
+```
+
+Do not wrap generated primitive exports in `browser` guards. That hides the SSR problem and can produce mismatched client behavior.
+
 ### Configure monorepo shared UI packages
 
 If you move generated components into a workspace package, make sure the SvelteKit app and the shared UI package resolve the same Svelte runtime. Context-driven components such as `Sidebar`, `Form`, `Dialog`, and `Tooltip` depend on `setContext` and `getContext`, so duplicate Svelte runtimes can make child components unable to read provider state.

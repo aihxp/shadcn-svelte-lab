@@ -11,7 +11,7 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
 ## Automation Progress
 
 - Last updated: 2026-06-02 during the `continue-upstream-audit` heartbeat batch.
-- Remaining unchecked items after this batch: 10.
+- Remaining unchecked items after this batch: 5.
 - Remaining unchecked open pull request intake items after this batch: 0.
 
 ## Refresh Commands
@@ -308,11 +308,24 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
 - [x] `present-in-fork` Discussion [#2456](https://github.com/huntabyte/shadcn-svelte/discussions/2456): Poor Data Table performance with large frequently updated data.
   - Evidence: `docs/src/lib/registry/ui/data-table/data-table.svelte.ts` already calls `table.setOptions(() => ...)` without merging the previous proxied options object; a code comment now guards that regression, and `docs/content/components/data-table.md` documents the performance rationale.
   - Verification: `pnpm -F docs build:registry`, `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
-- [ ] `support-signal` Discussion [#2496](https://github.com/huntabyte/shadcn-svelte/discussions/2496): How to migrate from `Form.*` to `Field.*`.
-- [ ] `support-signal` Discussion [#2491](https://github.com/huntabyte/shadcn-svelte/discussions/2491): Floating UI styles do not seem to clear correctly.
-- [ ] `support-signal` Discussion [#2481](https://github.com/huntabyte/shadcn-svelte/discussions/2481): Sidebar.Trigger triggering Drawer on mobile.
-- [ ] `support-signal` Discussion [#2252](https://github.com/huntabyte/shadcn-svelte/discussions/2252): Cannot read properties of undefined, reading `Root`.
-- [ ] `support-signal` Discussion [#2470](https://github.com/huntabyte/shadcn-svelte/discussions/2470): Checkbox not working.
+- [x] `partial` Discussion [#2496](https://github.com/huntabyte/shadcn-svelte/discussions/2496): How to migrate from `Form.*` to `Field.*`.
+  - Evidence: `docs/content/components/form.md` now explains that `Field` is for layout while Formsnap still owns Superforms state, ids, labels, descriptions, errors, and enhancement, with a migration snippet combining `Form.Field`, `Form.Control`, and `Field` layout parts.
+  - Remaining gap: no full login-form migration example was added in this focused pass.
+  - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
+- [x] `partial` Discussion [#2491](https://github.com/huntabyte/shadcn-svelte/discussions/2491): Floating UI styles do not seem to clear correctly.
+  - Evidence: `docs/content/components/popover.md` now documents floating layer troubleshooting for Popover, Tooltip, Select, Dropdown Menu, Context Menu, and related overlays, including entrypoint consistency, avoiding mixed Bits UI versions, trigger nesting, controlled `open`, and SvelteKit SSR setup.
+  - Remaining gap: the upstream report still needs a small reproduction before changing overlay styles globally.
+  - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
+- [x] `present-in-fork` Discussion [#2481](https://github.com/huntabyte/shadcn-svelte/discussions/2481): Sidebar.Trigger triggering Drawer on mobile.
+  - Evidence: `docs/src/lib/registry/ui/sidebar/sidebar-trigger.svelte` now stops click propagation before toggling, and `docs/content/components/sidebar.md` documents avoiding accidental parent Dialog or Drawer trigger activation.
+  - Verification: `pnpm -F docs build:registry`, `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
+- [x] `partial` Discussion [#2252](https://github.com/huntabyte/shadcn-svelte/discussions/2252): Cannot read properties of undefined, reading `Root`.
+  - Evidence: `docs/content/installation/sveltekit.md` now documents the undefined primitive export failure mode, points to `ssr.noExternal`, `resolve.dedupe`, compatible `bits-ui` resolution, and Vite cache cleanup, and warns against hiding generated primitive exports behind `browser` guards.
+  - Remaining gap: the intermittent cold SSR evaluation bug still needs a minimal reproduction for an upstream Vite, Bits UI, or SvelteKit fix.
+  - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
+- [x] `present-in-fork` Discussion [#2470](https://github.com/huntabyte/shadcn-svelte/discussions/2470): Checkbox not working.
+  - Evidence: `docs/content/components/checkbox.md` now documents controlled `bind:checked` usage and a browser-only `localStorage` persistence example.
+  - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
 - [ ] `support-signal` Discussion [#2465](https://github.com/huntabyte/shadcn-svelte/discussions/2465): Shadcn-svelte-extra.
 
 ## Implementation Queue

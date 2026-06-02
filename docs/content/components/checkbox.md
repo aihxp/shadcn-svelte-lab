@@ -67,3 +67,50 @@ Copy and paste the following code into your project.
 ```svelte
 <Checkbox />
 ```
+
+## Controlled
+
+Bind `checked` when the checkbox state should update a local value.
+
+```svelte showLineNumbers
+<script>
+  import { Checkbox } from "$lib/components/ui/checkbox/index.js";
+  import { Label } from "$lib/components/ui/label/index.js";
+
+  let checked = $state(false);
+</script>
+
+<div class="flex items-center gap-3">
+  <Checkbox id="notifications" bind:checked />
+  <Label for="notifications">Enable notifications</Label>
+</div>
+```
+
+## Persisted State
+
+When persisting checkbox state in `localStorage`, only read and write storage in the browser.
+
+```svelte showLineNumbers
+<script>
+  import { browser } from "$app/environment";
+  import { Checkbox } from "$lib/components/ui/checkbox/index.js";
+  import { Label } from "$lib/components/ui/label/index.js";
+
+  let checked = $state(false);
+
+  if (browser) {
+    checked = localStorage.getItem("notifications") === "true";
+  }
+
+  $effect(() => {
+    if (browser) {
+      localStorage.setItem("notifications", String(checked));
+    }
+  });
+</script>
+
+<div class="flex items-center gap-3">
+  <Checkbox id="notifications" bind:checked />
+  <Label for="notifications">Enable notifications</Label>
+</div>
+```

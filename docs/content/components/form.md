@@ -75,6 +75,49 @@ If you aren't familiar with [Superforms](https://superforms.rocks) & [Formsnap](
 
 Use `Form.Field` and `Form.Control` when a control needs form state, then compose nearby layout with the [Field](/docs/components/field) primitives when you need grouped, horizontal, or responsive field layouts.
 
+## Migrating Form Layouts To Field
+
+`Field` is not a full replacement for Formsnap state. Keep `Form.Field`, `Form.Control`, `Form.Label`, and `Form.FieldErrors` when you want Formsnap and Superforms to manage names, ids, descriptions, errors, validation attributes, and progressive enhancement.
+
+Use `Field` for reusable layout and visual structure around that Formsnap wiring:
+
+- Replace layout-only wrappers with `Field.Group`, `Field.Set`, and `Field.Field`.
+- Use `Field.Content`, `Field.Description`, and `Field.Error` when you want the new Field spacing and typography.
+- Keep `Form.Control` around the actual form control so Formsnap can provide the correct props.
+
+```svelte showLineNumbers
+<Field.Group>
+  <Form.Field {form} name="email">
+    <Field.Field data-invalid={Boolean($errors.email)}>
+      <Form.Control>
+        {#snippet children({ props })}
+          <Field.Content>
+            <Form.Label>
+              {#snippet child({ props: labelProps })}
+                <Field.Label {...labelProps}>Email</Field.Label>
+              {/snippet}
+            </Form.Label>
+            <Field.Description>Use your work email.</Field.Description>
+          </Field.Content>
+          <Input
+            {...props}
+            bind:value={$formData.email}
+            aria-invalid={$errors.email ? true : undefined}
+          />
+        {/snippet}
+      </Form.Control>
+      <Form.FieldErrors>
+        {#snippet children({ errors, errorProps })}
+          {#each errors as error}
+            <Field.Error {...errorProps}>{error}</Field.Error>
+          {/each}
+        {/snippet}
+      </Form.FieldErrors>
+    </Field.Field>
+  </Form.Field>
+</Field.Group>
+```
+
 ## SvelteKit Remote Forms
 
 SvelteKit remote form functions expose field helpers directly. You can compose those helpers with shadcn-svelte form controls, but the wiring is different from the Superforms examples below.
