@@ -70,6 +70,8 @@ For the default `src/routes/layout.css` path, the same UI directory is usually o
 @source "../lib/components/ui";
 ```
 
+For monorepos, shared UI packages, or SSR errors from generated `.svelte` component dependencies, see the [SvelteKit installation notes](/docs/installation/sveltekit#configure-monorepo-shared-ui-packages) for `noExternal`, `dedupe`, and Tailwind source setup.
+
 ## VSCode extension
 
 Install the shadcn-svelte [VSCode extension](https://marketplace.visualstudio.com/items?itemName=Selemondev.vscode-shadcn-svelte) by [@selemondev](https://github.com/selemondev) in Visual Studio Code to easily add Shadcn Svelte components to your project.

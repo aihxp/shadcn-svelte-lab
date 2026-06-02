@@ -1701,6 +1701,186 @@
     "pageTitle": "Theming"
   },
   {
+    "title": "Astro",
+    "description": "Adding dark mode to your Astro site.",
+    "content": "Just like in regular Svelte, we use the class strategy from Tailwind CSS to support dark mode toggling. See the Tailwind CSS documentation for more information. How you add the dark class to the html element is up to you. In this guide, we'll take a look at enabling dark mode toggling with mode-watcher.",
+    "href": "/docs/dark-mode/astro",
+    "category": "Dark Mode",
+    "type": "page",
+    "pageTitle": "Astro"
+  },
+  {
+    "title": "Usage",
+    "description": "",
+    "content": "Usage",
+    "href": "/docs/dark-mode/astro#usage",
+    "category": "Dark Mode",
+    "type": "heading",
+    "pageTitle": "Astro"
+  },
+  {
+    "title": "Create an inline theme script",
+    "description": "",
+    "content": "Create an inline theme script",
+    "href": "/docs/dark-mode/astro#create-an-inline-theme-script",
+    "category": "Dark Mode",
+    "type": "heading",
+    "pageTitle": "Astro"
+  },
+  {
+    "title": "This script will, in part, keep and track the dark mode value in localStorage and prevent FUOC.",
+    "description": "",
+    "content": "This script will, in part, keep and track the dark mode value in localStorage and prevent FUOC.",
+    "href": "/docs/dark-mode/astro#create-an-inline-theme-script",
+    "category": "Dark Mode",
+    "type": "text",
+    "pageTitle": "Astro"
+  },
+  {
+    "title": "Install mode-watcher",
+    "description": "",
+    "content": "Install mode-watcher",
+    "href": "/docs/dark-mode/astro#install-mode-watcher",
+    "category": "Dark Mode",
+    "type": "heading",
+    "pageTitle": "Astro"
+  },
+  {
+    "title": "Add the ModeWatcher component",
+    "description": "",
+    "content": "Add the ModeWatcher component",
+    "href": "/docs/dark-mode/astro#add-the-modewatcher-component",
+    "category": "Dark Mode",
+    "type": "heading",
+    "pageTitle": "Astro"
+  },
+  {
+    "title": "Import the ModeWatcher component and use it in your page with the client:load directive:",
+    "description": "",
+    "content": "Import the ModeWatcher component and use it in your page with the client:load directive:",
+    "href": "/docs/dark-mode/astro#add-the-modewatcher-component",
+    "category": "Dark Mode",
+    "type": "text",
+    "pageTitle": "Astro"
+  },
+  {
+    "title": "Create a mode toggle",
+    "description": "",
+    "content": "Create a mode toggle",
+    "href": "/docs/dark-mode/astro#create-a-mode-toggle",
+    "category": "Dark Mode",
+    "type": "heading",
+    "pageTitle": "Astro"
+  },
+  {
+    "title": "Create a mode toggle on your site to toggle between light and dark mode:",
+    "description": "",
+    "content": "Create a mode toggle on your site to toggle between light and dark mode:",
+    "href": "/docs/dark-mode/astro#create-a-mode-toggle",
+    "category": "Dark Mode",
+    "type": "text",
+    "pageTitle": "Astro"
+  },
+  {
+    "title": "Light switch",
+    "description": "",
+    "content": "Light switch",
+    "href": "/docs/dark-mode/astro#light-switch",
+    "category": "Dark Mode",
+    "type": "heading",
+    "pageTitle": "Astro"
+  },
+  {
+    "title": "Dropdown menu",
+    "description": "",
+    "content": "Dropdown menu",
+    "href": "/docs/dark-mode/astro#dropdown-menu",
+    "category": "Dark Mode",
+    "type": "heading",
+    "pageTitle": "Astro"
+  },
+  {
+    "title": "Add mode toggle to page",
+    "description": "",
+    "content": "Add mode toggle to page",
+    "href": "/docs/dark-mode/astro#add-mode-toggle-to-page",
+    "category": "Dark Mode",
+    "type": "heading",
+    "pageTitle": "Astro"
+  },
+  {
+    "title": "Add the mode toggle to the page (also with the client:load directive):",
+    "description": "",
+    "content": "Add the mode toggle to the page (also with the client:load directive):",
+    "href": "/docs/dark-mode/astro#add-mode-toggle-to-page",
+    "category": "Dark Mode",
+    "type": "text",
+    "pageTitle": "Astro"
+  },
+  {
+    "title": "Dark Mode",
+    "description": "Adding dark mode to your site.",
+    "content": "Svelte Astro Astro",
+    "href": "/docs/dark-mode",
+    "category": "Dark Mode",
+    "type": "page",
+    "pageTitle": "Dark Mode"
+  },
+  {
+    "title": "Install mode-watcher",
+    "description": "",
+    "content": "Install mode-watcher",
+    "href": "/docs/dark-mode/svelte#install-mode-watcher",
+    "category": "Dark Mode",
+    "type": "heading",
+    "pageTitle": "Svelte"
+  },
+  {
+    "title": "Start by installing mode-watcher:",
+    "description": "",
+    "content": "Start by installing mode-watcher:",
+    "href": "/docs/dark-mode/svelte#install-mode-watcher",
+    "category": "Dark Mode",
+    "type": "text",
+    "pageTitle": "Svelte"
+  },
+  {
+    "title": "Add the ModeWatcher component",
+    "description": "",
+    "content": "Add the ModeWatcher component",
+    "href": "/docs/dark-mode/svelte#add-the-modewatcher-component",
+    "category": "Dark Mode",
+    "type": "heading",
+    "pageTitle": "Svelte"
+  },
+  {
+    "title": "Import the ModeWatcher component and use it in your root layout:",
+    "description": "",
+    "content": "Import the ModeWatcher component and use it in your root layout:",
+    "href": "/docs/dark-mode/svelte#add-the-modewatcher-component",
+    "category": "Dark Mode",
+    "type": "text",
+    "pageTitle": "Svelte"
+  },
+  {
+    "title": "Add a mode toggle",
+    "description": "",
+    "content": "Add a mode toggle",
+    "href": "/docs/dark-mode/svelte#add-a-mode-toggle",
+    "category": "Dark Mode",
+    "type": "heading",
+    "pageTitle": "Svelte"
+  },
+  {
+    "title": "Place a mode toggle on your site to toggle between light and dark mode.",
+    "description": "",
+    "content": "Place a mode toggle on your site to toggle between light and dark mode.",
+    "href": "/docs/dark-mode/svelte#add-a-mode-toggle",
+    "category": "Dark Mode",
+    "type": "text",
+    "pageTitle": "Svelte"
+  },
+  {
     "title": "Accordion",
     "description": "A vertically stacked set of interactive headings that each reveal a section of content.",
     "content": "[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]\" description=\"An accordion with three items\" align=\"start\">",
@@ -5814,6 +5994,33 @@
     "pageTitle": "Field"
   },
   {
+    "title": "Form Integration",
+    "description": "",
+    "content": "Form Integration",
+    "href": "/docs/components/field#form-integration",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Field is the layout layer. It does not replace Formsnap or Superforms state management. Use Form.Field and Form.Control ...",
+    "description": "",
+    "content": "Field is the layout layer. It does not replace Formsnap or Superforms state management. Use Form.Field and Form.Control for validation state, labels, and accessibility props, then compose Field.Group, Field.Set, Field.Field, Field.Content, Field.Description, and Field.Error around those controls for layout.",
+    "href": "/docs/components/field#form-integration",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "See the Form layout migration guide for a complete example.",
+    "description": "",
+    "content": "See the Form layout migration guide for a complete example.",
+    "href": "/docs/components/field#form-integration",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
     "title": "Examples",
     "description": "",
     "content": "Examples",
@@ -8205,6 +8412,24 @@
     "href": "/docs/components/scroll-area#usage",
     "category": "Components",
     "type": "heading",
+    "pageTitle": "Scroll Area"
+  },
+  {
+    "title": "Browser Notes",
+    "description": "",
+    "content": "Browser Notes",
+    "href": "/docs/components/scroll-area#browser-notes",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Scroll Area"
+  },
+  {
+    "title": "Use ScrollArea for bounded regions, not as a wrapper around the entire page or app shell. If page scrolling stops in Saf...",
+    "description": "",
+    "content": "Use ScrollArea for bounded regions, not as a wrapper around the entire page or app shell. If page scrolling stops in Safari, first confirm that the page scrolls without ScrollArea, then constrain the component with an explicit height or max height and avoid adding global overflow: hidden styles to html, body, or the root layout.",
+    "href": "/docs/components/scroll-area#browser-notes",
+    "category": "Components",
+    "type": "text",
     "pageTitle": "Scroll Area"
   },
   {
@@ -10845,186 +11070,6 @@
     "pageTitle": "Typography"
   },
   {
-    "title": "Astro",
-    "description": "Adding dark mode to your Astro site.",
-    "content": "Just like in regular Svelte, we use the class strategy from Tailwind CSS to support dark mode toggling. See the Tailwind CSS documentation for more information. How you add the dark class to the html element is up to you. In this guide, we'll take a look at enabling dark mode toggling with mode-watcher.",
-    "href": "/docs/dark-mode/astro",
-    "category": "Dark Mode",
-    "type": "page",
-    "pageTitle": "Astro"
-  },
-  {
-    "title": "Usage",
-    "description": "",
-    "content": "Usage",
-    "href": "/docs/dark-mode/astro#usage",
-    "category": "Dark Mode",
-    "type": "heading",
-    "pageTitle": "Astro"
-  },
-  {
-    "title": "Create an inline theme script",
-    "description": "",
-    "content": "Create an inline theme script",
-    "href": "/docs/dark-mode/astro#create-an-inline-theme-script",
-    "category": "Dark Mode",
-    "type": "heading",
-    "pageTitle": "Astro"
-  },
-  {
-    "title": "This script will, in part, keep and track the dark mode value in localStorage and prevent FUOC.",
-    "description": "",
-    "content": "This script will, in part, keep and track the dark mode value in localStorage and prevent FUOC.",
-    "href": "/docs/dark-mode/astro#create-an-inline-theme-script",
-    "category": "Dark Mode",
-    "type": "text",
-    "pageTitle": "Astro"
-  },
-  {
-    "title": "Install mode-watcher",
-    "description": "",
-    "content": "Install mode-watcher",
-    "href": "/docs/dark-mode/astro#install-mode-watcher",
-    "category": "Dark Mode",
-    "type": "heading",
-    "pageTitle": "Astro"
-  },
-  {
-    "title": "Add the ModeWatcher component",
-    "description": "",
-    "content": "Add the ModeWatcher component",
-    "href": "/docs/dark-mode/astro#add-the-modewatcher-component",
-    "category": "Dark Mode",
-    "type": "heading",
-    "pageTitle": "Astro"
-  },
-  {
-    "title": "Import the ModeWatcher component and use it in your page with the client:load directive:",
-    "description": "",
-    "content": "Import the ModeWatcher component and use it in your page with the client:load directive:",
-    "href": "/docs/dark-mode/astro#add-the-modewatcher-component",
-    "category": "Dark Mode",
-    "type": "text",
-    "pageTitle": "Astro"
-  },
-  {
-    "title": "Create a mode toggle",
-    "description": "",
-    "content": "Create a mode toggle",
-    "href": "/docs/dark-mode/astro#create-a-mode-toggle",
-    "category": "Dark Mode",
-    "type": "heading",
-    "pageTitle": "Astro"
-  },
-  {
-    "title": "Create a mode toggle on your site to toggle between light and dark mode:",
-    "description": "",
-    "content": "Create a mode toggle on your site to toggle between light and dark mode:",
-    "href": "/docs/dark-mode/astro#create-a-mode-toggle",
-    "category": "Dark Mode",
-    "type": "text",
-    "pageTitle": "Astro"
-  },
-  {
-    "title": "Light switch",
-    "description": "",
-    "content": "Light switch",
-    "href": "/docs/dark-mode/astro#light-switch",
-    "category": "Dark Mode",
-    "type": "heading",
-    "pageTitle": "Astro"
-  },
-  {
-    "title": "Dropdown menu",
-    "description": "",
-    "content": "Dropdown menu",
-    "href": "/docs/dark-mode/astro#dropdown-menu",
-    "category": "Dark Mode",
-    "type": "heading",
-    "pageTitle": "Astro"
-  },
-  {
-    "title": "Add mode toggle to page",
-    "description": "",
-    "content": "Add mode toggle to page",
-    "href": "/docs/dark-mode/astro#add-mode-toggle-to-page",
-    "category": "Dark Mode",
-    "type": "heading",
-    "pageTitle": "Astro"
-  },
-  {
-    "title": "Add the mode toggle to the page (also with the client:load directive):",
-    "description": "",
-    "content": "Add the mode toggle to the page (also with the client:load directive):",
-    "href": "/docs/dark-mode/astro#add-mode-toggle-to-page",
-    "category": "Dark Mode",
-    "type": "text",
-    "pageTitle": "Astro"
-  },
-  {
-    "title": "Dark Mode",
-    "description": "Adding dark mode to your site.",
-    "content": "Svelte Astro Astro",
-    "href": "/docs/dark-mode",
-    "category": "Dark Mode",
-    "type": "page",
-    "pageTitle": "Dark Mode"
-  },
-  {
-    "title": "Install mode-watcher",
-    "description": "",
-    "content": "Install mode-watcher",
-    "href": "/docs/dark-mode/svelte#install-mode-watcher",
-    "category": "Dark Mode",
-    "type": "heading",
-    "pageTitle": "Svelte"
-  },
-  {
-    "title": "Start by installing mode-watcher:",
-    "description": "",
-    "content": "Start by installing mode-watcher:",
-    "href": "/docs/dark-mode/svelte#install-mode-watcher",
-    "category": "Dark Mode",
-    "type": "text",
-    "pageTitle": "Svelte"
-  },
-  {
-    "title": "Add the ModeWatcher component",
-    "description": "",
-    "content": "Add the ModeWatcher component",
-    "href": "/docs/dark-mode/svelte#add-the-modewatcher-component",
-    "category": "Dark Mode",
-    "type": "heading",
-    "pageTitle": "Svelte"
-  },
-  {
-    "title": "Import the ModeWatcher component and use it in your root layout:",
-    "description": "",
-    "content": "Import the ModeWatcher component and use it in your root layout:",
-    "href": "/docs/dark-mode/svelte#add-the-modewatcher-component",
-    "category": "Dark Mode",
-    "type": "text",
-    "pageTitle": "Svelte"
-  },
-  {
-    "title": "Add a mode toggle",
-    "description": "",
-    "content": "Add a mode toggle",
-    "href": "/docs/dark-mode/svelte#add-a-mode-toggle",
-    "category": "Dark Mode",
-    "type": "heading",
-    "pageTitle": "Svelte"
-  },
-  {
-    "title": "Place a mode toggle on your site to toggle between light and dark mode.",
-    "description": "",
-    "content": "Place a mode toggle on your site to toggle between light and dark mode.",
-    "href": "/docs/dark-mode/svelte#add-a-mode-toggle",
-    "category": "Dark Mode",
-    "type": "text",
-    "pageTitle": "Svelte"
-  },
-  {
     "title": "Create project",
     "description": "",
     "content": "Create project",
@@ -11397,6 +11442,15 @@
     "title": "For the default src/routes/layout.css path, the same UI directory is usually one level up:",
     "description": "",
     "content": "For the default src/routes/layout.css path, the same UI directory is usually one level up:",
+    "href": "/docs/installation#components-render-without-styles",
+    "category": "Installation",
+    "type": "text",
+    "pageTitle": "Installation"
+  },
+  {
+    "title": "For monorepos, shared UI packages, or SSR errors from generated .svelte component dependencies, see the SvelteKit instal...",
+    "description": "",
+    "content": "For monorepos, shared UI packages, or SSR errors from generated .svelte component dependencies, see the SvelteKit installation notes for noExternal, dedupe, and Tailwind source setup.",
     "href": "/docs/installation#components-render-without-styles",
     "category": "Installation",
     "type": "text",

@@ -11,7 +11,7 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
 ## Automation Progress
 
 - Last updated: 2026-06-02 during the `continue-upstream-audit` heartbeat batch.
-- Remaining unchecked items after this batch: 5.
+- Remaining unchecked items after this batch: 0.
 - Remaining unchecked open pull request intake items after this batch: 0.
 
 ## Refresh Commands
@@ -326,7 +326,10 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
 - [x] `present-in-fork` Discussion [#2470](https://github.com/huntabyte/shadcn-svelte/discussions/2470): Checkbox not working.
   - Evidence: `docs/content/components/checkbox.md` now documents controlled `bind:checked` usage and a browser-only `localStorage` persistence example.
   - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
-- [ ] `support-signal` Discussion [#2465](https://github.com/huntabyte/shadcn-svelte/discussions/2465): Shadcn-svelte-extra.
+- [x] `support-signal` Discussion [#2465](https://github.com/huntabyte/shadcn-svelte/discussions/2465): Shadcn-svelte-extra.
+  - Evidence: upstream asks whether the third-party `shadcn-svelte-extra` project should be pinned or mentioned for discoverability. No core component bug, CLI bug, registry gap, or docs parity gap was identified for this repository.
+  - Disposition: no code change; leave third-party promotion to repository moderation or a separate ecosystem docs decision.
+  - Verification: upstream discussion review and local docs scope review.
 
 ## Implementation Queue
 
@@ -345,15 +348,23 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
   - Expected verification: component source audit, CLI migration decision, and docs check.
   - Result: `partial`; provider, docs, and generated registry are in place, but CLI RTL migration remains unimplemented.
   - Verification: `pnpm -F docs build:registry`, `pnpm -F docs build:content`, and `pnpm -F docs check`.
-- [ ] Audit form and field parity.
+- [x] Audit form and field parity.
   - Related: issue [#2663](https://github.com/huntabyte/shadcn-svelte/issues/2663), discussion [#2496](https://github.com/huntabyte/shadcn-svelte/discussions/2496), discussion [#2448](https://github.com/huntabyte/shadcn-svelte/discussions/2448).
   - Expected verification: docs examples and component source comparison against `ui.shadcn.com/docs/forms`.
-- [ ] Audit docs search work.
+  - Result: `partial`; Field component docs, Form layout migration docs, remote function notes, and Formsnap integration guidance are present locally. Remaining parity depends on future upstream form examples and any Formsnap or Superforms API changes.
+  - Verification: docs source review plus `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
+- [x] Audit docs search work.
   - Related: PR [#2672](https://github.com/huntabyte/shadcn-svelte/pull/2672), issue [#2590](https://github.com/huntabyte/shadcn-svelte/issues/2590), issue [#2559](https://github.com/huntabyte/shadcn-svelte/issues/2559).
   - Expected verification: docs search behavior and `pnpm -F docs check`.
-- [ ] Audit Safari scrolling and performance reports.
+  - Result: `present-in-fork`; search data generation, API output, client ranking, command-menu search behavior, exact title matches, and granular section records are implemented locally.
+  - Verification: `pnpm -F docs build:search` and `pnpm -F docs check`.
+- [x] Audit Safari scrolling and performance reports.
   - Related: issue [#2515](https://github.com/huntabyte/shadcn-svelte/issues/2515), issue [#2514](https://github.com/huntabyte/shadcn-svelte/issues/2514), issue [#2584](https://github.com/huntabyte/shadcn-svelte/issues/2584), discussion [#2456](https://github.com/huntabyte/shadcn-svelte/discussions/2456).
   - Expected verification: browser-specific reproduction notes.
-- [ ] Audit installation and monorepo support docs.
+  - Result: `needs-repro`; Safari-specific scroll and reset reports still need minimal browser reproductions before code changes are justified. Local docs now call out bounded `ScrollArea` usage, and previous audit work covers command indicator behavior plus data-table performance guidance.
+  - Verification: source and docs review plus `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
+- [x] Audit installation and monorepo support docs.
   - Related: issue [#2689](https://github.com/huntabyte/shadcn-svelte/issues/2689), issue [#2577](https://github.com/huntabyte/shadcn-svelte/issues/2577), discussion [#2527](https://github.com/huntabyte/shadcn-svelte/discussions/2527), discussion [#904](https://github.com/huntabyte/shadcn-svelte/discussions/904).
   - Expected verification: docs edits, setup notes, and `pnpm -F docs check`.
+  - Result: `present-in-fork`; installation docs now cover missing styles, Tailwind source paths, SvelteKit `noExternal`, dependency dedupe, shared UI packages, undefined primitive exports, and monorepo setup paths.
+  - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.

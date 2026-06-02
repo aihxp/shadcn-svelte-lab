@@ -96,6 +96,12 @@ The `Field` family is designed for composing accessible forms. A typical field i
 - `Field.Content` is a flex column that groups label and description. Not required if you have no description.
 - Wrap related fields with `Field.Group`, and use `Field.Set` with `Field.Legend` for semantic grouping.
 
+## Form Integration
+
+`Field` is the layout layer. It does not replace Formsnap or Superforms state management. Use `Form.Field` and `Form.Control` for validation state, labels, and accessibility props, then compose `Field.Group`, `Field.Set`, `Field.Field`, `Field.Content`, `Field.Description`, and `Field.Error` around those controls for layout.
+
+See the [Form layout migration](/docs/components/form#migrating-form-layouts-to-field) guide for a complete example.
+
 ## Examples
 
 ### Input

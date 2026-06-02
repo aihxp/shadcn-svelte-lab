@@ -75,6 +75,10 @@ Copy and paste the following code into your project.
 </ScrollArea>
 ```
 
+## Browser Notes
+
+Use `ScrollArea` for bounded regions, not as a wrapper around the entire page or app shell. If page scrolling stops in Safari, first confirm that the page scrolls without `ScrollArea`, then constrain the component with an explicit height or max height and avoid adding global `overflow: hidden` styles to `html`, `body`, or the root layout.
+
 ## Examples
 
 ### Horizontal Scrolling
