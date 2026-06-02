@@ -80,6 +80,12 @@ Options:
   -h, --help        display help for command
 ```
 
+To install a custom registry item, pass the registry item URL as the `components` argument:
+
+<PMExecute command="shadcn-svelte@latest add https://example.com/r/button.json" />
+
+The `--proxy` option is only for HTTP proxy servers. It does not set the registry URL.
+
 ---
 
 ## registry build
@@ -117,3 +123,5 @@ This enables the use of a proxy when sending out requests to fetch from the `sha
 ```bash
 HTTP_PROXY="<proxy-url>" npx shadcn-svelte@latest init
 ```
+
+Use a proxy only when your network requires one. To install from a custom registry, pass the item URL to `add` or set the `registry` value in `components.json`.

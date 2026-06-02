@@ -11,7 +11,7 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
 ## Automation Progress
 
 - Last updated: 2026-06-02 during the `continue-upstream-audit` heartbeat batch.
-- Remaining unchecked items after this batch: 20.
+- Remaining unchecked items after this batch: 15.
 - Remaining unchecked open pull request intake items after this batch: 0.
 
 ## Refresh Commands
@@ -275,11 +275,22 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
 - [x] `present-in-fork` Discussion [#2593](https://github.com/huntabyte/shadcn-svelte/discussions/2593): Select with Remote Functions.
   - Evidence: `docs/content/components/select.md` now documents using `Select.Root` as a controlled component with SvelteKit remote form fields, including deriving non-value field props and calling `field.set` inside `onValueChange`.
   - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
-- [ ] `support-signal` Discussion [#2531](https://github.com/huntabyte/shadcn-svelte/discussions/2531): Add SKILL.md file to repo.
-- [ ] `support-signal` Discussion [#2523](https://github.com/huntabyte/shadcn-svelte/discussions/2523): Are the examples for formsnap components removed for select, Input, and similar components?
-- [ ] `support-signal` Discussion [#2549](https://github.com/huntabyte/shadcn-svelte/discussions/2549): Updating Card classes and docs.
-- [ ] `support-signal` Discussion [#904](https://github.com/huntabyte/shadcn-svelte/discussions/904): Components have no styles but have Tailwind CSS classes.
-- [ ] `support-signal` Discussion [#2528](https://github.com/huntabyte/shadcn-svelte/discussions/2528): Installing from your own custom registry.
+- [x] `present-in-fork` Discussion [#2531](https://github.com/huntabyte/shadcn-svelte/discussions/2531): Add SKILL.md file to repo.
+  - Evidence: root `SKILL.md` now exposes repository-level shadcn-svelte guidance and points agents to the full `skills/shadcn-svelte/SKILL.md` skill.
+  - Verification: repository file review and `pnpm exec prettier --check SKILL.md`.
+- [x] `present-in-fork` Discussion [#2523](https://github.com/huntabyte/shadcn-svelte/discussions/2523): Are the examples for formsnap components removed for select, Input, and similar components?
+  - Evidence: form examples are present for `Select`, `Input`, `Textarea`, `Checkbox`, `Date Picker`, `Radio Group`, `Switch`, and `Combobox`; `docs/content/components/form.md` now calls out the Formsnap and Superforms wiring on those examples.
+  - Verification: `rg --files docs/src/lib/registry/examples docs/src/lib/registry/examples/create | rg '(select-form|input-form|textarea-form|checkbox-form|date-picker-form|radio-group-form|switch-form|combobox-form)\\.svelte$'`, `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
+- [x] `present-in-fork` Discussion [#2549](https://github.com/huntabyte/shadcn-svelte/discussions/2549): Updating Card classes and docs.
+  - Evidence: Card source already exposes `size`, `data-size`, `Card.Action`, and style class hooks; `docs/content/components/card.md` now documents compact cards and a horizontal image card example backed by `docs/src/lib/registry/examples/card-horizontal-image.svelte`.
+  - Verification: source review, `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
+- [x] `partial` Discussion [#904](https://github.com/huntabyte/shadcn-svelte/discussions/904): Components have no styles but have Tailwind CSS classes.
+  - Evidence: `docs/content/installation/index.md` now documents the two common no-style setup failures: missing global CSS import and missing Tailwind v4 `@source` coverage for generated UI components.
+  - Remaining gap: project-specific Tailwind source paths still depend on where the user stores the global CSS file and component aliases.
+  - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
+- [x] `present-in-fork` Discussion [#2528](https://github.com/huntabyte/shadcn-svelte/discussions/2528): Installing from your own custom registry.
+  - Evidence: the CLI already accepts full registry item URLs in `add`; `docs/content/registry/getting-started.md` and `docs/content/cli.md` now show hosted item URL installs and clarify that `--proxy` is only for HTTP proxy servers.
+  - Verification: CLI source review, `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
 - [ ] `support-signal` Discussion [#2527](https://github.com/huntabyte/shadcn-svelte/discussions/2527): Svelte 5 and SvelteKit monorepo context issue with Sidebar.
 - [ ] `support-signal` Discussion [#2525](https://github.com/huntabyte/shadcn-svelte/discussions/2525): Add support for multiple registry setups.
 - [ ] `support-signal` Discussion [#1573](https://github.com/huntabyte/shadcn-svelte/discussions/1573): How to make Data Table header sticky?

@@ -40,6 +40,36 @@ import {
 
 Regardless of the import approach you take, the components will be tree-shaken by Rollup, so you don't have to worry about unused components being bundled into your app.
 
+## Troubleshooting
+
+### Components Render Without Styles
+
+If a component renders as plain HTML with Tailwind class names in the DOM, check two setup points.
+
+First, make sure the global CSS file selected during `init` is imported by your app shell.
+
+```svelte title="src/routes/+layout.svelte" showLineNumbers
+<script lang="ts">
+  import "../app.css";
+</script>
+
+<slot />
+```
+
+If your global CSS file lives at `src/routes/layout.css`, import that file from the same layout instead.
+
+Second, for Tailwind v4 projects where components live outside the files Tailwind scans automatically, add a source directive to the global CSS file. Adjust the path so it is relative to that CSS file and points at your generated UI component directory.
+
+```css title="src/app.css" showLineNumbers
+@source "./lib/components/ui";
+```
+
+For the default `src/routes/layout.css` path, the same UI directory is usually one level up:
+
+```css title="src/routes/layout.css" showLineNumbers
+@source "../lib/components/ui";
+```
+
 ## VSCode extension
 
 Install the shadcn-svelte [VSCode extension](https://marketplace.visualstudio.com/items?itemName=Selemondev.vscode-shadcn-svelte) by [@selemondev](https://github.com/selemondev) in Visual Studio Code to easily add Shadcn Svelte components to your project.

@@ -76,3 +76,29 @@ Copy and paste the following code into your project.
 <div></div>
 
 </ComponentPreview>
+
+### Small
+
+Use `size="sm"` when the card should use the compact spacing defined by the selected style.
+
+```svelte showLineNumbers
+<Card.Root size="sm">
+  <Card.Header>
+    <Card.Title>Small Card</Card.Title>
+    <Card.Description>Compact card spacing.</Card.Description>
+  </Card.Header>
+  <Card.Content>
+    <p>Card Content</p>
+  </Card.Content>
+</Card.Root>
+```
+
+### Horizontal Image
+
+Apply layout classes to `Card.Root` when an image should sit beside the card content.
+
+<ComponentPreview name="card-horizontal-image">
+
+<div></div>
+
+</ComponentPreview>

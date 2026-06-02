@@ -217,7 +217,7 @@ Be sure to check out the [Formsnap](https://formsnap.dev) and [Superforms](https
 
 ## Examples
 
-See the following links for more examples on how to use the other `Form` components:
+See the following links for more examples on how to use the other `Form` components. These examples include the Formsnap and Superforms wiring for controls that need custom value handling, including `Select`, `Input`, and `Textarea`.
 
 - [Checkbox](/docs/components/checkbox#form)
 - [Date Picker](/docs/components/date-picker#form)

@@ -828,6 +828,24 @@
     "pageTitle": "shadcn-svelte"
   },
   {
+    "title": "To install a custom registry item, pass the registry item URL as the components argument:",
+    "description": "",
+    "content": "To install a custom registry item, pass the registry item URL as the components argument:",
+    "href": "/docs/cli#add",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "The --proxy option is only for HTTP proxy servers. It does not set the registry URL.",
+    "description": "",
+    "content": "The --proxy option is only for HTTP proxy servers. It does not set the registry URL.",
+    "href": "/docs/cli#add",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
     "title": "registry build",
     "description": "",
     "content": "registry build",
@@ -876,6 +894,15 @@
     "title": "This enables the use of a proxy when sending out requests to fetch from the shadcn-svelte registry. If the HTTP_PROXY or...",
     "description": "",
     "content": "This enables the use of a proxy when sending out requests to fetch from the shadcn-svelte registry. If the HTTP_PROXY or http_proxy environment variables have been set, the request library underneath will respect the proxy settings.",
+    "href": "/docs/cli#proxy",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "Use a proxy only when your network requires one. To install from a custom registry, pass the item URL to add or set the ...",
+    "description": "",
+    "content": "Use a proxy only when your network requires one. To install from a custom registry, pass the item URL to add or set the registry value in components.json.",
     "href": "/docs/cli#proxy",
     "category": "Getting Started",
     "type": "text",
@@ -2092,6 +2119,69 @@
     "description": "",
     "content": "Regardless of the import approach you take, the components will be tree-shaken by Rollup, so you don't have to worry about unused components being bundled into your app.",
     "href": "/docs/installation#imports",
+    "category": "Installation",
+    "type": "text",
+    "pageTitle": "Installation"
+  },
+  {
+    "title": "Troubleshooting",
+    "description": "",
+    "content": "Troubleshooting",
+    "href": "/docs/installation#troubleshooting",
+    "category": "Installation",
+    "type": "heading",
+    "pageTitle": "Installation"
+  },
+  {
+    "title": "Components Render Without Styles",
+    "description": "",
+    "content": "Components Render Without Styles",
+    "href": "/docs/installation#components-render-without-styles",
+    "category": "Installation",
+    "type": "heading",
+    "pageTitle": "Installation"
+  },
+  {
+    "title": "If a component renders as plain HTML with Tailwind class names in the DOM, check two setup points.",
+    "description": "",
+    "content": "If a component renders as plain HTML with Tailwind class names in the DOM, check two setup points.",
+    "href": "/docs/installation#components-render-without-styles",
+    "category": "Installation",
+    "type": "text",
+    "pageTitle": "Installation"
+  },
+  {
+    "title": "First, make sure the global CSS file selected during init is imported by your app shell.",
+    "description": "",
+    "content": "First, make sure the global CSS file selected during init is imported by your app shell.",
+    "href": "/docs/installation#components-render-without-styles",
+    "category": "Installation",
+    "type": "text",
+    "pageTitle": "Installation"
+  },
+  {
+    "title": "If your global CSS file lives at src/routes/layout.css, import that file from the same layout instead.",
+    "description": "",
+    "content": "If your global CSS file lives at src/routes/layout.css, import that file from the same layout instead.",
+    "href": "/docs/installation#components-render-without-styles",
+    "category": "Installation",
+    "type": "text",
+    "pageTitle": "Installation"
+  },
+  {
+    "title": "Second, for Tailwind v4 projects where components live outside the files Tailwind scans automatically, add a source dire...",
+    "description": "",
+    "content": "Second, for Tailwind v4 projects where components live outside the files Tailwind scans automatically, add a source directive to the global CSS file. Adjust the path so it is relative to that CSS file and points at your generated UI component directory.",
+    "href": "/docs/installation#components-render-without-styles",
+    "category": "Installation",
+    "type": "text",
+    "pageTitle": "Installation"
+  },
+  {
+    "title": "For the default src/routes/layout.css path, the same UI directory is usually one level up:",
+    "description": "",
+    "content": "For the default src/routes/layout.css path, the same UI directory is usually one level up:",
+    "href": "/docs/installation#components-render-without-styles",
     "category": "Installation",
     "type": "text",
     "pageTitle": "Installation"
@@ -5010,6 +5100,42 @@
     "href": "/docs/components/card#examples",
     "category": "Components",
     "type": "heading",
+    "pageTitle": "Card"
+  },
+  {
+    "title": "Small",
+    "description": "",
+    "content": "Small",
+    "href": "/docs/components/card#small",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Card"
+  },
+  {
+    "title": "Use size=\"sm\" when the card should use the compact spacing defined by the selected style.",
+    "description": "",
+    "content": "Use size=\"sm\" when the card should use the compact spacing defined by the selected style.",
+    "href": "/docs/components/card#small",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Card"
+  },
+  {
+    "title": "Horizontal Image",
+    "description": "",
+    "content": "Horizontal Image",
+    "href": "/docs/components/card#horizontal-image",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Card"
+  },
+  {
+    "title": "Apply layout classes to Card.Root when an image should sit beside the card content.",
+    "description": "",
+    "content": "Apply layout classes to Card.Root when an image should sit beside the card content.",
+    "href": "/docs/components/card#horizontal-image",
+    "category": "Components",
+    "type": "text",
     "pageTitle": "Card"
   },
   {
@@ -8136,9 +8262,9 @@
     "pageTitle": "Formsnap"
   },
   {
-    "title": "See the following links for more examples on how to use the other Form components:",
+    "title": "See the following links for more examples on how to use the other Form components. These examples include the Formsnap a...",
     "description": "",
-    "content": "See the following links for more examples on how to use the other Form components:",
+    "content": "See the following links for more examples on how to use the other Form components. These examples include the Formsnap and Superforms wiring for controls that need custom value handling, including Select, Input, and Textarea.",
     "href": "/docs/components/form#examples",
     "category": "Components",
     "type": "text",
@@ -13287,6 +13413,24 @@
     "title": "To install a registry item using the shadcn-svelte CLI, use the add command followed by the URL of the registry item.",
     "description": "",
     "content": "To install a registry item using the shadcn-svelte CLI, use the add command followed by the URL of the registry item.",
+    "href": "/docs/registry/getting-started#install-using-the-cli",
+    "category": "Registry",
+    "type": "text",
+    "pageTitle": "Getting Started"
+  },
+  {
+    "title": "For a hosted registry, pass the full item URL as the component argument.",
+    "description": "",
+    "content": "For a hosted registry, pass the full item URL as the component argument.",
+    "href": "/docs/registry/getting-started#install-using-the-cli",
+    "category": "Registry",
+    "type": "text",
+    "pageTitle": "Getting Started"
+  },
+  {
+    "title": "The --proxy flag is only for HTTP proxy servers. It does not select a custom registry item.",
+    "description": "",
+    "content": "The --proxy flag is only for HTTP proxy servers. It does not select a custom registry item.",
     "href": "/docs/registry/getting-started#install-using-the-cli",
     "category": "Registry",
     "type": "text",

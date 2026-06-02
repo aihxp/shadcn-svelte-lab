@@ -195,3 +195,9 @@ Here are some guidelines to follow when building components for a registry.
 To install a registry item using the `shadcn-svelte` CLI, use the `add` command followed by the URL of the registry item.
 
 <PMExecute command="shadcn-svelte@latest add http://localhost:5173/r/hello-world.json" />
+
+For a hosted registry, pass the full item URL as the component argument.
+
+<PMExecute command="shadcn-svelte@latest add https://example.com/r/button.json" />
+
+The `--proxy` flag is only for HTTP proxy servers. It does not select a custom registry item.
