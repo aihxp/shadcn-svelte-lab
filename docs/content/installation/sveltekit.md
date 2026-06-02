@@ -58,6 +58,48 @@ export default defineConfig({
 
 See the [Vite SSR noExternal option](https://vite.dev/config/ssr-options.html#ssr-noexternal) for more details.
 
+### Configure monorepo shared UI packages
+
+If you move generated components into a workspace package, make sure the SvelteKit app and the shared UI package resolve the same Svelte runtime. Context-driven components such as `Sidebar`, `Form`, `Dialog`, and `Tooltip` depend on `setContext` and `getContext`, so duplicate Svelte runtimes can make child components unable to read provider state.
+
+In the UI package, keep `svelte` in `peerDependencies` and `devDependencies`, and avoid bundling it into the package output.
+
+```json title="packages/ui/package.json" showLineNumbers
+{
+  "peerDependencies": {
+    "svelte": "^5.0.0"
+  },
+  "devDependencies": {
+    "svelte": "^5.0.0"
+  }
+}
+```
+
+In the app, dedupe `svelte` and process the shared UI package through Vite during SSR.
+
+```ts title="apps/web/vite.config.ts" {7-12} showLineNumbers
+import { sveltekit } from "@sveltejs/kit/vite";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  plugins: [sveltekit()],
+  resolve: {
+    dedupe: ["svelte"],
+  },
+  ssr: {
+    noExternal: [
+      "@my-org/ui",
+      "@lucide/svelte",
+      "bits-ui",
+      "runed",
+      "svelte-toolbelt",
+    ],
+  },
+});
+```
+
+Import every part of a component from the same package entrypoint. For example, do not render `Sidebar.Provider` from one compiled package copy and `Sidebar.Root` from another.
+
 ### Configure components.json
 
 You will be asked a few questions to configure `components.json`:

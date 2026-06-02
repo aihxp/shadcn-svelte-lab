@@ -53,6 +53,7 @@ export function createSvelteTable<TData extends RowData>(options: TableOptions<T
 	let state = $state<TableState>(table.initialState);
 
 	function updateOptions() {
+		// TanStack merges previous options internally, so do not merge its proxied `prev`.
 		table.setOptions(() => {
 			return mergeObjects(resolvedOptions, options, {
 				state: mergeObjects(state, options.state || {}),

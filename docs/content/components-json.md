@@ -166,3 +166,24 @@ The registry URL tells the CLI where to fetch the shadcn-svelte components/regis
   "registry": "https://shadcn-svelte.com/registry"
 }
 ```
+
+### Multiple registries
+
+`shadcn-svelte` currently reads one `registry` URL from `components.json`. The `registries` map used by shadcn/ui is not a supported `components.json` field yet.
+
+To work with more than one registry source today, use one of these patterns:
+
+- Pass a full registry item URL to `add`.
+- Put full item URLs in `registryDependencies`.
+- Use a GitHub source registry with `include` to split one source repository across multiple `registry.json` files.
+- Set `REGISTRY_URL` when you want a different default registry for a command.
+
+```bash
+REGISTRY_URL="https://example.com/registry" pnpm dlx shadcn-svelte@latest add button
+```
+
+```bash
+pnpm dlx shadcn-svelte@latest add https://example.com/r/editor.json
+```
+
+See the [Custom Registries](/docs/registry/getting-started) and [GitHub Registries](/docs/registry/github) guides for details.

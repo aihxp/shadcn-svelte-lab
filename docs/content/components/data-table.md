@@ -996,6 +996,55 @@ You can show the number of selected rows using the `table.getFilteredSelectedRow
 
 </Steps>
 
+## Sticky Header
+
+For a sticky Data Table header, put the scroll behavior on a constrained wrapper and make `Table.Header` sticky. This keeps the table markup intact while giving the header a scroll container to stick to.
+
+```svelte showLineNumbers
+<div class="max-h-[360px] overflow-auto rounded-md border">
+  <Table.Root>
+    <Table.Header class="bg-background sticky top-0 z-10">
+      {#each table.getHeaderGroups() as headerGroup (headerGroup.id)}
+        <Table.Row>
+          {#each headerGroup.headers as header (header.id)}
+            <Table.Head>
+              {#if !header.isPlaceholder}
+                <FlexRender
+                  content={header.column.columnDef.header}
+                  context={header.getContext()}
+                />
+              {/if}
+            </Table.Head>
+          {/each}
+        </Table.Row>
+      {/each}
+    </Table.Header>
+    <Table.Body>
+      {#each table.getRowModel().rows as row (row.id)}
+        <Table.Row>
+          {#each row.getVisibleCells() as cell (cell.id)}
+            <Table.Cell>
+              <FlexRender
+                content={cell.column.columnDef.cell}
+                context={cell.getContext()}
+              />
+            </Table.Cell>
+          {/each}
+        </Table.Row>
+      {/each}
+    </Table.Body>
+  </Table.Root>
+</div>
+```
+
+The dashboard block uses this pattern for its sticky header table.
+
+## Performance
+
+`createSvelteTable` avoids merging TanStack Table's previous options object in its `setOptions` callback. TanStack already handles that merge internally, and avoiding the previous proxied object prevents proxy chains from growing during frequent data updates.
+
+For large tables that update often, keep `data`, `columns`, and state objects stable when possible, and prefer pagination, filtering, or virtualization over rendering every row on each update.
+
 ## Reusable Components
 
 Check out the [Tasks](/examples/tasks) example to learn about creating reusable components for your data tables.

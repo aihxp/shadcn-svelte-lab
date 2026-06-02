@@ -75,6 +75,30 @@ If you aren't familiar with [Superforms](https://superforms.rocks) & [Formsnap](
 
 Use `Form.Field` and `Form.Control` when a control needs form state, then compose nearby layout with the [Field](/docs/components/field) primitives when you need grouped, horizontal, or responsive field layouts.
 
+## SvelteKit Remote Forms
+
+SvelteKit remote form functions expose field helpers directly. You can compose those helpers with shadcn-svelte form controls, but the wiring is different from the Superforms examples below.
+
+For native inputs, spread compatible field props onto the input and keep the value bound to the remote field. For composite controls such as `Select`, `Combobox`, `Calendar`, and `DatePicker`, do not spread native input or select props onto the component root. Pass the compatible props manually and update the remote field through callbacks such as `onValueChange`.
+
+```svelte showLineNumbers
+<script lang="ts">
+  import * as Field from "$lib/components/ui/field/index.js";
+  import { Input } from "$lib/components/ui/input/index.js";
+  import { addUser } from "./user.remote.js";
+</script>
+
+<Field.Field>
+  <Field.Label for="name">Name</Field.Label>
+  <Input id="name" {...addUser.fields.name.as("text")} />
+  {#each addUser.fields.name.issues() as issue}
+    <Field.Error>{issue.message}</Field.Error>
+  {/each}
+</Field.Field>
+```
+
+For a composite control example, see [Select remote functions](/docs/components/select#remote-functions).
+
 ## Installation
 
 <PMAddComp name="form" />

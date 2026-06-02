@@ -11,7 +11,7 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
 ## Automation Progress
 
 - Last updated: 2026-06-02 during the `continue-upstream-audit` heartbeat batch.
-- Remaining unchecked items after this batch: 15.
+- Remaining unchecked items after this batch: 10.
 - Remaining unchecked open pull request intake items after this batch: 0.
 
 ## Refresh Commands
@@ -291,11 +291,23 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
 - [x] `present-in-fork` Discussion [#2528](https://github.com/huntabyte/shadcn-svelte/discussions/2528): Installing from your own custom registry.
   - Evidence: the CLI already accepts full registry item URLs in `add`; `docs/content/registry/getting-started.md` and `docs/content/cli.md` now show hosted item URL installs and clarify that `--proxy` is only for HTTP proxy servers.
   - Verification: CLI source review, `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
-- [ ] `support-signal` Discussion [#2527](https://github.com/huntabyte/shadcn-svelte/discussions/2527): Svelte 5 and SvelteKit monorepo context issue with Sidebar.
-- [ ] `support-signal` Discussion [#2525](https://github.com/huntabyte/shadcn-svelte/discussions/2525): Add support for multiple registry setups.
-- [ ] `support-signal` Discussion [#1573](https://github.com/huntabyte/shadcn-svelte/discussions/1573): How to make Data Table header sticky?
-- [ ] `support-signal` Discussion [#2448](https://github.com/huntabyte/shadcn-svelte/discussions/2448): Remote Function support for Forms.
-- [ ] `support-signal` Discussion [#2456](https://github.com/huntabyte/shadcn-svelte/discussions/2456): Poor Data Table performance with large frequently updated data.
+- [x] `partial` Discussion [#2527](https://github.com/huntabyte/shadcn-svelte/discussions/2527): Svelte 5 and SvelteKit monorepo context issue with Sidebar.
+  - Evidence: `docs/src/lib/registry/ui/sidebar/context.svelte.ts` already uses `Symbol.for("scn-sidebar")`; `docs/content/installation/sveltekit.md` now documents shared UI package peer dependencies, `resolve.dedupe`, and `ssr.noExternal`; `docs/content/components/sidebar.md` now documents the matching `useSidebar` monorepo failure mode.
+  - Remaining gap: no Turborepo reproduction was added in this focused docs pass.
+  - Verification: source review, `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
+- [x] `partial` Discussion [#2525](https://github.com/huntabyte/shadcn-svelte/discussions/2525): Add support for multiple registry setups.
+  - Evidence: this fork already supports custom registry item URLs, URL `registryDependencies`, environment registry overrides, and GitHub source registries with `include`; `docs/content/components-json.md` now documents these patterns and states that the shadcn/ui `registries` map is not supported yet.
+  - Remaining gap: a true multiple-registry `components.json` schema and resolver remains unimplemented.
+  - Verification: CLI schema and resolver review, `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
+- [x] `present-in-fork` Discussion [#1573](https://github.com/huntabyte/shadcn-svelte/discussions/1573): How to make Data Table header sticky?
+  - Evidence: `docs/content/components/table.md` already documents the fixed header pattern, and `docs/content/components/data-table.md` now includes a TanStack Data Table sticky header section. The dashboard block also uses `Table.Header class="bg-muted sticky top-0 z-10"`.
+  - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
+- [x] `present-in-fork` Discussion [#2448](https://github.com/huntabyte/shadcn-svelte/discussions/2448): Remote Function support for Forms.
+  - Evidence: `docs/content/components/select.md` already documents SvelteKit remote functions for composite Select fields, and `docs/content/components/form.md` now explains the remote form wiring difference for native inputs and composite controls.
+  - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
+- [x] `present-in-fork` Discussion [#2456](https://github.com/huntabyte/shadcn-svelte/discussions/2456): Poor Data Table performance with large frequently updated data.
+  - Evidence: `docs/src/lib/registry/ui/data-table/data-table.svelte.ts` already calls `table.setOptions(() => ...)` without merging the previous proxied options object; a code comment now guards that regression, and `docs/content/components/data-table.md` documents the performance rationale.
+  - Verification: `pnpm -F docs build:registry`, `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
 - [ ] `support-signal` Discussion [#2496](https://github.com/huntabyte/shadcn-svelte/discussions/2496): How to migrate from `Form.*` to `Field.*`.
 - [ ] `support-signal` Discussion [#2491](https://github.com/huntabyte/shadcn-svelte/discussions/2491): Floating UI styles do not seem to clear correctly.
 - [ ] `support-signal` Discussion [#2481](https://github.com/huntabyte/shadcn-svelte/discussions/2481): Sidebar.Trigger triggering Drawer on mobile.

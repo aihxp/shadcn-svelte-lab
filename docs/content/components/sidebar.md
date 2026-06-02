@@ -485,6 +485,12 @@ The `useSidebar` function is used to hook into the sidebar context. It returns a
 | `isMobile`      | `boolean`                 | Whether the sidebar is on mobile.             |
 | `toggle`        | `() => void`              | Toggles the sidebar. Desktop and mobile.      |
 
+### Monorepo Packages
+
+If `useSidebar()` returns `undefined` even though `Sidebar.Provider` wraps the tree, check whether your app and shared UI package are using more than one Svelte runtime or more than one compiled copy of the sidebar package.
+
+Keep `Sidebar.Provider`, `Sidebar.Root`, `Sidebar.Trigger`, and `useSidebar` imported from the same package entrypoint. In SvelteKit monorepos, dedupe `svelte` and process the shared UI package with Vite SSR. See the [SvelteKit monorepo setup](/docs/installation/sveltekit#configure-monorepo-shared-ui-packages) for the Vite config pattern.
+
 ## Sidebar.Header
 
 Use the `Sidebar.Header` component to add a sticky header to the sidebar.
