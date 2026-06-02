@@ -98,6 +98,17 @@
 		"relativeUrl": "collapsible.json"
 	},
 	{
+		"name": "combobox",
+		"type": "registry:ui",
+		"registryDependencies": [
+			"button",
+			"badge",
+			"popover",
+			"command"
+		],
+		"relativeUrl": "combobox.json"
+	},
+	{
 		"name": "command",
 		"type": "registry:ui",
 		"registryDependencies": [
@@ -125,6 +136,12 @@
 			"button"
 		],
 		"relativeUrl": "dialog.json"
+	},
+	{
+		"name": "direction",
+		"type": "registry:ui",
+		"registryDependencies": [],
+		"relativeUrl": "direction.json"
 	},
 	{
 		"name": "drawer",

@@ -1,0 +1,107 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "combobox",
+	"type": "registry:ui",
+	"devDependencies": [
+		"bits-ui@^2.16.3",
+		"@internationalized/date@^3.12.0"
+	],
+	"registryDependencies": [
+		"button",
+		"badge",
+		"popover",
+		"command"
+	],
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport type { ComponentProps } from \"svelte\";\n\timport { Button } from \"$UI$/button/index.js\";\n\timport { cn } from \"$UTILS$.js\";\n\timport IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tclass: className,\n\t\tchildren,\n\t\ttype = \"button\",\n\t\tvariant = \"ghost\",\n\t\tsize = \"icon-xs\",\n\t\t\"aria-label\": ariaLabel = \"Remove\",\n\t\t...restProps\n\t}: ComponentProps<typeof Button> = $props();\n</script>\n\n<Button\n\tbind:ref\n\t{type}\n\t{variant}\n\t{size}\n\taria-label={ariaLabel}\n\tdata-slot=\"combobox-chip-remove\"\n\tclass={cn(\"-ml-1 opacity-50 hover:opacity-100\", className)}\n\t{...restProps}\n>\n\t{#if children}\n\t\t{@render children()}\n\t{:else}\n\t\t<IconPlaceholder\n\t\t\tlucide=\"XIcon\"\n\t\t\ttabler=\"IconX\"\n\t\t\thugeicons=\"Cancel01Icon\"\n\t\t\tphosphor=\"XIcon\"\n\t\t\tremixicon=\"RiCloseLine\"\n\t\t/>\n\t{/if}\n</Button>\n",
+			"type": "registry:file",
+			"target": "combobox/combobox-chip-remove.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport type { ComponentProps } from \"svelte\";\n\timport { Badge } from \"$UI$/badge/index.js\";\n\timport { cn } from \"$UTILS$.js\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tclass: className,\n\t\tvariant = \"secondary\",\n\t\tchildren,\n\t\t...restProps\n\t}: ComponentProps<typeof Badge> = $props();\n</script>\n\n<Badge\n\tbind:ref\n\t{variant}\n\tdata-slot=\"combobox-chip\"\n\tclass={cn(\"bg-input text-foreground dark:bg-input/60 flex h-[calc(--spacing(5.5))] w-fit items-center justify-center gap-1 rounded-3xl px-2 text-xs font-medium whitespace-nowrap has-data-[slot=combobox-chip-remove]:pr-0\", className)}\n\t{...restProps}\n>\n\t{@render children?.()}\n</Badge>\n",
+			"type": "registry:file",
+			"target": "combobox/combobox-chip.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport * as Popover from \"$UI$/popover/index.js\";\n\timport { cn, type WithElementRef } from \"$UTILS$.js\";\n\timport { getComboboxContext } from \"./combobox.svelte\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tclass: className,\n\t\tchildren,\n\t\tdisabled,\n\t\ttabindex = 0,\n\t\t...restProps\n\t}: WithElementRef<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {\n\t\tdisabled?: boolean;\n\t\tchildren?: Snippet;\n\t} = $props();\n\n\tconst context = getComboboxContext();\n\tconst isDisabled = $derived(disabled ?? context?.disabled ?? false);\n</script>\n\n<Popover.Trigger>\n\t{#snippet child({ props })}\n\t\t<div\n\t\t\t{...props}\n\t\t\t{...restProps}\n\t\t\tbind:this={ref}\n\t\t\trole=\"combobox\"\n\t\t\taria-expanded={context?.open}\n\t\t\taria-disabled={isDisabled}\n\t\t\tdata-disabled={isDisabled}\n\t\t\tdata-slot=\"combobox-chips-input\"\n\t\t\ttabindex={isDisabled ? undefined : tabindex}\n\t\t\tclass={cn(\"bg-input/50 focus-within:border-ring focus-within:ring-ring/30 has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive dark:has-aria-invalid:border-destructive/50 flex min-h-9 flex-wrap items-center gap-1.5 rounded-3xl border border-transparent bg-clip-padding px-3 py-1.5 text-sm transition-[color,box-shadow,background-color] focus-within:ring-3 has-aria-invalid:ring-3 has-data-[slot=combobox-chip]:px-1.5\", className)}\n\t\t>\n\t\t\t{@render children?.()}\n\t\t</div>\n\t{/snippet}\n</Popover.Trigger>\n",
+			"type": "registry:file",
+			"target": "combobox/combobox-chips-input.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn, type WithElementRef } from \"$UTILS$.js\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tclass: className,\n\t\tchildren,\n\t\t...restProps\n\t}: WithElementRef<HTMLAttributes<HTMLDivElement>, HTMLDivElement> = $props();\n</script>\n\n<div\n\tbind:this={ref}\n\tdata-slot=\"combobox-chips\"\n\tclass={cn(\"bg-input/50 focus-within:border-ring focus-within:ring-ring/30 has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive dark:has-aria-invalid:border-destructive/50 flex min-h-9 flex-wrap items-center gap-1.5 rounded-3xl border border-transparent bg-clip-padding px-3 py-1.5 text-sm transition-[color,box-shadow,background-color] focus-within:ring-3 has-aria-invalid:ring-3 has-data-[slot=combobox-chip]:px-1.5\", className)}\n\t{...restProps}\n>\n\t{@render children?.()}\n</div>\n",
+			"type": "registry:file",
+			"target": "combobox/combobox-chips.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport type { ComponentProps } from \"svelte\";\n\timport { Button } from \"$UI$/button/index.js\";\n\timport { cn } from \"$UTILS$.js\";\n\timport IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tclass: className,\n\t\tchildren,\n\t\ttype = \"button\",\n\t\tvariant = \"ghost\",\n\t\tsize = \"icon-xs\",\n\t\t\"aria-label\": ariaLabel = \"Clear\",\n\t\t...restProps\n\t}: ComponentProps<typeof Button> = $props();\n</script>\n\n<Button\n\tbind:ref\n\t{type}\n\t{variant}\n\t{size}\n\taria-label={ariaLabel}\n\tdata-slot=\"combobox-clear\"\n\tclass={cn(className)}\n\t{...restProps}\n>\n\t{#if children}\n\t\t{@render children()}\n\t{:else}\n\t\t<IconPlaceholder\n\t\t\tlucide=\"XIcon\"\n\t\t\ttabler=\"IconX\"\n\t\t\thugeicons=\"Cancel01Icon\"\n\t\t\tphosphor=\"XIcon\"\n\t\t\tremixicon=\"RiCloseLine\"\n\t\t/>\n\t{/if}\n</Button>\n",
+			"type": "registry:file",
+			"target": "combobox/combobox-clear.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport type { Snippet } from \"svelte\";\n\n\tlet { children }: { children?: Snippet } = $props();\n</script>\n\n{@render children?.()}\n",
+			"type": "registry:file",
+			"target": "combobox/combobox-collection.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport type { ComponentProps, Snippet } from \"svelte\";\n\timport * as Command from \"$UI$/command/index.js\";\n\timport type { CommandRootApi } from \"$UI$/command/command.svelte\";\n\timport * as Popover from \"$UI$/popover/index.js\";\n\timport { cn, type WithoutChildrenOrChild } from \"$UTILS$.js\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tcommandRef = $bindable(null),\n\t\tcommandApi = $bindable(null),\n\t\tvalue = $bindable(\"\"),\n\t\tclass: className,\n\t\tcommandClass,\n\t\tsideOffset = 6,\n\t\talign = \"start\",\n\t\tchildren,\n\t\t...restProps\n\t}: WithoutChildrenOrChild<ComponentProps<typeof Popover.Content>> & {\n\t\tcommandRef?: HTMLElement | null;\n\t\tcommandApi?: CommandRootApi | null;\n\t\tvalue?: string;\n\t\tcommandClass?: string;\n\t\tchildren?: Snippet;\n\t} = $props();\n</script>\n\n<Popover.Content\n\tbind:ref\n\t{sideOffset}\n\t{align}\n\tdata-slot=\"combobox-content\"\n\tclass={cn(\n\t\t\"bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/5 dark:ring-foreground/10 *:data-[slot=input-group]:bg-input/50 *:data-[slot=input-group]:border-input/30 max-h-72 min-w-36 overflow-hidden rounded-3xl shadow-lg ring-1 duration-100 *:data-[slot=input-group]:m-1.5 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-8 *:data-[slot=input-group]:shadow-none data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2 w-(--bits-popover-anchor-width)\",\n\t\tclassName\n\t)}\n\t{...restProps}\n>\n\t<Command.Root\n\t\tbind:ref={commandRef}\n\t\tbind:api={commandApi}\n\t\tbind:value\n\t\tclass={cn(\"rounded-none! bg-transparent p-0\", commandClass)}\n\t>\n\t\t{@render children?.()}\n\t</Command.Root>\n</Popover.Content>\n",
+			"type": "registry:file",
+			"target": "combobox/combobox-content.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport type { ComponentProps } from \"svelte\";\n\timport * as Command from \"$UI$/command/index.js\";\n\timport { cn } from \"$UTILS$.js\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tclass: className,\n\t\t...restProps\n\t}: ComponentProps<typeof Command.Empty> = $props();\n</script>\n\n<Command.Empty\n\tbind:ref\n\tdata-slot=\"combobox-empty\"\n\tclass={cn(\"text-muted-foreground hidden w-full justify-center py-2 text-center text-sm group-data-empty/combobox-content:flex\", className)}\n\t{...restProps}\n/>\n",
+			"type": "registry:file",
+			"target": "combobox/combobox-empty.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport type { ComponentProps } from \"svelte\";\n\timport * as Command from \"$UI$/command/index.js\";\n\timport { cn } from \"$UTILS$.js\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tclass: className,\n\t\t...restProps\n\t}: ComponentProps<typeof Command.Group> = $props();\n</script>\n\n<Command.Group bind:ref data-slot=\"combobox-group\" class={cn(className)} {...restProps} />\n",
+			"type": "registry:file",
+			"target": "combobox/combobox-group.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport type { ComponentProps } from \"svelte\";\n\timport * as Command from \"$UI$/command/index.js\";\n\timport { cn } from \"$UTILS$.js\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tvalue = $bindable(\"\"),\n\t\tclass: className,\n\t\t...restProps\n\t}: ComponentProps<typeof Command.Input> = $props();\n</script>\n\n<Command.Input\n\tbind:ref\n\tbind:value\n\tdata-slot=\"combobox-input\"\n\tclass={cn(className)}\n\t{...restProps}\n/>\n",
+			"type": "registry:file",
+			"target": "combobox/combobox-input.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { Command as CommandPrimitive } from \"bits-ui\";\n\timport IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\";\n\timport { cn } from \"$UTILS$.js\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tclass: className,\n\t\tchildren,\n\t\tchecked = false,\n\t\t...restProps\n\t}: CommandPrimitive.ItemProps & {\n\t\tchecked?: boolean;\n\t} = $props();\n</script>\n\n<CommandPrimitive.Item\n\tbind:ref\n\tdata-slot=\"combobox-item\"\n\tdata-checked={checked}\n\tclass={cn(\n\t\t\"group/combobox-item data-highlighted:bg-accent data-highlighted:text-accent-foreground not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground gap-2.5 rounded-2xl py-2 pr-8 pl-3 text-sm font-medium [&_svg:not([class*='size-'])]:size-4 relative flex w-full cursor-default items-center outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n\t\tclassName\n\t)}\n\t{...restProps}\n>\n\t{@render children?.()}\n\t<span\n\t\tdata-slot=\"combobox-item-indicator\"\n\t\tclass=\"pointer-events-none absolute right-2 flex size-4 items-center justify-center opacity-0 group-data-[checked=true]/combobox-item:opacity-100\"\n\t>\n\t\t<IconPlaceholder\n\t\t\tlucide=\"CheckIcon\"\n\t\t\ttabler=\"IconCheck\"\n\t\t\thugeicons=\"Tick02Icon\"\n\t\t\tphosphor=\"CheckIcon\"\n\t\t\tremixicon=\"RiCheckLine\"\n\t\t/>\n\t</span>\n</CommandPrimitive.Item>\n",
+			"type": "registry:file",
+			"target": "combobox/combobox-item.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn, type WithElementRef } from \"$UTILS$.js\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tclass: className,\n\t\tchildren,\n\t\t...restProps\n\t}: WithElementRef<HTMLAttributes<HTMLDivElement>, HTMLDivElement> = $props();\n</script>\n\n<div\n\tbind:this={ref}\n\tdata-slot=\"combobox-label\"\n\tclass={cn(\"text-muted-foreground px-3 py-2.5 text-xs\", className)}\n\t{...restProps}\n>\n\t{@render children?.()}\n</div>\n",
+			"type": "registry:file",
+			"target": "combobox/combobox-label.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport type { ComponentProps } from \"svelte\";\n\timport * as Command from \"$UI$/command/index.js\";\n\timport { cn } from \"$UTILS$.js\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tclass: className,\n\t\t...restProps\n\t}: ComponentProps<typeof Command.List> = $props();\n</script>\n\n<Command.List\n\tbind:ref\n\tdata-slot=\"combobox-list\"\n\tclass={cn(\"no-scrollbar max-h-[min(calc(--spacing(72)---spacing(9)),calc(var(--available-height)---spacing(9)))] scroll-py-1.5 overflow-y-auto p-1.5 data-empty:p-0\", className)}\n\t{...restProps}\n/>\n",
+			"type": "registry:file",
+			"target": "combobox/combobox-list.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport type { ComponentProps } from \"svelte\";\n\timport * as Command from \"$UI$/command/index.js\";\n\timport { cn } from \"$UTILS$.js\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tclass: className,\n\t\t...restProps\n\t}: ComponentProps<typeof Command.Separator> = $props();\n</script>\n\n<Command.Separator\n\tbind:ref\n\tdata-slot=\"combobox-separator\"\n\tclass={cn(\"bg-border -mx-1.5 my-1.5 h-px\", className)}\n\t{...restProps}\n/>\n",
+			"type": "registry:file",
+			"target": "combobox/combobox-separator.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport type { ComponentProps } from \"svelte\";\n\timport { Button } from \"$UI$/button/index.js\";\n\timport * as Popover from \"$UI$/popover/index.js\";\n\timport { cn } from \"$UTILS$.js\";\n\timport IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\";\n\timport { getComboboxContext } from \"./combobox.svelte\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tclass: className,\n\t\tchildren,\n\t\tvariant = \"outline\",\n\t\tsize = \"default\",\n\t\ttype = \"button\",\n\t\tdisabled,\n\t\tshowIcon = true,\n\t\t...restProps\n\t}: ComponentProps<typeof Button> & {\n\t\tshowIcon?: boolean;\n\t} = $props();\n\n\tconst context = getComboboxContext();\n</script>\n\n<Popover.Trigger bind:ref>\n\t{#snippet child({ props })}\n\t\t<Button\n\t\t\t{...props}\n\t\t\t{...restProps}\n\t\t\t{type}\n\t\t\t{variant}\n\t\t\t{size}\n\t\t\tdisabled={disabled ?? context?.disabled}\n\t\t\trole=\"combobox\"\n\t\t\taria-expanded={context?.open}\n\t\t\tdata-slot=\"combobox-trigger\"\n\t\t\tclass={cn(\"[&_svg:not([class*='size-'])]:size-4\", className)}\n\t\t>\n\t\t\t{@render children?.()}\n\t\t\t{#if showIcon}\n\t\t\t\t<IconPlaceholder\n\t\t\t\t\tlucide=\"ChevronDownIcon\"\n\t\t\t\t\ttabler=\"IconChevronDown\"\n\t\t\t\t\thugeicons=\"ArrowDown01Icon\"\n\t\t\t\t\tphosphor=\"CaretDownIcon\"\n\t\t\t\t\tremixicon=\"RiArrowDownSLine\"\n\t\t\t\t\tclass=\"text-muted-foreground size-4 pointer-events-none\"\n\t\t\t\t/>\n\t\t\t{/if}\n\t\t</Button>\n\t{/snippet}\n</Popover.Trigger>\n",
+			"type": "registry:file",
+			"target": "combobox/combobox-trigger.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn, type WithElementRef } from \"$UTILS$.js\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tclass: className,\n\t\tchildren,\n\t\t...restProps\n\t}: WithElementRef<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> = $props();\n</script>\n\n<span bind:this={ref} data-slot=\"combobox-value\" class={cn(\"truncate\", className)} {...restProps}>\n\t{@render children?.()}\n</span>\n",
+			"type": "registry:file",
+			"target": "combobox/combobox-value.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\" module>\n\timport { getContext, setContext } from \"svelte\";\n\timport type { ComponentProps } from \"svelte\";\n\timport * as Popover from \"$UI$/popover/index.js\";\n\n\texport type ComboboxContext = {\n\t\treadonly open: boolean;\n\t\treadonly disabled: boolean;\n\t\tclose: () => void;\n\t};\n\n\texport type ComboboxProps = ComponentProps<typeof Popover.Root> & {\n\t\tdisabled?: boolean;\n\t};\n\n\tconst COMBOBOX_CONTEXT = Symbol(\"combobox\");\n\n\texport function setComboboxContext(context: ComboboxContext) {\n\t\tsetContext(COMBOBOX_CONTEXT, context);\n\t}\n\n\texport function getComboboxContext() {\n\t\treturn getContext<ComboboxContext | undefined>(COMBOBOX_CONTEXT);\n\t}\n</script>\n\n<script lang=\"ts\">\n\tlet { open = $bindable(false), disabled = false, ...restProps }: ComboboxProps = $props();\n\n\tsetComboboxContext({\n\t\tget open() {\n\t\t\treturn open;\n\t\t},\n\t\tget disabled() {\n\t\t\treturn disabled;\n\t\t},\n\t\tclose() {\n\t\t\topen = false;\n\t\t},\n\t});\n</script>\n\n<Popover.Root bind:open {...restProps} />\n",
+			"type": "registry:file",
+			"target": "combobox/combobox.svelte"
+		},
+		{
+			"content": "import Root from \"./combobox.svelte\";\nimport Chips from \"./combobox-chips.svelte\";\nimport ChipsInput from \"./combobox-chips-input.svelte\";\nimport Chip from \"./combobox-chip.svelte\";\nimport ChipRemove from \"./combobox-chip-remove.svelte\";\nimport Clear from \"./combobox-clear.svelte\";\nimport Collection from \"./combobox-collection.svelte\";\nimport Content from \"./combobox-content.svelte\";\nimport Empty from \"./combobox-empty.svelte\";\nimport Group from \"./combobox-group.svelte\";\nimport Input from \"./combobox-input.svelte\";\nimport Item from \"./combobox-item.svelte\";\nimport Label from \"./combobox-label.svelte\";\nimport List from \"./combobox-list.svelte\";\nimport Separator from \"./combobox-separator.svelte\";\nimport Trigger from \"./combobox-trigger.svelte\";\nimport Value from \"./combobox-value.svelte\";\n\nexport {\n\tRoot,\n\tChips,\n\tChipsInput,\n\tChip,\n\tChipRemove,\n\tClear,\n\tCollection,\n\tContent,\n\tEmpty,\n\tGroup,\n\tInput,\n\tItem,\n\tLabel,\n\tList,\n\tSeparator,\n\tTrigger,\n\tValue,\n\t//\n\tRoot as Combobox,\n\tChips as ComboboxChips,\n\tChipsInput as ComboboxChipsInput,\n\tChip as ComboboxChip,\n\tChipRemove as ComboboxChipRemove,\n\tClear as ComboboxClear,\n\tCollection as ComboboxCollection,\n\tContent as ComboboxContent,\n\tEmpty as ComboboxEmpty,\n\tGroup as ComboboxGroup,\n\tInput as ComboboxInput,\n\tItem as ComboboxItem,\n\tLabel as ComboboxLabel,\n\tList as ComboboxList,\n\tSeparator as ComboboxSeparator,\n\tTrigger as ComboboxTrigger,\n\tValue as ComboboxValue,\n};\n",
+			"type": "registry:file",
+			"target": "combobox/index.ts"
+		}
+	]
+}

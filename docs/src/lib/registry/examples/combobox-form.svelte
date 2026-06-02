@@ -21,16 +21,11 @@
 <script lang="ts">
 	import { defaults, superForm } from "sveltekit-superforms";
 	import { tick } from "svelte";
-	import CheckIcon from "@lucide/svelte/icons/check";
-	import ChevronsUpDownIcon from "@lucide/svelte/icons/chevrons-up-down";
 	import { zod4 } from "sveltekit-superforms/adapters";
 	import { toast } from "svelte-sonner";
-	import { useId } from "bits-ui";
+	import * as Combobox from "$lib/registry/ui/combobox/index.js";
 	import * as Form from "$lib/registry/ui/form/index.js";
-	import * as Popover from "$lib/registry/ui/popover/index.js";
-	import * as Command from "$lib/registry/ui/command/index.js";
 	import { cn } from "$lib/utils.js";
-	import { buttonVariants } from "$lib/registry/ui/button/index.js";
 
 	const form = superForm(defaults(zod4(formSchema)), {
 		validators: zod4(formSchema),
@@ -46,68 +41,63 @@
 
 	const { form: formData, enhance } = form;
 
-	let open = false;
+	let open = $state(false);
+	let triggerRef = $state<HTMLButtonElement>(null!);
 
 	// We want to refocus the trigger button when the user selects
 	// an item from the list so users can continue navigating the
 	// rest of the form with the keyboard.
-	function closeAndFocusTrigger(triggerId: string) {
+	function closeAndFocusTrigger() {
 		open = false;
 		tick().then(() => {
-			document.getElementById(triggerId)?.focus();
+			triggerRef.focus();
 		});
 	}
-	const triggerId = useId();
 </script>
 
 <form method="POST" class="space-y-6" use:enhance>
 	<Form.Field {form} name="language" class="flex flex-col">
-		<Popover.Root bind:open>
-			<Form.Control id={triggerId}>
+		<Combobox.Root bind:open>
+			<Form.Control>
 				{#snippet children({ props })}
 					<Form.Label>Language</Form.Label>
-					<Popover.Trigger
+					<Combobox.Trigger
+						bind:ref={triggerRef}
 						class={cn(
-							buttonVariants({ variant: "outline" }),
 							"w-[200px] justify-between",
 							!$formData.language && "text-muted-foreground"
 						)}
-						role="combobox"
 						{...props}
 					>
-						{languages.find((f) => f.value === $formData.language)?.label ??
-							"Select language"}
-						<ChevronsUpDownIcon class="opacity-50" />
-					</Popover.Trigger>
+						<Combobox.Value>
+							{languages.find((f) => f.value === $formData.language)?.label ??
+								"Select language"}
+						</Combobox.Value>
+					</Combobox.Trigger>
 					<input hidden value={$formData.language} name={props.name} />
 				{/snippet}
 			</Form.Control>
-			<Popover.Content class="w-[200px] p-0">
-				<Command.Root>
-					<Command.Input autofocus placeholder="Search language..." class="h-9" />
-					<Command.Empty>No language found.</Command.Empty>
-					<Command.Group value="languages">
+			<Combobox.Content class="w-[200px] p-0">
+				<Combobox.Input autofocus placeholder="Search language..." class="h-9" />
+				<Combobox.List>
+					<Combobox.Empty>No language found.</Combobox.Empty>
+					<Combobox.Group value="languages">
 						{#each languages as language (language.value)}
-							<Command.Item
+							<Combobox.Item
 								value={language.label}
+								checked={language.value === $formData.language}
 								onSelect={() => {
 									$formData.language = language.value;
-									closeAndFocusTrigger(triggerId);
+									closeAndFocusTrigger();
 								}}
 							>
 								{language.label}
-								<CheckIcon
-									class={cn(
-										"ms-auto",
-										language.value !== $formData.language && "text-transparent"
-									)}
-								/>
-							</Command.Item>
+							</Combobox.Item>
 						{/each}
-					</Command.Group>
-				</Command.Root>
-			</Popover.Content>
-		</Popover.Root>
+					</Combobox.Group>
+				</Combobox.List>
+			</Combobox.Content>
+		</Combobox.Root>
 		<Form.Description>
 			This is the language that will be used in the dashboard.
 		</Form.Description>

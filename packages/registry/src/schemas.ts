@@ -191,6 +191,13 @@ export const registrySchema = z.object({
 		.describe(
 			"Defines which internal import paths should be transformed during registry `build`."
 		),
+	include: z
+		.string()
+		.array()
+		.optional()
+		.describe(
+			"An array of relative registry.json files to include when loading a GitHub source registry."
+		),
 	items: baseIndexItemSchema
 		.extend({
 			files: registryItemFileSchema
@@ -210,6 +217,8 @@ export const registrySchema = z.object({
 			css: z.optional(registryItemCssSchema),
 		})
 		.array()
+		.optional()
+		.default([])
 		.describe("Defines a custom component registry."),
 });
 

@@ -1,0 +1,17 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "direction",
+	"type": "registry:ui",
+	"files": [
+		{
+			"content": "<script lang=\"ts\" module>\n\timport { getContext, setContext } from \"svelte\";\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport type { WithElementRef } from \"$UTILS$.js\";\n\n\texport type Direction = \"ltr\" | \"rtl\";\n\n\texport type DirectionContext = {\n\t\treadonly dir: Direction;\n\t};\n\n\tconst DIRECTION_CONTEXT = Symbol(\"direction\");\n\n\texport function setDirectionContext(context: DirectionContext) {\n\t\tsetContext(DIRECTION_CONTEXT, context);\n\t}\n\n\texport function getDirectionContext(fallback: Direction = \"ltr\") {\n\t\treturn getContext<DirectionContext | undefined>(DIRECTION_CONTEXT) ?? { dir: fallback };\n\t}\n\n\texport function useDirection(fallback: Direction = \"ltr\") {\n\t\treturn getDirectionContext(fallback).dir;\n\t}\n</script>\n\n<script lang=\"ts\">\n\tlet {\n\t\tref = $bindable(null),\n\t\tdir = \"ltr\",\n\t\tdirection,\n\t\tclass: className,\n\t\tchildren,\n\t\t...restProps\n\t}: WithElementRef<Omit<HTMLAttributes<HTMLDivElement>, \"dir\">, HTMLDivElement> & {\n\t\tdir?: Direction;\n\t\tdirection?: Direction;\n\t\tchildren?: Snippet;\n\t} = $props();\n\n\tconst value = $derived(direction ?? dir);\n\n\tsetDirectionContext({\n\t\tget dir() {\n\t\t\treturn value;\n\t\t},\n\t});\n</script>\n\n<div bind:this={ref} dir={value} data-slot=\"direction-provider\" class={className} {...restProps}>\n\t{@render children?.()}\n</div>\n",
+			"type": "registry:file",
+			"target": "direction/direction-provider.svelte"
+		},
+		{
+			"content": "import DirectionProvider, {\n\tgetDirectionContext,\n\tuseDirection,\n\ttype Direction,\n\ttype DirectionContext,\n} from \"./direction-provider.svelte\";\n\nexport {\n\tDirectionProvider,\n\tgetDirectionContext,\n\tuseDirection,\n\ttype Direction,\n\ttype DirectionContext,\n};\n",
+			"type": "registry:file",
+			"target": "direction/index.ts"
+		}
+	]
+}

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { browser } from "$app/environment";
 	import { Button } from "$lib/registry/ui/button/index.js";
+	import * as Combobox from "$lib/registry/ui/combobox/index.js";
 	import * as Command from "$lib/registry/ui/command/index.js";
 	import * as Drawer from "$lib/registry/ui/drawer/index.js";
-	import * as Popover from "$lib/registry/ui/popover/index.js";
 	import { onMount } from "svelte";
 
 	type Status = {
@@ -35,8 +35,10 @@
 	];
 
 	let open = $state(false);
-	let selectedStatus: Status | null = $state(null);
+	let value = $state("");
 	let isDesktop = $state(false);
+
+	const selectedStatus = $derived(statuses.find((status) => status.value === value) ?? null);
 
 	function checkScreenSize() {
 		isDesktop = window.innerWidth >= 768;
@@ -50,38 +52,35 @@
 		}
 	});
 
-	function handleStatusSelect(value: string) {
-		selectedStatus = statuses.find((status) => status.value === value) || null;
+	function handleStatusSelect(selectedValue: string) {
+		value = selectedValue;
 		open = false;
 	}
 </script>
 
 {#if isDesktop}
-	<Popover.Root bind:open>
-		<Popover.Trigger>
-			<Button variant="outline" class="w-[150px] justify-start">
-				{selectedStatus ? selectedStatus.label : "+ Set status"}
-			</Button>
-		</Popover.Trigger>
-		<Popover.Content class="w-[200px] p-0" align="start">
-			<Command.Root>
-				<Command.Input placeholder="Filter status..." />
-				<Command.List>
-					<Command.Empty>No results found.</Command.Empty>
-					<Command.Group>
-						{#each statuses as status (status.value)}
-							<Command.Item
-								value={status.value}
-								onSelect={() => handleStatusSelect(status.value)}
-							>
-								{status.label}
-							</Command.Item>
-						{/each}
-					</Command.Group>
-				</Command.List>
-			</Command.Root>
-		</Popover.Content>
-	</Popover.Root>
+	<Combobox.Root bind:open>
+		<Combobox.Trigger showIcon={false} class="w-[150px] justify-start">
+			{selectedStatus ? selectedStatus.label : "+ Set status"}
+		</Combobox.Trigger>
+		<Combobox.Content bind:value class="w-[200px] p-0" align="start">
+			<Combobox.Input placeholder="Filter status..." />
+			<Combobox.List>
+				<Combobox.Empty>No results found.</Combobox.Empty>
+				<Combobox.Group>
+					{#each statuses as status (status.value)}
+						<Combobox.Item
+							value={status.value}
+							checked={value === status.value}
+							onSelect={() => handleStatusSelect(status.value)}
+						>
+							{status.label}
+						</Combobox.Item>
+					{/each}
+				</Combobox.Group>
+			</Combobox.List>
+		</Combobox.Content>
+	</Combobox.Root>
 {:else}
 	<Drawer.Root bind:open>
 		<Drawer.Trigger>

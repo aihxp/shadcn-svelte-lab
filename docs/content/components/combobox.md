@@ -2,11 +2,21 @@
 title: Combobox
 description: Autocomplete input and command palette with a list of suggestions.
 component: true
+links:
+  source: https://github.com/huntabyte/shadcn-svelte/tree/next/sites/docs/src/lib/registry/ui/combobox
 ---
 
 <script>
 	import ComponentPreview from "$lib/components/component-preview.svelte";
+	import ComponentSource from "$lib/components/component-source.svelte";
 	import CodeCollapsibleWrapper from "$lib/components/code-collapsible-wrapper.svelte";
+	import PMAddComp from "$lib/components/pm-add-comp.svelte";
+	import PMInstall from "$lib/components/pm-install.svelte";
+	import Steps from "$lib/components/steps.svelte";
+	import Step from "$lib/components/step.svelte";
+	import InstallTabs from "$lib/components/install-tabs.svelte";
+
+	let { viewerData } = $props();
 </script>
 
 <ComponentPreview name="combobox-demo">
@@ -17,9 +27,33 @@ component: true
 
 ## Installation
 
-The Combobox is built using a composition of the `<Popover />` and the `<Command />` components.
+<InstallTabs>
+{#snippet cli()}
+<PMAddComp name="combobox" />
+{/snippet}
+{#snippet manual()}
+<Steps>
 
-See installation instructions for the [Popover](/docs/components/popover#installation) and the [Command](/docs/components/command#installation) components.
+<Step>
+
+Install `bits-ui`:
+
+</Step>
+
+<PMInstall command="bits-ui -D" />
+
+<Step>
+
+Copy and paste the following code into your project.
+
+</Step>
+{#if viewerData}
+	<ComponentSource item={viewerData} data-llm-ignore/>
+{/if}
+
+</Steps>
+{/snippet}
+</InstallTabs>
 
 ## Usage
 
@@ -27,13 +61,8 @@ See installation instructions for the [Popover](/docs/components/popover#install
 
 ```svelte title="lib/components/example-combobox.svelte"
 <script lang="ts">
-  import CheckIcon from "@lucide/svelte/icons/check";
-  import ChevronsUpDownIcon from "@lucide/svelte/icons/chevrons-up-down";
   import { tick } from "svelte";
-  import * as Command from "$lib/components/ui/command/index.js";
-  import * as Popover from "$lib/components/ui/popover/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { cn } from "$lib/utils.js";
+  import * as Combobox from "$lib/components/ui/combobox/index.js";
 
   const frameworks = [
     {
@@ -77,49 +106,31 @@ See installation instructions for the [Popover](/docs/components/popover#install
   }
 </script>
 
-<Popover.Root bind:open>
-  <Popover.Trigger bind:ref={triggerRef}>
-    {#snippet child({ props })}
-      <Button
-        variant="outline"
-        class="w-[200px] justify-between"
-        {...props}
-        role="combobox"
-        aria-expanded={open}
-      >
-        {selectedValue || "Select a framework..."}
-        <ChevronsUpDownIcon class="ms-2 size-4 shrink-0 opacity-50" />
-      </Button>
-    {/snippet}
-  </Popover.Trigger>
-  <Popover.Content class="w-[200px] p-0">
-    <Command.Root>
-      <Command.Input placeholder="Search framework..." />
-      <Command.List>
-        <Command.Empty>No framework found.</Command.Empty>
-        <Command.Group>
-          {#each frameworks as framework}
-            <Command.Item
-              value={framework.value}
-              onSelect={() => {
-                value = framework.value;
-                closeAndFocusTrigger();
-              }}
-            >
-              <CheckIcon
-                class={cn(
-                  "me-2 size-4",
-                  value !== framework.value && "text-transparent"
-                )}
-              />
-              {framework.label}
-            </Command.Item>
-          {/each}
-        </Command.Group>
-      </Command.List>
-    </Command.Root>
-  </Popover.Content>
-</Popover.Root>
+<Combobox.Root bind:open>
+  <Combobox.Trigger bind:ref={triggerRef} class="w-[200px] justify-between">
+    <Combobox.Value>{selectedValue || "Select a framework..."}</Combobox.Value>
+  </Combobox.Trigger>
+  <Combobox.Content bind:value class="w-[200px] p-0">
+    <Combobox.Input placeholder="Search framework..." />
+    <Combobox.List>
+      <Combobox.Empty>No framework found.</Combobox.Empty>
+      <Combobox.Group value="frameworks">
+        {#each frameworks as framework (framework.value)}
+          <Combobox.Item
+            value={framework.value}
+            checked={value === framework.value}
+            onSelect={() => {
+              value = framework.value;
+              closeAndFocusTrigger();
+            }}
+          >
+            {framework.label}
+          </Combobox.Item>
+        {/each}
+      </Combobox.Group>
+    </Combobox.List>
+  </Combobox.Content>
+</Combobox.Root>
 ```
 
 </CodeCollapsibleWrapper>
@@ -129,6 +140,14 @@ See installation instructions for the [Popover](/docs/components/popover#install
 ### Combobox
 
 <ComponentPreview name="combobox-demo">
+
+<div></div>
+
+</ComponentPreview>
+
+### Multiple
+
+<ComponentPreview name="combobox-multiple">
 
 <div></div>
 
@@ -152,7 +171,7 @@ See installation instructions for the [Popover](/docs/components/popover#install
 
 ### Responsive
 
-You can create a responsive combobox by using the `<Popover />` on desktop and the `<Drawer />` components on mobile.
+You can create a responsive combobox by using the `<Combobox />` component on desktop and the `<Drawer />` with `<Command />` components on mobile.
 
 <ComponentPreview name="combobox-responsive" >
 

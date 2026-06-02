@@ -52,7 +52,7 @@
 		"prettier-plugin-svelte": "^3.5.1",
 		"prettier-plugin-tailwindcss": "^0.7.2",
 		"pretty-quick": "^4.2.2",
-		"svelte": "^5.54.0",
+		"svelte": "^5.55.7",
 		"typescript": "5.9.3",
 		"typescript-eslint": "^8.57.1",
 		"wait-on": "^9.0.4",
@@ -68,6 +68,7 @@
 		"overrides": {
 			"brace-expansion@>=2.0.0 <=2.0.1": ">=2.0.2",
 			"cookie@<0.7.0": ">=0.7.0",
+			"devalue@5.6.2": "5.6.4",
 			"glob@>=10.2.0 <10.5.0": ">=10.5.0",
 			"js-yaml@>=4.0.0 <4.1.1": ">=4.1.1",
 			"mdast-util-to-hast@>=13.0.0 <13.2.1": ">=13.2.1",

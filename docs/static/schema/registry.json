@@ -42,7 +42,16 @@
 			},
 			"additionalProperties": false
 		},
+		"include": {
+			"description": "An array of relative registry.json files to include when loading a GitHub source registry.",
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
 		"items": {
+			"default": [],
+			"description": "Defines a custom component registry.",
 			"type": "array",
 			"items": {
 				"type": "object",
@@ -248,8 +257,7 @@
 					"files"
 				],
 				"additionalProperties": false
-			},
-			"description": "Defines a custom component registry."
+			}
 		}
 	},
 	"required": [

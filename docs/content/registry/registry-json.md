@@ -90,6 +90,18 @@ The `items` in your registry. Each item must implement the [registry-item schema
 
 See the [registry-item schema documentation](/docs/registry/registry-item-json) for more information.
 
+### include
+
+Use `include` to split a GitHub source registry across multiple relative `registry.json` files. Included files must stay inside the same repository and must explicitly reference a `registry.json` file.
+
+```json title="registry.json" showLineNumbers
+{
+  "include": ["rules/registry.json", "blocks/registry.json"]
+}
+```
+
+This is used when installing directly from GitHub with addresses like `owner/repo/item`. See the [GitHub Registries](/docs/registry/github) guide for more information.
+
 ### aliases
 
 `aliases` define how your registry's internal import paths will be transformed when users install your components. These should match how you import components within your registry code.

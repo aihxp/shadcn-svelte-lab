@@ -218,6 +218,11 @@ function generateRegistryNav(): SidebarNavItem[] {
 			items: [],
 		},
 		{
+			title: "GitHub Registries",
+			href: "/docs/registry/github",
+			items: [],
+		},
+		{
 			title: "registry.json",
 			href: "/docs/registry/registry-json",
 			items: [],
