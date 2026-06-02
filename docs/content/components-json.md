@@ -137,6 +137,25 @@ Import alias for your hooks, which in Svelte 5 are reactive functions/classes wh
 }
 ```
 
+## hooks
+
+Lifecycle hooks run local commands after the CLI finishes writing files and installing dependencies. Commands execute from the project root with your local shell permissions, so only add commands you trust. Use `--no-hooks` with `add` or `update` to skip them for a single run.
+
+```json title="components.json"
+{
+  "hooks": {
+    "postAdd": [
+      "pnpm exec prettier --write src/lib",
+      "pnpm exec eslint --fix src/lib"
+    ],
+    "postUpdate": [
+      "pnpm exec prettier --write src/lib",
+      "pnpm exec eslint --fix src/lib"
+    ]
+  }
+}
+```
+
 ## Typescript
 
 Typescript can be enabled or disabled.

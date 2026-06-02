@@ -14,6 +14,7 @@ import { addRegistryItems } from "../../utils/add-registry-items.js";
 import { highlight } from "../../utils/colors.js";
 import { installDependencies } from "../../utils/install-deps.js";
 import { checkPreconditions } from "../../utils/preconditions.js";
+import { runConfigHooks } from "../../utils/hooks.js";
 
 const addOptionsSchema = z.object({
 	components: z.string().array().optional(),
@@ -22,6 +23,7 @@ const addOptionsSchema = z.object({
 	overwrite: z.boolean(),
 	cwd: z.string(),
 	deps: z.boolean(),
+	hooks: z.boolean(),
 	proxy: z.string().optional(),
 	skipPreflight: z.boolean(),
 });
@@ -34,6 +36,7 @@ export const add = new Command()
 	.argument("[components...]", "the components to add or a url to the component")
 	.option("-c, --cwd <path>", "the working directory", process.cwd())
 	.option("--no-deps", "skips adding & installing package dependencies")
+	.option("--no-hooks", "skips running postAdd hooks from components.json")
 	.option("--skip-preflight", "ignore preflight checks and continue", false)
 	.option("-a, --all", "install all components to your project", false)
 	.option("-y, --yes", "skip confirmation prompt", false)
@@ -138,5 +141,9 @@ async function runAdd(cwd: string, config: cliConfig.ResolvedConfig, options: Ad
 		p.log.warn(
 			`Components have been installed ${color.bold(color.red("without"))} the following ${highlight("dependencies")}:\n${color.gray(prettyList)}`
 		);
+	}
+
+	if (options.hooks) {
+		await runConfigHooks({ cwd, config, hook: "postAdd" });
 	}
 }

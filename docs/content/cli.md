@@ -72,6 +72,7 @@ Arguments:
 Options:
   -c, --cwd <path>   the working directory (default: the current directory)
   --no-deps         skips adding & installing package dependencies
+  --no-hooks        skips running postAdd hooks from components.json
   --skip-preflight  ignore preflight checks and continue (default: false)
   -a, --all         install all components to your project (default: false)
   -y, --yes         skip confirmation prompt (default: false)

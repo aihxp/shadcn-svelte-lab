@@ -66,6 +66,27 @@
 			"description": "The registry URL tells the CLI where to fetch the shadcn-svelte components/registry from. You can pin this to a specific preview release or your own fork of the registry.",
 			"type": "string"
 		},
+		"hooks": {
+			"description": "Local lifecycle commands for the CLI.",
+			"type": "object",
+			"properties": {
+				"postAdd": {
+					"description": "Commands to run after the `add` command finishes.",
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"postUpdate": {
+					"description": "Commands to run after the `update` command finishes.",
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"additionalProperties": false
+		},
 		"typescript": {
 			"description": "Used to determine if Typescript is used for this project. When set to `false`, `.js` files will be installed instead. Defaults to `true`.",
 			"anyOf": [

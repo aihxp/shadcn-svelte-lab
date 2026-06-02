@@ -1125,6 +1125,24 @@
     "pageTitle": "components.json"
   },
   {
+    "title": "hooks",
+    "description": "",
+    "content": "hooks",
+    "href": "/docs/components-json#hooks",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "components.json"
+  },
+  {
+    "title": "Lifecycle hooks run local commands after the CLI finishes writing files and installing dependencies. Commands execute fr...",
+    "description": "",
+    "content": "Lifecycle hooks run local commands after the CLI finishes writing files and installing dependencies. Commands execute from the project root with your local shell permissions, so only add commands you trust. Use --no-hooks with add or update to skip them for a single run.",
+    "href": "/docs/components-json#hooks",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "components.json"
+  },
+  {
     "title": "Typescript",
     "description": "",
     "content": "Typescript",
@@ -1923,6 +1941,24 @@
     "href": "/docs/components/accordion#usage",
     "category": "Components",
     "type": "heading",
+    "pageTitle": "Accordion"
+  },
+  {
+    "title": "Svelte Flip Animation",
+    "description": "",
+    "content": "Svelte Flip Animation",
+    "href": "/docs/components/accordion#svelte-flip-animation",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Accordion"
+  },
+  {
+    "title": "When an accordion is rendered inside an element that uses Svelte's animate:flip, disable the accordion height animation ...",
+    "description": "",
+    "content": "When an accordion is rendered inside an element that uses Svelte's animate:flip, disable the accordion height animation for that moving row.",
+    "href": "/docs/components/accordion#svelte-flip-animation",
+    "category": "Components",
+    "type": "text",
     "pageTitle": "Accordion"
   },
   {
@@ -4254,6 +4290,24 @@
     "href": "/docs/components/collapsible#usage",
     "category": "Components",
     "type": "heading",
+    "pageTitle": "Collapsible"
+  },
+  {
+    "title": "Svelte Flip Animation",
+    "description": "",
+    "content": "Svelte Flip Animation",
+    "href": "/docs/components/collapsible#svelte-flip-animation",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Collapsible"
+  },
+  {
+    "title": "When a collapsible panel is rendered inside an element that uses Svelte's animate:flip, use motion=\"none\" on the content...",
+    "description": "",
+    "content": "When a collapsible panel is rendered inside an element that uses Svelte's animate:flip, use motion=\"none\" on the content and key any custom height animation classes off that state.",
+    "href": "/docs/components/collapsible#svelte-flip-animation",
+    "category": "Components",
+    "type": "text",
     "pageTitle": "Collapsible"
   },
   {

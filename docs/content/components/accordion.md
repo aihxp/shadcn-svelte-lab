@@ -84,6 +84,30 @@ Copy and paste the following code into your project.
 </Accordion.Root>
 ```
 
+## Svelte Flip Animation
+
+When an accordion is rendered inside an element that uses Svelte's `animate:flip`, disable the accordion height animation for that moving row.
+
+```svelte showLineNumbers
+<script lang="ts">
+  import { flip } from "svelte/animate";
+  import * as Accordion from "$lib/components/ui/accordion/index.js";
+</script>
+
+{#each items as item (item.id)}
+  <div animate:flip>
+    <Accordion.Root type="single">
+      <Accordion.Item value={item.id}>
+        <Accordion.Trigger>{item.title}</Accordion.Trigger>
+        <Accordion.Content motion="none">
+          {item.description}
+        </Accordion.Content>
+      </Accordion.Item>
+    </Accordion.Root>
+  </div>
+{/each}
+```
+
 ## Examples
 
 ### Basic

@@ -8,7 +8,7 @@
 	],
 	"files": [
 		{
-			"content": "<script lang=\"ts\">\n\timport { Collapsible as CollapsiblePrimitive } from \"bits-ui\";\n\n\tlet { ref = $bindable(null), ...restProps }: CollapsiblePrimitive.ContentProps = $props();\n</script>\n\n<CollapsiblePrimitive.Content bind:ref data-slot=\"collapsible-content\" {...restProps} />\n",
+			"content": "<script lang=\"ts\">\n\timport { Collapsible as CollapsiblePrimitive } from \"bits-ui\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tmotion = \"auto\",\n\t\t...restProps\n\t}: CollapsiblePrimitive.ContentProps & {\n\t\tmotion?: \"auto\" | \"none\";\n\t} = $props();\n</script>\n\n<CollapsiblePrimitive.Content\n\tbind:ref\n\tdata-slot=\"collapsible-content\"\n\tdata-motion={motion === \"none\" ? \"none\" : undefined}\n\t{...restProps}\n/>\n",
 			"type": "registry:file",
 			"target": "collapsible/collapsible-content.svelte"
 		},

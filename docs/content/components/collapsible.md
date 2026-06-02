@@ -73,3 +73,25 @@ Copy and paste the following code into your project.
   </Collapsible.Content>
 </Collapsible.Root>
 ```
+
+## Svelte Flip Animation
+
+When a collapsible panel is rendered inside an element that uses Svelte's `animate:flip`, use `motion="none"` on the content and key any custom height animation classes off that state.
+
+```svelte showLineNumbers
+<script lang="ts">
+  import { flip } from "svelte/animate";
+  import * as Collapsible from "$lib/components/ui/collapsible/index.js";
+</script>
+
+{#each items as item (item.id)}
+  <div animate:flip>
+    <Collapsible.Root>
+      <Collapsible.Trigger>{item.title}</Collapsible.Trigger>
+      <Collapsible.Content motion="none">
+        {item.description}
+      </Collapsible.Content>
+    </Collapsible.Root>
+  </div>
+{/each}
+```

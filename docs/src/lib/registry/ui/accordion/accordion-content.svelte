@@ -6,13 +6,17 @@
 		ref = $bindable(null),
 		class: className,
 		children,
+		motion = "auto",
 		...restProps
-	}: WithoutChild<AccordionPrimitive.ContentProps> = $props();
+	}: WithoutChild<AccordionPrimitive.ContentProps> & {
+		motion?: "auto" | "none";
+	} = $props();
 </script>
 
 <AccordionPrimitive.Content
 	bind:ref
 	data-slot="accordion-content"
+	data-motion={motion === "none" ? "none" : undefined}
 	class="cn-accordion-content overflow-hidden"
 	{...restProps}
 >

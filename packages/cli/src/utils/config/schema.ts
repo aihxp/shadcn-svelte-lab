@@ -84,6 +84,13 @@ const baseConfigSchema = z.object({
 
 const originalConfigSchema = baseConfigSchema.extend({ style: z.string().optional() });
 
+export const lifecycleHooksSchema = z
+	.object({
+		postAdd: z.string().array().optional(),
+		postUpdate: z.string().array().optional(),
+	})
+	.optional();
+
 export const newConfigSchema = baseConfigSchema.extend({
 	aliases: baseConfigSchema.shape.aliases.extend({
 		ui: aliasSchema("ui").default(DEFAULT_CONFIG.aliases.ui),
@@ -91,6 +98,7 @@ export const newConfigSchema = baseConfigSchema.extend({
 		lib: aliasSchema("lib").default(DEFAULT_CONFIG.aliases.lib),
 	}),
 	registry: z.string().default(DEFAULT_CONFIG.registry),
+	hooks: lifecycleHooksSchema,
 	// design system
 	style: z.string().optional(),
 	iconLibrary: z.enum(ICON_LIBRARIES).optional(),

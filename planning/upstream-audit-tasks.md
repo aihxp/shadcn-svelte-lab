@@ -166,10 +166,9 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
 - [x] `present-in-fork` Issue [#2711](https://github.com/huntabyte/shadcn-svelte/issues/2711): Missing Accordion examples from shadcn/ui.
   - Evidence: `docs/content/components/accordion.md` now exposes Basic, Multiple, Disabled, Border, and Card examples; root registry examples were added under `docs/src/lib/registry/examples/accordion-*.svelte` so the docs preview loader can import them.
   - Verification: `pnpm -F docs build:registry`, `pnpm -F docs build:content`, and `pnpm -F docs check`.
-- [x] `needs-work` Issue [#2700](https://github.com/huntabyte/shadcn-svelte/issues/2700): Accordion and Collapsible animations do not work well with Svelte animate flip.
-  - Evidence: upstream includes a StackBlitz reproduction and maintainer analysis that disabling Accordion animations during `animate:flip` avoids the height distortion. Local `docs/src/lib/registry/ui/accordion/accordion-content.svelte` and `docs/src/lib/registry/ui/collapsible/collapsible-content.svelte` still apply `cn-*` animation classes by default.
-  - Remaining gap: needs a focused animation opt-out or flip-aware pattern across Accordion and Collapsible without breaking existing animation defaults.
-  - Verification: upstream issue review and local component source review.
+- [x] `present-in-fork` Issue [#2700](https://github.com/huntabyte/shadcn-svelte/issues/2700): Accordion and Collapsible animations do not work well with Svelte animate flip.
+  - Evidence: `Accordion.Content` and `Collapsible.Content` now accept `motion="none"`; accordion style CSS skips the open and closed height animations when that prop is set; the Accordion and Collapsible docs show the `animate:flip` pattern.
+  - Verification: `pnpm -F docs build:registry`, `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
 - [x] `needs-repro` Issue [#2695](https://github.com/huntabyte/shadcn-svelte/issues/2695): init generates empty CSS when using custom aliases.
   - Evidence: upstream is labeled `awaiting submitter`, and a maintainer could not reproduce without CLI output. Local CSS generation merges registry CSS and theme variables through `packages/cli/src/utils/add-registry-items.ts` and `packages/cli/src/utils/updaters/update-css-vars.ts`, which does not branch on import aliases during CSS insertion.
   - Verification: upstream issue review and local CLI CSS generation source review.
@@ -237,10 +236,9 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
 - [x] `partial` Issue [#2512](https://github.com/huntabyte/shadcn-svelte/issues/2512): Right-to-left support for shadcn/ui components and CLI to migrate to RTL.
   - Evidence: Direction provider registry item and docs are present, and the provider now renders `dir` for `rtl:` support.
   - Remaining gap: CLI RTL migration is not implemented yet.
-- [x] `needs-work` Issue [#2475](https://github.com/huntabyte/shadcn-svelte/issues/2475): cli: post update/add hook.
-  - Evidence: `packages/cli/src/commands/add/index.ts` and `packages/cli/src/commands/update/index.ts` run registry writes and dependency installs directly, while `packages/cli/src/utils/config/schema.ts` and the generated components schema have no post-add or post-update hook field. The upstream issue also leaves the shadcn/ui prerequisite unchecked.
-  - Remaining gap: hook support needs a schema, command execution safety model, and CLI tests before implementation.
-  - Verification: upstream issue review and local CLI source review.
+- [x] `present-in-fork` Issue [#2475](https://github.com/huntabyte/shadcn-svelte/issues/2475): cli: post update/add hook.
+  - Evidence: `components.json` now accepts `hooks.postAdd` and `hooks.postUpdate`; `add` and `update` run those local commands after file writes and dependency installs; both commands expose `--no-hooks`; docs and generated schema describe the field.
+  - Verification: `pnpm -F shadcn-svelte exec vitest test/utils/hooks.test.ts test/utils/get-config.test.ts`, `pnpm -F shadcn-svelte check`, `pnpm -F shadcn-svelte build`, `pnpm -F docs build:registry`, `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
 
 ## Discussion Intake
 

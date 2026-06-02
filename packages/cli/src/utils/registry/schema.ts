@@ -256,6 +256,22 @@ export const registrySchema = z.object({
 		.describe("Defines a custom component registry."),
 });
 
+export const lifecycleHooksSchema = z
+	.object({
+		postAdd: z
+			.string()
+			.array()
+			.optional()
+			.describe("Commands to run after the `add` command finishes."),
+		postUpdate: z
+			.string()
+			.array()
+			.optional()
+			.describe("Commands to run after the `update` command finishes."),
+	})
+	.optional()
+	.describe("Local lifecycle commands for the CLI.");
+
 /** Schema for a project's `components.json` config file. */
 export const componentsJsonSchema = z.object({
 	$schema: z.string().optional(),
@@ -310,6 +326,7 @@ export const componentsJsonSchema = z.object({
 		.describe(
 			"The registry URL tells the CLI where to fetch the shadcn-svelte components/registry from. You can pin this to a specific preview release or your own fork of the registry."
 		),
+	hooks: lifecycleHooksSchema,
 	typescript: z
 		.union([
 			z.boolean(),

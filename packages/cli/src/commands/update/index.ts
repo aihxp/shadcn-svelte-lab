@@ -27,6 +27,7 @@ import {
 } from "../../utils/transformers/index.js";
 import { getSupportedFontMarkers, type FontMarkerSource } from "../../utils/font-markers.js";
 import * as project from "../../utils/project.js";
+import { runConfigHooks } from "../../utils/hooks.js";
 
 const updateOptionsSchema = z.object({
 	all: z.boolean(),
@@ -36,6 +37,7 @@ const updateOptionsSchema = z.object({
 	yes: z.boolean(),
 	skipPreflight: z.boolean(),
 	deps: z.boolean(),
+	hooks: z.boolean(),
 });
 
 type UpdateOptions = z.infer<typeof updateOptionsSchema>;
@@ -47,6 +49,7 @@ export const update = new Command()
 	.option("-c, --cwd <path>", "the working directory", process.cwd())
 	.option("--skip-preflight", "ignore preflight checks and continue", false)
 	.option("--no-deps", "skips adding & installing package dependencies")
+	.option("--no-hooks", "skips running postUpdate hooks from components.json")
 	.option("-a, --all", "update all existing components", false)
 	.option("-y, --yes", "skip confirmation prompt", false)
 	.option("--proxy <proxy>", "fetch components from registry using a proxy", getEnvProxy())
@@ -307,5 +310,9 @@ async function runUpdate(cwd: string, config: cliConfig.ResolvedConfig, options:
 	}
 	if (Object.keys(componentsToRemove).length > 0) {
 		p.log.message(color.bold("You may want to delete them."));
+	}
+
+	if (options.hooks) {
+		await runConfigHooks({ cwd, config, hook: "postUpdate" });
 	}
 }

@@ -218,6 +218,24 @@
 							"default": "https://shadcn-svelte.com/registry",
 							"type": "string"
 						},
+						"hooks": {
+							"type": "object",
+							"properties": {
+								"postAdd": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"postUpdate": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							},
+							"additionalProperties": false
+						},
 						"iconLibrary": {
 							"type": "string",
 							"enum": [
