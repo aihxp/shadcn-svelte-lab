@@ -1,7 +1,7 @@
 <script lang="ts" module>
 	import { tv, type VariantProps } from "tailwind-variants";
 	export const inputGroupAddonVariants = tv({
-		base: "cn-input-group-addon flex cursor-text items-center justify-center select-none",
+		base: "cn-input-group-addon has-[+:disabled]:bg-input/50 peer-disabled:bg-input/50 dark:has-[+:disabled]:bg-input/80 dark:peer-disabled:bg-input/80 flex cursor-text items-center justify-center select-none peer-disabled:cursor-not-allowed has-[+:disabled]:cursor-not-allowed",
 		variants: {
 			align: {
 				"inline-start": "cn-input-group-addon-align-inline-start order-first",

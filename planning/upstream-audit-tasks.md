@@ -11,7 +11,7 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
 ## Automation Progress
 
 - Last updated: 2026-06-02 during the `continue-upstream-audit` heartbeat batch.
-- Remaining unchecked items after this batch: 30.
+- Remaining unchecked items after this batch: 25.
 - Remaining unchecked open pull request intake items after this batch: 0.
 
 ## Refresh Commands
@@ -237,14 +237,26 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
 - [x] `partial` Issue [#2512](https://github.com/huntabyte/shadcn-svelte/issues/2512): Right-to-left support for shadcn/ui components and CLI to migrate to RTL.
   - Evidence: Direction provider registry item and docs are present, and the provider now renders `dir` for `rtl:` support.
   - Remaining gap: CLI RTL migration is not implemented yet.
-- [ ] `needs-audit` Issue [#2475](https://github.com/huntabyte/shadcn-svelte/issues/2475): cli: post update/add hook.
+- [x] `needs-work` Issue [#2475](https://github.com/huntabyte/shadcn-svelte/issues/2475): cli: post update/add hook.
+  - Evidence: `packages/cli/src/commands/add/index.ts` and `packages/cli/src/commands/update/index.ts` run registry writes and dependency installs directly, while `packages/cli/src/utils/config/schema.ts` and the generated components schema have no post-add or post-update hook field. The upstream issue also leaves the shadcn/ui prerequisite unchecked.
+  - Remaining gap: hook support needs a schema, command execution safety model, and CLI tests before implementation.
+  - Verification: upstream issue review and local CLI source review.
 
 ## Discussion Intake
 
-- [ ] `support-signal` Discussion [#2723](https://github.com/huntabyte/shadcn-svelte/discussions/2723): Moving from JavaScript-based APIs to Web Standards for various components.
-- [ ] `support-signal` Discussion [#2721](https://github.com/huntabyte/shadcn-svelte/discussions/2721): Declaration tags.
-- [ ] `support-signal` Discussion [#2636](https://github.com/huntabyte/shadcn-svelte/discussions/2636): Tabs without active state UI.
-- [ ] `support-signal` Discussion [#2625](https://github.com/huntabyte/shadcn-svelte/discussions/2625): How to style InputGroupAddon when InputGroupInput is disabled?
+- [x] `support-signal` Discussion [#2723](https://github.com/huntabyte/shadcn-svelte/discussions/2723): Moving from JavaScript-based APIs to Web Standards for various components.
+  - Evidence: upstream discussion proposes a broad component architecture shift to native platform APIs for Dialog, Sheet, Popover, and related primitives. No concrete upstream patch or local migration target exists in this focused batch.
+  - Remaining gap: needs an upstream design decision or local RFC before changing Bits UI backed components.
+  - Verification: upstream discussion review.
+- [x] `not-applicable` Discussion [#2721](https://github.com/huntabyte/shadcn-svelte/discussions/2721): Declaration tags.
+  - Evidence: upstream reply notes declaration tags do not directly fit the current exported multi-component pattern. No local code or docs action is actionable from the discussion alone.
+  - Verification: upstream discussion and comment review.
+- [x] `present-in-fork` Discussion [#2636](https://github.com/huntabyte/shadcn-svelte/discussions/2636): Tabs without active state UI.
+  - Evidence: `docs/src/lib/registry/ui/tabs/tabs-trigger.svelte` now supports both `data-active` and `data-[state=active]` active selectors for background, foreground, dark mode, and line indicators; style-specific Nova and Vega trigger shadows now do the same.
+  - Verification: `pnpm -F docs build:registry` and `pnpm -F docs check`.
+- [x] `present-in-fork` Discussion [#2625](https://github.com/huntabyte/shadcn-svelte/discussions/2625): How to style InputGroupAddon when InputGroupInput is disabled?
+  - Evidence: `InputGroup.Input` and `InputGroup.Textarea` now emit `peer`, and `InputGroup.Addon` mirrors disabled input backgrounds through adjacent disabled and peer-disabled selectors for leading, trailing, and block add-ons.
+  - Verification: `pnpm -F docs build:registry` and `pnpm -F docs check`.
 - [ ] `support-signal` Discussion [#1334](https://github.com/huntabyte/shadcn-svelte/discussions/1334): How to make a table with a fixed header and scrollable body?
 - [ ] `support-signal` Discussion [#2244](https://github.com/huntabyte/shadcn-svelte/discussions/2244): Documentation for charts.
 - [ ] `support-signal` Discussion [#2604](https://github.com/huntabyte/shadcn-svelte/discussions/2604): Initialize Project with Custom Theme Color.

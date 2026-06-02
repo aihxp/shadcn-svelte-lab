@@ -14,7 +14,7 @@
 <Textarea
 	bind:ref
 	data-slot="input-group-control"
-	class={cn("cn-input-group-textarea flex-1 resize-none", className)}
+	class={cn("cn-input-group-textarea peer flex-1 resize-none", className)}
 	bind:value
 	{...props}
 />

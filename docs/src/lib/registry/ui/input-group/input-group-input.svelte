@@ -14,7 +14,7 @@
 <Input
 	bind:ref
 	data-slot="input-group-control"
-	class={cn("cn-input-group-input flex-1", className)}
+	class={cn("cn-input-group-input peer flex-1", className)}
 	bind:value
 	{...props}
 />
