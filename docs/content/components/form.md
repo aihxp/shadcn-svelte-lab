@@ -69,6 +69,12 @@ If you aren't familiar with [Superforms](https://superforms.rocks) & [Formsnap](
 </form>
 ```
 
+## Form and Field Layout
+
+`Form` handles Formsnap and Superforms state, validation, and accessibility wiring. `Field` handles reusable layout primitives such as `Field.Group`, `Field.Set`, `Field.Content`, and `orientation`.
+
+Use `Form.Field` and `Form.Control` when a control needs form state, then compose nearby layout with the [Field](/docs/components/field) primitives when you need grouped, horizontal, or responsive field layouts.
+
 ## Installation
 
 <PMAddComp name="form" />

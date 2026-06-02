@@ -11,7 +11,7 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
 ## Automation Progress
 
 - Last updated: 2026-06-02 during the `continue-upstream-audit` heartbeat batch.
-- Remaining unchecked items after this batch: 45.
+- Remaining unchecked items after this batch: 40.
 - Remaining unchecked open pull request intake items after this batch: 0.
 
 ## Refresh Commands
@@ -181,11 +181,24 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
 - [x] `present-in-fork` Issue [#2688](https://github.com/huntabyte/shadcn-svelte/issues/2688): IsMobile clarification.
   - Evidence: `docs/src/lib/registry/hooks/is-mobile.svelte.ts` already provides the reusable hook, and `docs/content/components/navigation-menu.md` now documents that the `viewport` prop is optional and shows how to install and use `is-mobile` when copying the demo.
   - Verification: `pnpm -F docs build:content` and `pnpm -F docs check`.
-- [ ] `blocked-upstream` Issue [#2664](https://github.com/huntabyte/shadcn-svelte/issues/2664): New dialog styles break backward compatibility with old projects.
-- [ ] `needs-audit` Issue [#2663](https://github.com/huntabyte/shadcn-svelte/issues/2663): Style parity between Form and Field.
-- [ ] `needs-repro` Issue [#2661](https://github.com/huntabyte/shadcn-svelte/issues/2661): Poor performance on tw4 branch vs tw3.
-- [ ] `blocked-upstream` Issue [#2635](https://github.com/huntabyte/shadcn-svelte/issues/2635): wrong data-slot name for field-title.
-- [ ] `needs-audit` Issue [#2624](https://github.com/huntabyte/shadcn-svelte/issues/2624): Translucent Menu Mode breaks submenus in Context Menu component.
+- [x] `blocked-upstream` Issue [#2664](https://github.com/huntabyte/shadcn-svelte/issues/2664): New dialog styles break backward compatibility with old projects.
+  - Evidence: upstream is labeled `awaiting upstream` and links the matching shadcn/ui compatibility thread. Local style sources still use Tailwind v4 state modifiers such as `data-open` and `data-closed`, including dialog and alert dialog animation classes.
+  - Remaining gap: wait for the upstream compatibility decision before mass-changing generated state selectors across all styles.
+  - Verification: upstream issue review and local style source review.
+- [x] `partial` Issue [#2663](https://github.com/huntabyte/shadcn-svelte/issues/2663): Style parity between Form and Field.
+  - Evidence: `docs/content/components/form.md` now documents how to combine `Form.Field` and `Form.Control` for Formsnap and Superforms state with `Field` layout primitives such as `Field.Group`, `Field.Set`, `Field.Content`, and `orientation`.
+  - Remaining gap: no new Form layout API was added in this focused pass.
+  - Verification: `pnpm -F docs build:content` and `pnpm -F docs check`.
+- [x] `needs-repro` Issue [#2661](https://github.com/huntabyte/shadcn-svelte/issues/2661): Poor performance on tw4 branch vs tw3.
+  - Evidence: upstream remains labeled `needs reproduction`; maintainer comments point to docs icon volume, while a later submitter comment points at `supports-backdrop-filter:backdrop-blur-*` overlay classes as a possible Chrome performance trigger.
+  - Remaining gap: reproduce and profile the Chrome performance path before changing overlay styles globally.
+  - Verification: upstream issue review and local overlay style source review.
+- [x] `present-in-fork` Issue [#2635](https://github.com/huntabyte/shadcn-svelte/issues/2635): wrong data-slot name for field-title.
+  - Evidence: `docs/src/lib/registry/ui/field/field-title.svelte` now sets `data-slot="field-title"`, and generated style registries include the updated field component.
+  - Verification: `pnpm -F docs build:registry` and `pnpm -F docs check`.
+- [x] `present-in-fork` Issue [#2624](https://github.com/huntabyte/shadcn-svelte/issues/2624): Translucent Menu Mode breaks submenus in Context Menu component.
+  - Evidence: `docs/src/lib/registry/ui/context-menu/context-menu-content.svelte` no longer applies root content overflow classes that clipped portalled submenus in translucent menu mode.
+  - Verification: `pnpm -F docs build:registry` and `pnpm -F docs check`.
 - [ ] `needs-audit` Issue [#2601](https://github.com/huntabyte/shadcn-svelte/issues/2601): docs: Astro 6 compatibility.
 - [ ] `needs-audit` Issue [#2600](https://github.com/huntabyte/shadcn-svelte/issues/2600): CarouselNext and CarouselPrev buttons jerk when clicked.
 - [ ] `needs-audit` Issue [#2590](https://github.com/huntabyte/shadcn-svelte/issues/2590): Search is incorrect.
