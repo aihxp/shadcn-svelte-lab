@@ -320,6 +320,34 @@ The `Sidebar.Provider` component is used to provide the sidebar context to the `
 | `open`         | `boolean`                 | Open state of the sidebar (bindable).                                                                                                   |
 | `onOpenChange` | `(open: boolean) => void` | A callback fired _after_ the open state of the sidebar changes if uncontrolled, and _before_ the sidebar opens or closes if controlled. |
 
+### Persisted State
+
+`Sidebar.Provider` writes the `sidebar_state` cookie when users open or close the sidebar. To hydrate the initial state during SSR, read that cookie in a load function and pass it to `open`.
+
+```ts showLineNumbers title="src/routes/+layout.server.ts"
+import type { LayoutServerLoad } from "./$types";
+
+export const load: LayoutServerLoad = ({ cookies }) => {
+  return {
+    sidebarOpen: cookies.get("sidebar_state") !== "false",
+  };
+};
+```
+
+```svelte showLineNumbers title="src/routes/+layout.svelte"
+<script lang="ts">
+  import * as Sidebar from "$lib/components/ui/sidebar/index.js";
+
+  let { data, children } = $props();
+</script>
+
+<Sidebar.Provider open={data.sidebarOpen}>
+  {@render children()}
+</Sidebar.Provider>
+```
+
+If your root layout is prerendered, avoid reading cookies directly in that layout load. Read the cookie from `hooks.server.ts` into `event.locals`, then return the value from the nearest non-prerendered layout.
+
 ### Width
 
 If you have a single sidebar in your application, you can use the `SIDEBAR_WIDTH` and `SIDEBAR_WIDTH_MOBILE` constants in `src/lib/components/ui/sidebar/constants.ts` to set the width of the sidebar.

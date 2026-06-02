@@ -30,6 +30,19 @@ links:
 
 The `<RangeCalendar />` component is built on top of the [Bits Range Calendar](https://www.bits-ui.com/docs/components/range-calendar) component, which uses the [@internationalized/date](https://react-spectrum.adobe.com/internationalized/date/index.html) package to handle dates.
 
+## Calendar Systems
+
+The range calendar forwards extra Bits UI root props, including `createCalendar`, so you can use calendar systems supported by `@internationalized/date`.
+
+```svelte showLineNumbers
+<script lang="ts">
+  import { createCalendar } from "@internationalized/date";
+  import { RangeCalendar } from "$lib/components/ui/range-calendar/index.js";
+</script>
+
+<RangeCalendar locale="fa-IR-u-ca-persian" {createCalendar} />
+```
+
 ## Blocks
 
 You can see the `RangeCalendar` component in action in the 30+ [Calendar Blocks](/blocks/calendar) we've built.

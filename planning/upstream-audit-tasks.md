@@ -11,7 +11,7 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
 ## Automation Progress
 
 - Last updated: 2026-06-02 during the `continue-upstream-audit` heartbeat batch.
-- Remaining unchecked items after this batch: 35.
+- Remaining unchecked items after this batch: 30.
 - Remaining unchecked open pull request intake items after this batch: 0.
 
 ## Refresh Commands
@@ -216,11 +216,24 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
   - Evidence: `docs/content/installation/sveltekit.md` now documents the broader monorepo-oriented `ssr.noExternal` list for `@lucide/svelte`, `bits-ui`, `runed`, and `svelte-toolbelt`.
   - Remaining gap: no isolated monorepo reproduction was added in this pass.
   - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
-- [ ] `needs-audit` Issue [#2559](https://github.com/huntabyte/shadcn-svelte/issues/2559): docs: more granular search.
-- [ ] `blocked-upstream` Issue [#2555](https://github.com/huntabyte/shadcn-svelte/issues/2555): Sidebar cookie is never used.
-- [ ] `needs-audit` Issue [#2526](https://github.com/huntabyte/shadcn-svelte/issues/2526): Support non-gregorian calendars.
-- [ ] `needs-audit` Issue [#2515](https://github.com/huntabyte/shadcn-svelte/issues/2515): `dashboard-01` block resets scroll position when data table changes in Safari.
-- [ ] `needs-audit` Issue [#2514](https://github.com/huntabyte/shadcn-svelte/issues/2514): scroll-area component makes the page un-scrollable in Safari.
+- [x] `present-in-fork` Issue [#2559](https://github.com/huntabyte/shadcn-svelte/issues/2559): docs: more granular search.
+  - Evidence: `docs/scripts/build-search-data.ts` now splits raw markdown sections into smaller text blocks before cleanup, while preserving page and heading entries in the search index.
+  - Verification: `pnpm -F docs build:search` and `pnpm -F docs check`.
+- [x] `partial` Issue [#2555](https://github.com/huntabyte/shadcn-svelte/issues/2555): Sidebar cookie is never used.
+  - Evidence: `docs/content/components/sidebar.md` now documents how to read `sidebar_state` during SSR and pass the value into `Sidebar.Provider open={data.sidebarOpen}`.
+  - Remaining gap: the docs site itself still cannot read the cookie for prerendered routes, matching the upstream maintainer note.
+  - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
+- [x] `present-in-fork` Issue [#2526](https://github.com/huntabyte/shadcn-svelte/issues/2526): Support non-gregorian calendars.
+  - Evidence: `Calendar` and `RangeCalendar` already forward extra Bits UI root props, and their docs now show passing `createCalendar` with a Persian calendar locale from `@internationalized/date`.
+  - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
+- [x] `needs-repro` Issue [#2515](https://github.com/huntabyte/shadcn-svelte/issues/2515): `dashboard-01` block resets scroll position when data table changes in Safari.
+  - Evidence: local `dashboard-01` and the dashboard example use local Svelte table state, `autoResetPageIndex: false`, and button controls with `type="button"` inherited from the shared Button component. No local Chrome or static check reproduces the Safari-only page scroll reset.
+  - Remaining gap: needs Safari verification before changing the data table or DnD behavior.
+  - Verification: upstream issue review and local `dashboard-01` source review.
+- [x] `needs-repro` Issue [#2514](https://github.com/huntabyte/shadcn-svelte/issues/2514): scroll-area component makes the page un-scrollable in Safari.
+  - Evidence: local `ScrollArea` wraps the Bits UI root, viewport, scrollbars, and corner without custom body scroll locking. The upstream report is Safari-only and a maintainer notes Bits UI docs do not reproduce it.
+  - Remaining gap: needs Safari verification to identify whether the problem comes from local docs preview layout, style classes, or Bits UI integration.
+  - Verification: upstream issue review and local scroll-area source review.
 - [x] `partial` Issue [#2512](https://github.com/huntabyte/shadcn-svelte/issues/2512): Right-to-left support for shadcn/ui components and CLI to migrate to RTL.
   - Evidence: Direction provider registry item and docs are present, and the provider now renders `dir` for `rtl:` support.
   - Remaining gap: CLI RTL migration is not implemented yet.

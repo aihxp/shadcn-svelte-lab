@@ -69,6 +69,19 @@ The `<Calendar />` component is built on top of the [Bits UI Calendar](https://w
 
 If you're looking for a range calendar, check out the [Range Calendar](/docs/components/range-calendar) component.
 
+## Calendar Systems
+
+The calendar forwards extra Bits UI root props, including `createCalendar`, so you can use calendar systems supported by `@internationalized/date`.
+
+```svelte showLineNumbers
+<script lang="ts">
+  import { createCalendar } from "@internationalized/date";
+  import { Calendar } from "$lib/components/ui/calendar/index.js";
+</script>
+
+<Calendar locale="fa-IR-u-ca-persian" {createCalendar} />
+```
+
 ## Date Picker
 
 You can use the `<Calendar />` component to build a date picker. See the [Date Picker](/docs/components/date-picker) page for more information.

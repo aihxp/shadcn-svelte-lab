@@ -68,6 +68,21 @@ function cleanText(raw: string): string {
 	return sanitizeGeneratedText(content);
 }
 
+function splitIntoTextBlocks(raw: string): string[] {
+	const withoutCode = raw
+		.replace(/<script[\s\S]*?<\/script>/gi, "\n\n")
+		.replace(/```[\s\S]*?```/g, "\n\n");
+
+	return withoutCode
+		.split(/\n{2,}|(?=\n[-*]\s+)/)
+		.map((block) => cleanText(block))
+		.filter((block) => block.length > 20);
+}
+
+function createTextEntryTitle(text: string): string {
+	return text.length > 120 ? `${text.slice(0, 120)}...` : text;
+}
+
 function deriveHref(filePath: string): string {
 	let rel = path.relative(CONTENT_DIR, filePath);
 	rel = rel.replace(/\.md$/, "");
@@ -166,15 +181,9 @@ function parseIntoSections(
 
 		const bodyText = cleanText(section.lines.join("\n"));
 		if (bodyText.length > 20) {
-			const paragraphs = bodyText
-				.split(/\s{2,}/)
-				.map((p) => p.trim())
-				.filter((p) => p.length > 20);
-
-			for (const para of paragraphs) {
-				const title = para.length > 120 ? `${para.slice(0, 120)}...` : para;
+			for (const para of splitIntoTextBlocks(section.lines.join("\n"))) {
 				entries.push({
-					title,
+					title: createTextEntryTitle(para),
 					description: "",
 					content: para,
 					href: `${pageHref}#${currentAnchor}`,
