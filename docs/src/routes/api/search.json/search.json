@@ -6543,12 +6543,84 @@
     "pageTitle": "Field"
   },
   {
+    "title": "Update the import paths to match your project setup.",
+    "description": "",
+    "content": "Update the import paths to match your project setup.",
+    "href": "/docs/components/field#installation",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
     "title": "Usage",
     "description": "",
     "content": "Usage",
     "href": "/docs/components/field#usage",
     "category": "Components",
     "type": "heading",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Composition",
+    "description": "",
+    "content": "Composition",
+    "href": "/docs/components/field#composition",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Field.Field",
+    "description": "",
+    "content": "Field.Field",
+    "href": "/docs/components/field#fieldfield",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "A single control with label, helper text, and validation.",
+    "description": "",
+    "content": "A single control with label, helper text, and validation.",
+    "href": "/docs/components/field#fieldfield",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Field.Group",
+    "description": "",
+    "content": "Field.Group",
+    "href": "/docs/components/field#fieldgroup",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Related fields in one group. Use Field.Separator between sections when needed.",
+    "description": "",
+    "content": "Related fields in one group. Use Field.Separator between sections when needed.",
+    "href": "/docs/components/field#fieldgroup",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Field.Set",
+    "description": "",
+    "content": "Field.Set",
+    "href": "/docs/components/field#fieldset",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Semantic grouping with a legend and description, usually containing a Field.Group.",
+    "description": "",
+    "content": "Semantic grouping with a legend and description, usually containing a Field.Group.",
+    "href": "/docs/components/field#fieldset",
+    "category": "Components",
+    "type": "text",
     "pageTitle": "Field"
   },
   {
@@ -6714,9 +6786,9 @@
     "pageTitle": "Field"
   },
   {
-    "title": "Wrap Field components inside FieldLabel to create selectable field groups. This works with RadioItem, Checkbox and Switc...",
+    "title": "Wrap Field components inside Field.Label to create selectable field groups. This works with RadioItem, Checkbox, and Swi...",
     "description": "",
-    "content": "Wrap Field components inside FieldLabel to create selectable field groups. This works with RadioItem, Checkbox and Switch components.",
+    "content": "Wrap Field components inside Field.Label to create selectable field groups. This works with RadioItem, Checkbox, and Switch components.",
     "href": "/docs/components/field#choice-card",
     "category": "Components",
     "type": "text",
@@ -6750,9 +6822,9 @@
     "pageTitle": "Field"
   },
   {
-    "title": "Vertical fields: Default orientation stacks label, control, and helper text-ideal for mobile-first layouts.",
+    "title": "Vertical fields: Default orientation stacks label, control, and helper text, which is ideal for mobile-first layouts.",
     "description": "",
-    "content": "Vertical fields: Default orientation stacks label, control, and helper text-ideal for mobile-first layouts.",
+    "content": "Vertical fields: Default orientation stacks label, control, and helper text, which is ideal for mobile-first layouts.",
     "href": "/docs/components/field#responsive-layout",
     "category": "Components",
     "type": "text",
@@ -6774,6 +6846,15 @@
     "href": "/docs/components/field#responsive-layout",
     "category": "Components",
     "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Form",
+    "description": "",
+    "content": "Form",
+    "href": "/docs/components/field#form",
+    "category": "Components",
+    "type": "heading",
     "pageTitle": "Field"
   },
   {
@@ -6804,9 +6885,9 @@
     "pageTitle": "Field"
   },
   {
-    "title": "Render FieldError immediately after the control or inside FieldContent to keep error messages aligned with the field. Co...",
+    "title": "Render Field.Error immediately after the control or inside Field.Content to keep error messages aligned with the field.",
     "description": "",
-    "content": "Render FieldError immediately after the control or inside FieldContent to keep error messages aligned with the field. Copy",
+    "content": "Render Field.Error immediately after the control or inside Field.Content to keep error messages aligned with the field.",
     "href": "/docs/components/field#validation-and-errors",
     "category": "Components",
     "type": "text",
@@ -6844,6 +6925,321 @@
     "description": "",
     "content": "Apply Field.Separator sparingly to ensure screen readers encounter clear section boundaries.",
     "href": "/docs/components/field#accessibility",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "API Reference",
+    "description": "",
+    "content": "API Reference",
+    "href": "/docs/components/field#api-reference",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Field.Set",
+    "description": "",
+    "content": "Field.Set",
+    "href": "/docs/components/field#fieldset",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Container that renders a semantic fieldset with spacing presets.",
+    "description": "",
+    "content": "Container that renders a semantic fieldset with spacing presets.",
+    "href": "/docs/components/field#fieldset",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "| Prop | Type | Default | | ------- | -------- | ------- | | class | string | |",
+    "description": "",
+    "content": "| Prop | Type | Default | | ------- | -------- | ------- | | class | string | |",
+    "href": "/docs/components/field#fieldset",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Field.Legend",
+    "description": "",
+    "content": "Field.Legend",
+    "href": "/docs/components/field#fieldlegend",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Legend element for a Field.Set. Switch to the label variant to align with label sizing.",
+    "description": "",
+    "content": "Legend element for a Field.Set. Switch to the label variant to align with label sizing.",
+    "href": "/docs/components/field#fieldlegend",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "| Prop | Type | Default | | --------- | --------------------- | ---------- | | variant | \"legend\" \\| \"label\" | \"legend\" ...",
+    "description": "",
+    "content": "| Prop | Type | Default | | --------- | --------------------- | ---------- | | variant | \"legend\" \\| \"label\" | \"legend\" | | class | string | |",
+    "href": "/docs/components/field#fieldlegend",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "The Field.Legend has two variants: legend and label. The label variant applies label sizing and alignment. This is usefu...",
+    "description": "",
+    "content": "The Field.Legend has two variants: legend and label. The label variant applies label sizing and alignment. This is useful when you have a nested Field.Set.",
+    "href": "/docs/components/field#fieldlegend",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Field.Group",
+    "description": "",
+    "content": "Field.Group",
+    "href": "/docs/components/field#fieldgroup",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Layout wrapper that stacks Field.Field components and enables container queries for responsive orientations.",
+    "description": "",
+    "content": "Layout wrapper that stacks Field.Field components and enables container queries for responsive orientations.",
+    "href": "/docs/components/field#fieldgroup",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "| Prop | Type | Default | | ------- | -------- | ------- | | class | string | |",
+    "description": "",
+    "content": "| Prop | Type | Default | | ------- | -------- | ------- | | class | string | |",
+    "href": "/docs/components/field#fieldgroup",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Field.Field",
+    "description": "",
+    "content": "Field.Field",
+    "href": "/docs/components/field#fieldfield",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "The core wrapper for a single field. Provides orientation control, invalid state styling, and spacing.",
+    "description": "",
+    "content": "The core wrapper for a single field. Provides orientation control, invalid state styling, and spacing.",
+    "href": "/docs/components/field#fieldfield",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "| Prop | Type | Default | | ------------- | -------------------------------------------- | ------------ | | orientation ...",
+    "description": "",
+    "content": "| Prop | Type | Default | | ------------- | -------------------------------------------- | ------------ | | orientation | \"vertical\" \\| \"horizontal\" \\| \"responsive\" | \"vertical\" | | class | string | |",
+    "href": "/docs/components/field#fieldfield",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Use the data-invalid attribute to switch the entire block into an error state.",
+    "description": "",
+    "content": "Use the data-invalid attribute to switch the entire block into an error state.",
+    "href": "/docs/components/field#fieldfield",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Field.Content",
+    "description": "",
+    "content": "Field.Content",
+    "href": "/docs/components/field#fieldcontent",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Flex column that groups control and descriptions when the label sits beside the control. Not required if you have no des...",
+    "description": "",
+    "content": "Flex column that groups control and descriptions when the label sits beside the control. Not required if you have no description.",
+    "href": "/docs/components/field#fieldcontent",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "| Prop | Type | Default | | ------- | -------- | ------- | | class | string | |",
+    "description": "",
+    "content": "| Prop | Type | Default | | ------- | -------- | ------- | | class | string | |",
+    "href": "/docs/components/field#fieldcontent",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Field.Label",
+    "description": "",
+    "content": "Field.Label",
+    "href": "/docs/components/field#fieldlabel",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Label styled for both direct inputs and nested Field.Field children.",
+    "description": "",
+    "content": "Label styled for both direct inputs and nested Field.Field children.",
+    "href": "/docs/components/field#fieldlabel",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "| Prop | Type | Default | | --------- | --------- | ------- | | class | string | | | asChild | boolean | false |",
+    "description": "",
+    "content": "| Prop | Type | Default | | --------- | --------- | ------- | | class | string | | | asChild | boolean | false |",
+    "href": "/docs/components/field#fieldlabel",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Field.Title",
+    "description": "",
+    "content": "Field.Title",
+    "href": "/docs/components/field#fieldtitle",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Renders a title with label styling inside Field.Content.",
+    "description": "",
+    "content": "Renders a title with label styling inside Field.Content.",
+    "href": "/docs/components/field#fieldtitle",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "| Prop | Type | Default | | ------- | -------- | ------- | | class | string | |",
+    "description": "",
+    "content": "| Prop | Type | Default | | ------- | -------- | ------- | | class | string | |",
+    "href": "/docs/components/field#fieldtitle",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Field.Description",
+    "description": "",
+    "content": "Field.Description",
+    "href": "/docs/components/field#fielddescription",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Helper text slot that automatically balances long lines in horizontal layouts.",
+    "description": "",
+    "content": "Helper text slot that automatically balances long lines in horizontal layouts.",
+    "href": "/docs/components/field#fielddescription",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "| Prop | Type | Default | | ------- | -------- | ------- | | class | string | |",
+    "description": "",
+    "content": "| Prop | Type | Default | | ------- | -------- | ------- | | class | string | |",
+    "href": "/docs/components/field#fielddescription",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Field.Separator",
+    "description": "",
+    "content": "Field.Separator",
+    "href": "/docs/components/field#fieldseparator",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Visual divider to separate sections inside a Field.Group. Accepts optional inline content.",
+    "description": "",
+    "content": "Visual divider to separate sections inside a Field.Group. Accepts optional inline content.",
+    "href": "/docs/components/field#fieldseparator",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "| Prop | Type | Default | | ------- | -------- | ------- | | class | string | |",
+    "description": "",
+    "content": "| Prop | Type | Default | | ------- | -------- | ------- | | class | string | |",
+    "href": "/docs/components/field#fieldseparator",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Field.Error",
+    "description": "",
+    "content": "Field.Error",
+    "href": "/docs/components/field#fielderror",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Accessible error container that accepts children or an errors array.",
+    "description": "",
+    "content": "Accessible error container that accepts children or an errors array.",
+    "href": "/docs/components/field#fielderror",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "| Prop | Type | Default | | -------- | ------------------------------------------ | ------- | | errors | Array | | | cla...",
+    "description": "",
+    "content": "| Prop | Type | Default | | -------- | ------------------------------------------ | ------- | | errors | Array | | | class | string | |",
+    "href": "/docs/components/field#fielderror",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "When the errors array contains multiple messages, the component renders a list automatically.",
+    "description": "",
+    "content": "When the errors array contains multiple messages, the component renders a list automatically.",
+    "href": "/docs/components/field#fielderror",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Field"
+  },
+  {
+    "title": "Field.Error also accepts issues produced by any validator that implements Standard Schema, including Zod, Valibot, and A...",
+    "description": "",
+    "content": "Field.Error also accepts issues produced by any validator that implements Standard Schema, including Zod, Valibot, and ArkType. Pass the issues array from the schema result directly to render a unified error list across libraries.",
+    "href": "/docs/components/field#fielderror",
     "category": "Components",
     "type": "text",
     "pageTitle": "Field"
@@ -11142,6 +11538,15 @@
     "pageTitle": "Textarea"
   },
   {
+    "title": "Update the import paths to match your project setup.",
+    "description": "",
+    "content": "Update the import paths to match your project setup.",
+    "href": "/docs/components/textarea#installation",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Textarea"
+  },
+  {
     "title": "Usage",
     "description": "",
     "content": "Usage",
@@ -11160,12 +11565,21 @@
     "pageTitle": "Textarea"
   },
   {
-    "title": "Default",
+    "title": "Field",
     "description": "",
-    "content": "Default",
-    "href": "/docs/components/textarea#default",
+    "content": "Field",
+    "href": "/docs/components/textarea#field",
     "category": "Components",
     "type": "heading",
+    "pageTitle": "Textarea"
+  },
+  {
+    "title": "Use Field, Field.Label, and Field.Description to create a textarea with a label and description.",
+    "description": "",
+    "content": "Use Field, Field.Label, and Field.Description to create a textarea with a label and description.",
+    "href": "/docs/components/textarea#field",
+    "category": "Components",
+    "type": "text",
     "pageTitle": "Textarea"
   },
   {
@@ -11178,28 +11592,55 @@
     "pageTitle": "Textarea"
   },
   {
-    "title": "With Label",
+    "title": "Use the disabled prop to disable the textarea.",
     "description": "",
-    "content": "With Label",
-    "href": "/docs/components/textarea#with-label",
+    "content": "Use the disabled prop to disable the textarea.",
+    "href": "/docs/components/textarea#disabled",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Textarea"
+  },
+  {
+    "title": "Invalid",
+    "description": "",
+    "content": "Invalid",
+    "href": "/docs/components/textarea#invalid",
     "category": "Components",
     "type": "heading",
     "pageTitle": "Textarea"
   },
   {
-    "title": "With Text",
+    "title": "Use the aria-invalid attribute to mark the textarea as invalid.",
     "description": "",
-    "content": "With Text",
-    "href": "/docs/components/textarea#with-text",
+    "content": "Use the aria-invalid attribute to mark the textarea as invalid.",
+    "href": "/docs/components/textarea#invalid",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Textarea"
+  },
+  {
+    "title": "Button",
+    "description": "",
+    "content": "Button",
+    "href": "/docs/components/textarea#button",
     "category": "Components",
     "type": "heading",
     "pageTitle": "Textarea"
   },
   {
-    "title": "With Button",
+    "title": "Pair with Button to create a textarea with a submit button.",
     "description": "",
-    "content": "With Button",
-    "href": "/docs/components/textarea#with-button",
+    "content": "Pair with Button to create a textarea with a submit button.",
+    "href": "/docs/components/textarea#button",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Textarea"
+  },
+  {
+    "title": "Form",
+    "description": "",
+    "content": "Form",
+    "href": "/docs/components/textarea#form",
     "category": "Components",
     "type": "heading",
     "pageTitle": "Textarea"
@@ -11241,12 +11682,39 @@
     "pageTitle": "Toggle Group"
   },
   {
+    "title": "Update the import paths to match your project setup.",
+    "description": "",
+    "content": "Update the import paths to match your project setup.",
+    "href": "/docs/components/toggle-group#installation",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Toggle Group"
+  },
+  {
     "title": "Usage",
     "description": "",
     "content": "Usage",
     "href": "/docs/components/toggle-group#usage",
     "category": "Components",
     "type": "heading",
+    "pageTitle": "Toggle Group"
+  },
+  {
+    "title": "Composition",
+    "description": "",
+    "content": "Composition",
+    "href": "/docs/components/toggle-group#composition",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Toggle Group"
+  },
+  {
+    "title": "Use the following composition to build a ToggleGroup:",
+    "description": "",
+    "content": "Use the following composition to build a ToggleGroup:",
+    "href": "/docs/components/toggle-group#composition",
+    "category": "Components",
+    "type": "text",
     "pageTitle": "Toggle Group"
   },
   {
@@ -11268,39 +11736,30 @@
     "pageTitle": "Toggle Group"
   },
   {
-    "title": "Single",
+    "title": "Use variant=\"outline\" for an outline style.",
     "description": "",
-    "content": "Single",
-    "href": "/docs/components/toggle-group#single",
+    "content": "Use variant=\"outline\" for an outline style.",
+    "href": "/docs/components/toggle-group#outline",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Toggle Group"
+  },
+  {
+    "title": "Sizes",
+    "description": "",
+    "content": "Sizes",
+    "href": "/docs/components/toggle-group#sizes",
     "category": "Components",
     "type": "heading",
     "pageTitle": "Toggle Group"
   },
   {
-    "title": "Small",
+    "title": "Use the size prop to change the size of the toggle group.",
     "description": "",
-    "content": "Small",
-    "href": "/docs/components/toggle-group#small",
+    "content": "Use the size prop to change the size of the toggle group.",
+    "href": "/docs/components/toggle-group#sizes",
     "category": "Components",
-    "type": "heading",
-    "pageTitle": "Toggle Group"
-  },
-  {
-    "title": "Large",
-    "description": "",
-    "content": "Large",
-    "href": "/docs/components/toggle-group#large",
-    "category": "Components",
-    "type": "heading",
-    "pageTitle": "Toggle Group"
-  },
-  {
-    "title": "Disabled",
-    "description": "",
-    "content": "Disabled",
-    "href": "/docs/components/toggle-group#disabled",
-    "category": "Components",
-    "type": "heading",
+    "type": "text",
     "pageTitle": "Toggle Group"
   },
   {
@@ -11313,10 +11772,73 @@
     "pageTitle": "Toggle Group"
   },
   {
-    "title": "Use spacing={2} to add spacing between toggle group items.",
+    "title": "Use spacing to add spacing between toggle group items.",
     "description": "",
-    "content": "Use spacing={2} to add spacing between toggle group items.",
+    "content": "Use spacing to add spacing between toggle group items.",
     "href": "/docs/components/toggle-group#spacing",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Toggle Group"
+  },
+  {
+    "title": "Vertical",
+    "description": "",
+    "content": "Vertical",
+    "href": "/docs/components/toggle-group#vertical",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Toggle Group"
+  },
+  {
+    "title": "Use orientation=\"vertical\" for vertical toggle groups.",
+    "description": "",
+    "content": "Use orientation=\"vertical\" for vertical toggle groups.",
+    "href": "/docs/components/toggle-group#vertical",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Toggle Group"
+  },
+  {
+    "title": "Disabled",
+    "description": "",
+    "content": "Disabled",
+    "href": "/docs/components/toggle-group#disabled",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Toggle Group"
+  },
+  {
+    "title": "Custom",
+    "description": "",
+    "content": "Custom",
+    "href": "/docs/components/toggle-group#custom",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Toggle Group"
+  },
+  {
+    "title": "A custom toggle group example.",
+    "description": "",
+    "content": "A custom toggle group example.",
+    "href": "/docs/components/toggle-group#custom",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Toggle Group"
+  },
+  {
+    "title": "API Reference",
+    "description": "",
+    "content": "API Reference",
+    "href": "/docs/components/toggle-group#api-reference",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Toggle Group"
+  },
+  {
+    "title": "See the Bits UI Toggle Group documentation.",
+    "description": "",
+    "content": "See the Bits UI Toggle Group documentation.",
+    "href": "/docs/components/toggle-group#api-reference",
     "category": "Components",
     "type": "text",
     "pageTitle": "Toggle Group"
@@ -11352,6 +11874,15 @@
     "title": "{#if viewerData} {/if}",
     "description": "",
     "content": "{#if viewerData} {/if}",
+    "href": "/docs/components/toggle#installation",
+    "category": "Components",
+    "type": "text",
+    "pageTitle": "Toggle"
+  },
+  {
+    "title": "Update the import paths to match your project setup.",
+    "description": "",
+    "content": "Update the import paths to match your project setup.",
     "href": "/docs/components/toggle#installation",
     "category": "Components",
     "type": "text",
@@ -11376,21 +11907,21 @@
     "pageTitle": "Toggle"
   },
   {
-    "title": "Default",
-    "description": "",
-    "content": "Default",
-    "href": "/docs/components/toggle#default",
-    "category": "Components",
-    "type": "heading",
-    "pageTitle": "Toggle"
-  },
-  {
     "title": "Outline",
     "description": "",
     "content": "Outline",
     "href": "/docs/components/toggle#outline",
     "category": "Components",
     "type": "heading",
+    "pageTitle": "Toggle"
+  },
+  {
+    "title": "Use variant=\"outline\" for an outline style.",
+    "description": "",
+    "content": "Use variant=\"outline\" for an outline style.",
+    "href": "/docs/components/toggle#outline",
+    "category": "Components",
+    "type": "text",
     "pageTitle": "Toggle"
   },
   {
@@ -11403,21 +11934,21 @@
     "pageTitle": "Toggle"
   },
   {
-    "title": "Small",
+    "title": "Size",
     "description": "",
-    "content": "Small",
-    "href": "/docs/components/toggle#small",
+    "content": "Size",
+    "href": "/docs/components/toggle#size",
     "category": "Components",
     "type": "heading",
     "pageTitle": "Toggle"
   },
   {
-    "title": "Large",
+    "title": "Use the size prop to change the size of the toggle.",
     "description": "",
-    "content": "Large",
-    "href": "/docs/components/toggle#large",
+    "content": "Use the size prop to change the size of the toggle.",
+    "href": "/docs/components/toggle#size",
     "category": "Components",
-    "type": "heading",
+    "type": "text",
     "pageTitle": "Toggle"
   },
   {
@@ -11427,6 +11958,24 @@
     "href": "/docs/components/toggle#disabled",
     "category": "Components",
     "type": "heading",
+    "pageTitle": "Toggle"
+  },
+  {
+    "title": "API Reference",
+    "description": "",
+    "content": "API Reference",
+    "href": "/docs/components/toggle#api-reference",
+    "category": "Components",
+    "type": "heading",
+    "pageTitle": "Toggle"
+  },
+  {
+    "title": "See the Bits UI Toggle documentation.",
+    "description": "",
+    "content": "See the Bits UI Toggle documentation.",
+    "href": "/docs/components/toggle#api-reference",
+    "category": "Components",
+    "type": "text",
     "pageTitle": "Toggle"
   },
   {

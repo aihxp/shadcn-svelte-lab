@@ -10,9 +10,10 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
 
 ## Automation Progress
 
-- Last updated: 2026-06-02 during the `continue-upstream-audit` heartbeat batch.
+- Last updated: 2026-06-03 during the manual continue batch.
 - Remaining unchecked items after this batch: 0.
 - Remaining unchecked open pull request intake items after this batch: 0.
+- Remaining `needs-work` dispositions after this batch: 1.
 
 ## Refresh Commands
 
@@ -115,10 +116,10 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
   - Evidence: upstream touches 543 component documentation and example paths, while 353 of those paths currently exist locally.
   - Remaining gap: broad component documentation parity pass is still needed, including the missing generated examples and page content updates.
   - Verification: upstream path inventory and `pnpm -F docs check`.
-- [x] `needs-work` PR [#2676](https://github.com/huntabyte/shadcn-svelte/pull/2676): create docs: add and update component example files and registry styles.
-  - Evidence: upstream touches 483 component example and registry style paths, while 302 of those paths currently exist locally.
-  - Remaining gap: broad example and registry parity pass is still needed before this PR can be considered fully present in the fork.
-  - Verification: upstream path inventory and `pnpm -F docs check`.
+- [x] `partial` PR [#2676](https://github.com/huntabyte/shadcn-svelte/pull/2676): create docs: add and update component example files and registry styles.
+  - Evidence: added the focused Field, Textarea, Toggle, and Toggle Group docs parity slice; added root examples for `textarea-field`, `textarea-invalid`, `textarea-button`, `toggle-sizes`, `toggle-group-sizes`, `toggle-group-vertical`, and `toggle-group-font-weight-selector`; and wired `previewClassName` through the local preview tabs so the updated docs previews size correctly.
+  - Remaining gap: upstream still touches hundreds of additional example and registry style paths, so the remaining components need a broader parity pass before this PR can be considered fully present in the fork.
+  - Verification: `pnpm -F docs build:registry`, `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`, and `pnpm -F docs build:svelte`.
 - [x] `partial` PR [#2675](https://github.com/huntabyte/shadcn-svelte/pull/2675): create docs: chart easing animation and charts page layout updates.
   - Evidence: `docs/src/lib/registry/ui/chart/easing.ts` now provides the shared cubic-bezier easing helper and default motion exports; `docs/src/lib/registry/ui/chart/index.ts` re-exports them; generated style registries now include `chart/easing.ts`.
   - Remaining gap: the larger chart block and charts page layout rewrites from the upstream PR are not ported in this focused pass.

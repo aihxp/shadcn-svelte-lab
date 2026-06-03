@@ -10,10 +10,12 @@
 		example,
 		children,
 		name,
+		previewClassName,
 		...restProps
 	}: HTMLAttributes<HTMLElement> & {
 		align?: "center" | "start" | "end";
 		hideCode?: boolean;
+		previewClassName?: string;
 		example?: Snippet;
 		component?: Component;
 		name: string;
@@ -47,7 +49,10 @@
 		>
 			<div
 				data-align={align}
-				class="preview flex min-h-[450px] w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start"
+				class={cn(
+					"preview flex min-h-[450px] w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start",
+					previewClassName
+				)}
 			>
 				{#if example}
 					{@render example()}
