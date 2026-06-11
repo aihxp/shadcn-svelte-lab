@@ -1,13 +1,13 @@
 ---
 title: shadcn-svelte
-description: Use the shadcn-svelte CLI to initialize projects, add components, inspect registries, and run agent tools.
+description: Use the shadcn-svelte CLI to initialize projects, apply presets, add components, inspect registries, and run agent tools.
 ---
 
 <script>
 	import PMExecute from "$lib/components/pm-execute.svelte";
 </script>
 
-The CLI can initialize projects, add registry items, search and inspect registries, return docs links, start the MCP server, and help registry authors build or validate registry files.
+The CLI can initialize projects, apply presets, add registry items, search and inspect registries, return docs links, start the MCP server, and help registry authors build or validate registry files.
 
 ## Commands
 
@@ -16,6 +16,7 @@ Usage: shadcn-svelte [options] [command]
 
 Commands:
   add [components...]          Add components to your project
+  apply [preset]               Apply a preset to an existing project
   docs <components...>         Get docs, API references, and usage examples
   info                         Inspect project configuration
   init                         Initialize your project and install dependencies
@@ -105,6 +106,45 @@ To install a custom registry item, pass the registry item URL as the `components
 <PMExecute command="shadcn-svelte@latest add https://example.com/r/button.json" />
 
 The `--proxy` option is only for HTTP proxy servers. It does not set the registry URL.
+
+---
+
+## apply
+
+Use the `apply` command to apply a preset from the create page to an existing project.
+
+<PMExecute command="shadcn-svelte@latest apply --preset b2D0wqNxT" />
+
+You can pass a preset code copied from `/create` or a shipped preset name:
+
+```bash
+shadcn-svelte apply lyra
+shadcn-svelte apply --preset b2D0wqNxT
+```
+
+The command updates `components.json`, applies the preset stylesheet tokens and fonts, and reinstalls existing UI components when the preset changes style, icon library, or menu settings.
+
+**Options**
+
+```bash
+Usage: shadcn-svelte apply [options] [preset]
+
+apply a preset to an existing project
+
+Arguments:
+  preset              the preset code or preset name to apply
+
+Options:
+  --preset <preset>   the preset code or preset name to apply
+  -c, --cwd <path>    the working directory (default: the current directory)
+  --no-deps           skips adding & installing package dependencies
+  --skip-preflight    ignore preflight checks and continue (default: false)
+  -y, --yes           skip confirmation prompt (default: false)
+  -o, --overwrite     overwrite existing component and stylesheet files (default: false)
+  --no-reinstall      skip reinstalling existing components when style settings change
+  --proxy <proxy>     fetch preset registry payload using a proxy
+  -h, --help          display help for command
+```
 
 ---
 

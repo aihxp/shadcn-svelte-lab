@@ -118,8 +118,8 @@
   },
   {
     "title": "shadcn-svelte",
-    "description": "Use the shadcn-svelte CLI to initialize projects, add components, inspect registries, and run agent tools.",
-    "content": "The CLI can initialize projects, add registry items, search and inspect registries, return docs links, start the MCP server, and help registry authors build or validate registry files.",
+    "description": "Use the shadcn-svelte CLI to initialize projects, apply presets, add components, inspect registries, and run agent tools.",
+    "content": "The CLI can initialize projects, apply presets, add registry items, search and inspect registries, return docs links, start the MCP server, and help registry authors build or validate registry files.",
     "href": "/docs/cli",
     "category": "Getting Started",
     "type": "page",
@@ -202,6 +202,42 @@
     "description": "",
     "content": "The --proxy option is only for HTTP proxy servers. It does not set the registry URL.",
     "href": "/docs/cli#add",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "apply",
+    "description": "",
+    "content": "apply",
+    "href": "/docs/cli#apply",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "Use the apply command to apply a preset from the create page to an existing project.",
+    "description": "",
+    "content": "Use the apply command to apply a preset from the create page to an existing project.",
+    "href": "/docs/cli#apply",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "You can pass a preset code copied from /create or a shipped preset name:",
+    "description": "",
+    "content": "You can pass a preset code copied from /create or a shipped preset name:",
+    "href": "/docs/cli#apply",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "The command updates components.json, applies the preset stylesheet tokens and fonts, and reinstalls existing UI componen...",
+    "description": "",
+    "content": "The command updates components.json, applies the preset stylesheet tokens and fonts, and reinstalls existing UI components when the preset changes style, icon library, or menu settings.",
+    "href": "/docs/cli#apply",
     "category": "Getting Started",
     "type": "text",
     "pageTitle": "shadcn-svelte"

@@ -1,4 +1,5 @@
 export { add } from "./add/index.js";
+export { apply } from "./apply/index.js";
 export { docs } from "./docs/index.js";
 export { init } from "./init/index.js";
 export { info } from "./info/index.js";
