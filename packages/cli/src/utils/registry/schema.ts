@@ -373,6 +373,10 @@ export const componentsJsonSchema = z.object({
 		.describe(
 			"Additional named registries. Use @namespace/item when adding items from these registries."
 		),
+	rtl: z
+		.boolean()
+		.optional()
+		.describe("Marks the project as migrated for right-to-left friendly generated components."),
 	hooks: lifecycleHooksSchema,
 	typescript: z
 		.union([

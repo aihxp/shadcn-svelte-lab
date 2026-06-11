@@ -305,6 +305,9 @@
 								"subtle",
 								"bold"
 							]
+						},
+						"rtl": {
+							"type": "boolean"
 						}
 					},
 					"additionalProperties": false

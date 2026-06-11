@@ -15,7 +15,7 @@ Rules: audit local code before porting; a task is complete only when local code 
 - [x] Re-diff component inventories: `git ls-tree upstream-ui/main:apps/v4/registry/bases/base/ui --name-only` vs `ls docs/src/lib/registry/ui`.
   - Result: no missing upstream base UI components after normalizing React `.tsx` files to local component directories. Local extras remain `data-table`, `form`, and `range-calendar`.
 - [x] Re-diff CLI commands: `git ls-tree -r upstream-ui/main:packages/shadcn/src/commands --name-only` vs `find packages/cli/src/commands -type f`.
-  - Result after adding `eject`: remaining upstream command gaps are `build` and `migrate`. Local extras are `init/preflight`, `registry/deps-resolver`, and visible `update`; `index` is the local command barrel file.
+  - Result after adding `migrate` and the top-level `build` alias: no required upstream command gaps remain. Local extras are `init/preflight`, `registry/deps-resolver`, and visible `update`; `index` is the local command barrel file.
 - [x] Re-diff docs content: `git ls-tree -r upstream-ui/main:apps/v4/content/docs --name-only` vs `ls -R docs/content`.
   - Result after `.mdx` to `.md` normalization: 188 upstream-only docs paths and 72 local-only docs paths remain. The upstream-only set is dominated by React-specific, base/radix split, and historical changelog pages already covered by Phase 3 dispositions; local-only docs include Svelte installation, migration, Formsnap, and RTL pages.
 
@@ -98,7 +98,7 @@ Rules: audit local code before porting; a task is complete only when local code 
   - Note: added Svelte-specific pages for Formsnap, TanStack Form, and Formisch. TanStack Form was verified against the official `@tanstack/svelte-form` docs; Formisch was verified against the official `@formisch/svelte` docs.
   - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`.
 - [x] RTL section: create `docs/content/rtl/` with `index`, `sveltekit`, `vite`, `astro`, building on the Direction component docs.
-  - Note: local CLI has no `rtl` config key or `migrate rtl` command yet, so docs cover DirectionProvider and manual logical-class migration.
+  - Note: local CLI now has an `rtl` config key and `migrate rtl` command. Docs cover DirectionProvider, the migration command, and manual review for physical side behavior.
   - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`.
 - [x] Add `docs/src/routes/rss.xml/+server.ts` fed by the changelog collection.
   - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`.
@@ -189,11 +189,19 @@ Rules: audit local code before porting; a task is complete only when local code 
   - Implemented: `shadcn-svelte eject` supports `--cwd`, `--yes`, and `--silent`, resolves the configured `tailwind.css` path from `components.json`, and falls back to editing `package.json` directly when no package manager is detected.
   - Docs: `docs/content/cli.md` now lists and documents the `eject` command.
   - Verification: `pnpm -F shadcn-svelte exec vitest test/commands/eject.test.ts --run`, `pnpm -F shadcn-svelte check`, `pnpm -F shadcn-svelte build`, `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`, `node packages/cli/dist/index.mjs --help`, `node packages/cli/dist/index.mjs eject --help`, and a built CLI smoke test against a temporary Vite fixture with `shadcn-svelte` removed from package dependencies.
-- [ ] Add `migrate` runner; include an RTL migration to close the remaining `partial` on issue 2512.
-- [ ] Add top-level `build` alias for `registry build` (command-line compatibility with upstream).
+- [x] Add `migrate` runner; include an RTL migration to close the remaining `partial` on issue 2512.
+  - Implemented: `shadcn-svelte migrate --list` and `shadcn-svelte migrate rtl [path]`, with path and glob support. The RTL migration rewrites common physical Tailwind utilities to logical utilities, adds additive `rtl:*` helpers idempotently, replaces `cn-rtl-flip`, writes `rtl: true` to `components.json`, and reports files that may need manual review.
+  - Docs: `docs/content/cli.md`, `docs/content/rtl/index.md`, `docs/content/components-json.md`, `docs/static/schema.json`, and `docs/static/schema/registry-item.json` now cover the command and config key.
+  - Verification: `pnpm -F shadcn-svelte exec vitest test/commands/migrate.test.ts --run`, `pnpm -F shadcn-svelte check`, `pnpm -F shadcn-svelte build`, `pnpm -F @shadcn-svelte/registry check`, `pnpm -F @shadcn-svelte/registry build`, `pnpm -F docs build:registry`, `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`, `node packages/cli/dist/index.mjs migrate --help`, `node packages/cli/dist/index.mjs migrate --list`, and a built CLI smoke test against a temporary Vite starter.
+- [x] Add top-level `build` alias for `registry build` (command-line compatibility with upstream).
+  - Implemented: `shadcn-svelte build [registry]` reuses the existing registry build implementation through a command factory, while keeping `shadcn-svelte registry build [registry]` available. The shared builder now resolves registry item file paths relative to `--cwd`.
+  - Docs: `docs/content/cli.md` now lists and documents the top-level alias.
+  - Verification: `pnpm -F shadcn-svelte exec vitest test/commands/build.test.ts test/commands/migrate.test.ts --run`, `pnpm -F shadcn-svelte check`, `pnpm -F shadcn-svelte build`, `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`, `node packages/cli/dist/index.mjs --help`, `node packages/cli/dist/index.mjs build --help`, and a built CLI smoke test against a temporary registry project.
 - [ ] Stretch: fixture-based e2e package mirroring `packages/tests` with SvelteKit fixtures.
 
 ## Not Applicable (record only)
 
-- [ ] Record disposition: `registry/bases/{base,radix}` multi-primitive architecture (Bits UI is the single primitive layer here); add a watch note for schema changes in `bases.ts` and `config.ts`.
-- [ ] Record disposition: `react-19.mdx`, `react-hook-form.mdx`, `_v0.mdx`, `_blocks.mdx`.
+- [x] Record disposition: `registry/bases/{base,radix}` multi-primitive architecture (Bits UI is the single primitive layer here); add a watch note for schema changes in `bases.ts` and `config.ts`.
+  - Recorded in `planning/shadcn-ui-parity-plan.md` under "Not applicable, watch only".
+- [x] Record disposition: `react-19.mdx`, `react-hook-form.mdx`, `_v0.mdx`, `_blocks.mdx`.
+  - Recorded in `planning/shadcn-ui-parity-plan.md` under "Docs content parity" and "Not applicable, watch only".

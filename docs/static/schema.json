@@ -111,6 +111,10 @@
 				]
 			}
 		},
+		"rtl": {
+			"description": "Marks the project as migrated for right-to-left friendly generated components.",
+			"type": "boolean"
+		},
 		"hooks": {
 			"description": "Local lifecycle commands for the CLI.",
 			"type": "object",

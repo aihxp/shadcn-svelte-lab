@@ -1,9 +1,11 @@
 export { add } from "./add/index.js";
 export { apply } from "./apply/index.js";
+export { build } from "./build/index.js";
 export { docs } from "./docs/index.js";
 export { eject } from "./eject/index.js";
 export { init } from "./init/index.js";
 export { info } from "./info/index.js";
+export { migrate } from "./migrate/index.js";
 export { mcp } from "./mcp/index.js";
 export { preset } from "./preset/index.js";
 export { update } from "./update/index.js";

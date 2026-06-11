@@ -55,6 +55,10 @@
 			"types": "./dist/utils/transformers/transform-strip-types.d.mts",
 			"default": "./dist/utils/transformers/transform-strip-types.mjs"
 		},
+		"./transformers/direction": {
+			"types": "./dist/utils/transformers/transform-direction.d.mts",
+			"default": "./dist/utils/transformers/transform-direction.mjs"
+		},
 		"./tailwind.css": {
 			"style": "./dist/tailwind.css"
 		}
@@ -89,7 +93,8 @@
 		"commander": "^14.0.0",
 		"node-fetch-native": "^1.6.4",
 		"postcss": "^8.5.10",
-		"tailwind-merge": "^3.0.0"
+		"tailwind-merge": "^3.0.0",
+		"tinyglobby": "^0.2.17"
 	},
 	"devDependencies": {
 		"@clack/prompts": "^1.1.0",

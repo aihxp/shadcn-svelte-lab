@@ -432,6 +432,87 @@
     "pageTitle": "shadcn-svelte"
   },
   {
+    "title": "migrate",
+    "description": "",
+    "content": "migrate",
+    "href": "/docs/cli#migrate",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "Use the migrate command to run project migrations.",
+    "description": "",
+    "content": "Use the migrate command to run project migrations.",
+    "href": "/docs/cli#migrate",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "List available migrations:",
+    "description": "",
+    "content": "List available migrations:",
+    "href": "/docs/cli#migrate",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "Run the RTL migration against generated UI components:",
+    "description": "",
+    "content": "Run the RTL migration against generated UI components:",
+    "href": "/docs/cli#migrate",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "The rtl migration rewrites common physical Tailwind utilities to logical utilities, adds RTL variants for utilities such...",
+    "description": "",
+    "content": "The rtl migration rewrites common physical Tailwind utilities to logical utilities, adds RTL variants for utilities such as space-x-, divide-x-, and translate-x-*, replaces cn-rtl-flip with rtl:rotate-180, and sets rtl: true in components.json.",
+    "href": "/docs/cli#migrate",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "Review the resulting diff before committing. Components that depend on physical side behavior, such as Sidebar, Calendar...",
+    "description": "",
+    "content": "Review the resulting diff before committing. Components that depend on physical side behavior, such as Sidebar, Calendar, Range Calendar, and Pagination, may still need manual adjustment.",
+    "href": "/docs/cli#migrate",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "build",
+    "description": "",
+    "content": "build",
+    "href": "/docs/cli#build",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "Use the build command to generate registry JSON files.",
+    "description": "",
+    "content": "Use the build command to generate registry JSON files.",
+    "href": "/docs/cli#build",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "This top-level command is an alias for registry build and keeps command-line compatibility with upstream. It reads a sou...",
+    "description": "",
+    "content": "This top-level command is an alias for registry build and keeps command-line compatibility with upstream. It reads a source registry.json file and writes registry JSON files into the output directory.",
+    "href": "/docs/cli#build",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
     "title": "registry add",
     "description": "",
     "content": "registry add",
@@ -850,6 +931,33 @@
     "description": "",
     "content": "Lifecycle hooks run local commands after the CLI finishes writing files and installing dependencies. Commands execute from the project root with your local shell permissions, so only add commands you trust. Use --no-hooks with add or update to skip them for a single run.",
     "href": "/docs/components-json#hooks",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "components.json"
+  },
+  {
+    "title": "rtl",
+    "description": "",
+    "content": "rtl",
+    "href": "/docs/components-json#rtl",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "components.json"
+  },
+  {
+    "title": "The rtl flag marks a project as migrated for right-to-left friendly generated components. It is written by shadcn-svelte...",
+    "description": "",
+    "content": "The rtl flag marks a project as migrated for right-to-left friendly generated components. It is written by shadcn-svelte migrate rtl.",
+    "href": "/docs/components-json#rtl",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "components.json"
+  },
+  {
+    "title": "This flag does not set the document direction by itself. Set dir=\"rtl\" in your app shell and use the Direction component...",
+    "description": "",
+    "content": "This flag does not set the document direction by itself. Set dir=\"rtl\" in your app shell and use the Direction component when a subtree needs explicit direction context.",
+    "href": "/docs/components-json#rtl",
     "category": "Getting Started",
     "type": "text",
     "pageTitle": "components.json"
@@ -15788,7 +15896,7 @@
   {
     "title": "RTL",
     "description": "Configure right-to-left layouts with shadcn-svelte components.",
-    "content": "shadcn-svelte components can be used in right-to-left layouts by setting the document direction and wrapping component subtrees with the Direction component when they need explicit context. The local CLI does not currently include upstream's automatic RTL migration command. Existing projects should migrate directional classes manually and add the Direction component where needed.",
+    "content": "shadcn-svelte components can be used in right-to-left layouts by setting the document direction and wrapping component subtrees with the Direction component when they need explicit context. The CLI includes an RTL migration that updates common physical Tailwind utilities to logical utilities and marks the project with rtl: true in components.json.",
     "href": "/docs/rtl",
     "category": "Getting Started",
     "type": "page",
@@ -15817,6 +15925,51 @@
     "description": "",
     "content": "Use DirectionProvider around the part of the app that should render RTL.",
     "href": "/docs/rtl#install-direction",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "RTL"
+  },
+  {
+    "title": "Migrate Classes",
+    "description": "",
+    "content": "Migrate Classes",
+    "href": "/docs/rtl#migrate-classes",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "RTL"
+  },
+  {
+    "title": "Run the migration from the root of a project that already has components.json.",
+    "description": "",
+    "content": "Run the migration from the root of a project that already has components.json.",
+    "href": "/docs/rtl#migrate-classes",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "RTL"
+  },
+  {
+    "title": "You can also pass a path or glob when you want to migrate a smaller surface.",
+    "description": "",
+    "content": "You can also pass a path or glob when you want to migrate a smaller surface.",
+    "href": "/docs/rtl#migrate-classes",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "RTL"
+  },
+  {
+    "title": "The migration rewrites utilities such as ml-, mr-, pl-, pr-, left-, right-, text-left, text-right, rounded-l-, and borde...",
+    "description": "",
+    "content": "The migration rewrites utilities such as ml-, mr-, pl-, pr-, left-, right-, text-left, text-right, rounded-l-, and border-r- to logical equivalents. It also adds RTL variants for space-x-, divide-x-, and translate-x-*.",
+    "href": "/docs/rtl#migrate-classes",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "RTL"
+  },
+  {
+    "title": "Review the diff after running it. Components with physical side behavior, such as Sidebar, Calendar, Range Calendar, and...",
+    "description": "",
+    "content": "Review the diff after running it. Components with physical side behavior, such as Sidebar, Calendar, Range Calendar, and Pagination, may need manual adjustments.",
+    "href": "/docs/rtl#migrate-classes",
     "category": "Getting Started",
     "type": "text",
     "pageTitle": "RTL"

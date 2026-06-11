@@ -16,7 +16,8 @@ export type RegistryConfigItem = z.infer<typeof registryConfigItemSchema>;
 
 export const registryConfigSchema = z.record(
 	z.string().regex(/^@[a-zA-Z0-9](?:[a-zA-Z0-9-_]*[a-zA-Z0-9])?$/, {
-		message: "Registry names must start with @ and contain only letters, numbers, hyphens, or underscores",
+		message:
+			"Registry names must start with @ and contain only letters, numbers, hyphens, or underscores",
 	}),
 	registryConfigItemSchema
 );
@@ -381,6 +382,10 @@ export const componentsJsonSchema = z.object({
 		.describe(
 			"Additional named registries. Use @namespace/item when adding items from these registries."
 		),
+	rtl: z
+		.boolean()
+		.optional()
+		.describe("Marks the project as migrated for right-to-left friendly generated components."),
 	hooks: lifecycleHooksSchema,
 	typescript: z
 		.union([

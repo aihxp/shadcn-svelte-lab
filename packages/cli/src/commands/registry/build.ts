@@ -24,38 +24,42 @@ const buildOptionsSchema = z.object({
 
 type BuildOptions = z.infer<typeof buildOptionsSchema>;
 
-export const build = new Command()
-	.command("build")
-	.description("build components for a shadcn-svelte registry")
-	.argument("[registry]", "path to registry.json file", "./registry.json")
-	.option("-c, --cwd <path>", "the working directory", process.cwd())
-	.option("-o, --output <path>", "destination directory for json files", "./static/r")
-	.action(async (registryPath, opts) => {
-		try {
-			intro();
-			const options = buildOptionsSchema.parse({ registry: registryPath, ...opts });
+export const build = createBuildCommand();
 
-			// resolve paths
-			const cwd = path.resolve(options.cwd);
-			const output = path.resolve(options.cwd, options.output);
-			const registry = path.resolve(options.cwd, options.registry);
+export function createBuildCommand() {
+	return new Command()
+		.command("build")
+		.description("build components for a shadcn-svelte registry")
+		.argument("[registry]", "path to registry.json file", "./registry.json")
+		.option("-c, --cwd <path>", "the working directory", process.cwd())
+		.option("-o, --output <path>", "destination directory for json files", "./static/r")
+		.action(async (registryPath, opts) => {
+			try {
+				intro();
+				const options = buildOptionsSchema.parse({ registry: registryPath, ...opts });
 
-			// validate options
-			for (const [option, path] of Object.entries({ cwd, registry })) {
-				if (!existsSync(path)) {
-					throw error(`The '${option}' path ${color.cyan(path)} does not exist.`);
+				// resolve paths
+				const cwd = path.resolve(options.cwd);
+				const output = path.resolve(options.cwd, options.output);
+				const registry = path.resolve(options.cwd, options.registry);
+
+				// validate options
+				for (const [option, path] of Object.entries({ cwd, registry })) {
+					if (!existsSync(path)) {
+						throw error(`The '${option}' path ${color.cyan(path)} does not exist.`);
+					}
 				}
+
+				await runBuild({ cwd, output, registry });
+
+				p.outro(`${color.green("Success!")} Registry build completed.`);
+			} catch (e) {
+				handleError(e);
 			}
+		});
+}
 
-			await runBuild({ cwd, output, registry });
-
-			p.outro(`${color.green("Success!")} Registry build completed.`);
-		} catch (e) {
-			handleError(e);
-		}
-	});
-
-async function runBuild(options: BuildOptions) {
+export async function runBuild(options: BuildOptions) {
 	const spinner = p.spinner();
 
 	spinner.start(`Parsing registry schema`);
@@ -125,7 +129,7 @@ async function runBuild(options: BuildOptions) {
 					"registry:file",
 				];
 				const toResolve = item.files.map(async (file) => {
-					let content = await fs.readFile(file.path, "utf8");
+					let content = await fs.readFile(path.resolve(options.cwd, file.path), "utf8");
 					content = transformAliases((registry.aliases ??= {}), content);
 
 					const name = path.basename(file.path);

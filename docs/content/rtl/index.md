@@ -5,7 +5,7 @@ description: Configure right-to-left layouts with shadcn-svelte components.
 
 shadcn-svelte components can be used in right-to-left layouts by setting the document direction and wrapping component subtrees with the [Direction](/docs/components/direction) component when they need explicit context.
 
-The local CLI does not currently include upstream's automatic RTL migration command. Existing projects should migrate directional classes manually and add the Direction component where needed.
+The CLI includes an RTL migration that updates common physical Tailwind utilities to logical utilities and marks the project with `rtl: true` in `components.json`.
 
 ## Get Started
 
@@ -32,6 +32,25 @@ Use `DirectionProvider` around the part of the app that should render RTL.
   <slot />
 </DirectionProvider>
 ```
+
+## Migrate Classes
+
+Run the migration from the root of a project that already has `components.json`.
+
+```bash
+pnpm dlx shadcn-svelte@latest migrate rtl
+```
+
+You can also pass a path or glob when you want to migrate a smaller surface.
+
+```bash
+pnpm dlx shadcn-svelte@latest migrate rtl src/lib/components/ui
+pnpm dlx shadcn-svelte@latest migrate rtl "src/lib/components/ui/**/*.svelte"
+```
+
+The migration rewrites utilities such as `ml-*`, `mr-*`, `pl-*`, `pr-*`, `left-*`, `right-*`, `text-left`, `text-right`, `rounded-l-*`, and `border-r-*` to logical equivalents. It also adds RTL variants for `space-x-*`, `divide-x-*`, and `translate-x-*`.
+
+Review the diff after running it. Components with physical side behavior, such as Sidebar, Calendar, Range Calendar, and Pagination, may need manual adjustments.
 
 ## Directional CSS
 

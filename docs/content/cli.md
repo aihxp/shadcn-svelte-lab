@@ -17,10 +17,12 @@ Usage: shadcn-svelte [options] [command]
 Commands:
   add [components...]          Add components to your project
   apply [preset]               Apply a preset to an existing project
+  build [registry]             build components for a shadcn-svelte registry
   docs <components...>         Get docs, API references, and usage examples
   eject                        Inline shadcn-svelte/tailwind.css
   info                         Inspect project configuration
   init                         Initialize your project and install dependencies
+  migrate [migration] [path]   run a migration
   mcp                          Start the MCP server
   preset                       Decode and inspect presets
   registry add [registries...] Add registries to components.json
@@ -342,6 +344,76 @@ Options:
 ```
 
 The deprecated `registry mcp` alias remains available for registry-author workflows and prints a migration notice.
+
+---
+
+## migrate
+
+Use the `migrate` command to run project migrations.
+
+<PMExecute command="shadcn-svelte@latest migrate rtl" />
+
+List available migrations:
+
+```bash
+shadcn-svelte migrate --list
+```
+
+Run the RTL migration against generated UI components:
+
+```bash
+shadcn-svelte migrate rtl
+shadcn-svelte migrate rtl src/lib/components/ui
+shadcn-svelte migrate rtl "src/lib/components/ui/**/*.svelte"
+```
+
+The `rtl` migration rewrites common physical Tailwind utilities to logical utilities, adds RTL variants for utilities such as `space-x-*`, `divide-x-*`, and `translate-x-*`, replaces `cn-rtl-flip` with `rtl:rotate-180`, and sets `rtl: true` in `components.json`.
+
+Review the resulting diff before committing. Components that depend on physical side behavior, such as Sidebar, Calendar, Range Calendar, and Pagination, may still need manual adjustment.
+
+**Options**
+
+```bash
+Usage: shadcn-svelte migrate [options] [migration] [path]
+
+run a migration
+
+Arguments:
+  migration          the migration to run
+  path               optional path or glob pattern to migrate
+
+Options:
+  -c, --cwd <path>   the working directory (default: the current directory)
+  -l, --list         list all migrations (default: false)
+  -y, --yes          skip confirmation prompt (default: false)
+  -h, --help         display help for command
+```
+
+---
+
+## build
+
+Use the `build` command to generate registry JSON files.
+
+<PMExecute command="shadcn-svelte@latest build [registry.json]" />
+
+This top-level command is an alias for `registry build` and keeps command-line compatibility with upstream. It reads a source `registry.json` file and writes registry JSON files into the output directory.
+
+**Options**
+
+```bash
+Usage: shadcn-svelte build [options] [registry]
+
+build components for a shadcn-svelte registry
+
+Arguments:
+  registry             path to registry.json file (default: ./registry.json)
+
+Options:
+  -c, --cwd <path>     the working directory (default: the current directory)
+  -o, --output <path>  destination directory for json files (default: ./static/r)
+  -h, --help           display help for command
+```
 
 ---
 

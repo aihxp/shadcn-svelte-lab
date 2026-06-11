@@ -156,6 +156,18 @@ Lifecycle hooks run local commands after the CLI finishes writing files and inst
 }
 ```
 
+## rtl
+
+The `rtl` flag marks a project as migrated for right-to-left friendly generated components. It is written by `shadcn-svelte migrate rtl`.
+
+```json title="components.json"
+{
+  "rtl": true
+}
+```
+
+This flag does not set the document direction by itself. Set `dir="rtl"` in your app shell and use the [Direction](/docs/components/direction) component when a subtree needs explicit direction context.
+
 ## Typescript
 
 Typescript can be enabled or disabled.
