@@ -129,10 +129,9 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
   - Remaining gap: the Svelte create route now has `menu-picker.svelte`, `project-form.svelte`, and the local mobile layout rewrite. Remaining create-docs parity should focus on route-specific behavior rather than the removed upstream `create/+page.svelte` file shape.
   - Verification: upstream path inventory, `pnpm -F docs build:registry`, `pnpm -F docs check`, and `pnpm -F shadcn-svelte check`.
 - [x] `partial` PR [#2673](https://github.com/huntabyte/shadcn-svelte/pull/2673): create docs: add Sera demo page and changelog.
-  - Evidence: upstream touches 202 paths and 168 exist locally, mostly generated `sera` style registry JSON. The Sera changelog entry is now present in `docs/content/changelog/2026-04-sera.md`.
-  - Remaining gap: the fork still lacks the `docs/src/routes/(app)/(layout)/(styles)/sera/` demo route tree and Sera example images.
-  - Verification: `pnpm -F docs build:content`, `pnpm -F docs exec svelte-kit sync`, and `pnpm -F docs check`.
-  - Verification: upstream path inventory and `pnpm -F docs check`.
+  - Evidence: upstream touches 202 paths and 168 exist locally, mostly generated `sera` style registry JSON. The Sera changelog entry is now present in `docs/content/changelog/2026-04-sera.md`, the Svelte `/sera` showcase route exists under `docs/src/routes/(app)/(layout)/(styles)/sera/`, and the upstream Sera light/dark screenshots exist under `docs/static/img/styles/`.
+  - Remaining gap: the local showcase uses screenshot previews instead of copying upstream's React-only lazy preview internals. Treat deeper component recreation as a separate Svelte-specific enhancement, not as a missing public route.
+  - Verification: `pnpm -F docs build:content`, `pnpm -F docs exec svelte-kit sync`, `pnpm -F docs check`, Playwright desktop and mobile visual pass at `/sera`, `pnpm -F docs build:registry`, `pnpm -F docs build:svelte`, and `pnpm -F docs build:search`.
 - [x] `present-in-fork` PR [#2672](https://github.com/huntabyte/shadcn-svelte/pull/2672): create docs: improve search.
   - Evidence: `docs/scripts/build-search-data.ts` builds sanitized search data, `docs/src/routes/api/search.json/+server.ts` serves it, `docs/src/lib/utils/search.ts` creates the client FlexSearch indexes, and `docs/src/lib/components/command-menu/command-menu.svelte` now searches nav, content, and colors.
   - Verification: `pnpm -F docs build:search`, `pnpm -F docs build:registry`, and `pnpm -F docs check`.

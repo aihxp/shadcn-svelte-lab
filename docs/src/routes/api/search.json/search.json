@@ -2945,7 +2945,7 @@
   {
     "title": "April 2026 - Sera",
     "description": "Sera style support.",
-    "content": "Sera is available as a registry style. It emphasizes editorial surfaces, sharper separators, and a more direct content-focused rhythm while using the same component registry pipeline as the other styles.",
+    "content": "Sera is available as a registry style. It emphasizes editorial surfaces, sharper separators, and a more direct content-focused rhythm while using the same component registry pipeline as the other styles. See the Sera showcase for the editorial preview set.",
     "href": "/docs/changelog/2026-04-sera",
     "category": "Changelog",
     "type": "page",

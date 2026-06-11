@@ -78,14 +78,17 @@ Upstream ships 10 starter templates under `templates/` (next, astro, vite, react
 
 Wire these into the `monorepo` docs page (Workstream D) and the create flow where relevant.
 
-### F. Site residuals (create page and style demos)
+### F. Site Residuals
 
-Carried over from the previous audit cycle, re-verified missing at this snapshot:
+Carried over from the previous audit cycle. Completed in this phase:
 
 - `docs/src/routes/(app)/(layout)/(create)/components/menu-picker.svelte`
 - `docs/src/routes/(app)/(layout)/(create)/components/project-form.svelte`
-- Create page mobile layout rewrite (`create/+page.svelte`)
-- `(styles)/sera/` demo route tree and example images (upstream `apps/v4/app/(app)/(styles)/sera`)
+- Local create route mobile layout rewrite
+- Svelte `/sera` showcase route and upstream Sera light/dark screenshot set
+
+Remaining site residuals:
+
 - `preview` and `preview-02` blocks (internal create previews)
 - `docs/src/hooks.server.ts`, `docs/src/lib/components/setup-cards.svelte`, `docs/src/lib/types/block.ts`
 
@@ -104,7 +107,7 @@ Phases are ordered by leverage; each phase is independently shippable.
 3. Phase 3, docs parity: complete.
 4. Phase 4, directory: complete with a curated Svelte-compatible policy.
 5. Phase 5, templates: complete. Six Svelte templates, sync workflow docs, monorepo docs wiring, and create flow links are in place.
-6. Phase 6, site residuals: create page components, sera demo route, preview blocks, `hooks.server.ts`, remaining files from Workstream F.
+6. Phase 6, site residuals: in progress. Create page components and the Sera showcase are complete; preview blocks, `hooks.server.ts`, `setup-cards.svelte`, and `types/block.ts` remain.
 7. Phase 7, long tail: `apply` and `preset` commands, `eject`, `migrate` (including the RTL migration from issue 2512), `diff` or unhidden `update`, top-level `build` alias, optional e2e fixture package.
 
 ## Priority Rules
