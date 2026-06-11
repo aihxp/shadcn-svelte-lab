@@ -21,6 +21,7 @@ Commands:
   info                         Inspect project configuration
   init                         Initialize your project and install dependencies
   mcp                          Start the MCP server
+  preset                       Decode and inspect presets
   registry build [registry]    Build registry JSON files
   registry validate [registry] Validate a GitHub source registry
   search [registries...]       Search items from registries
@@ -144,6 +145,49 @@ Options:
   --no-reinstall      skip reinstalling existing components when style settings change
   --proxy <proxy>     fetch preset registry payload using a proxy
   -h, --help          display help for command
+```
+
+---
+
+## preset
+
+Use the `preset` command to decode preset codes, open them in the create page, and resolve the closest preset for the current project.
+
+<PMExecute command="shadcn-svelte@latest preset decode b2D0wqNxT" />
+
+**Subcommands**
+
+```bash
+shadcn-svelte preset decode <code>
+shadcn-svelte preset url <code>
+shadcn-svelte preset open <code>
+shadcn-svelte preset resolve
+```
+
+Use `--json` with `decode` and `resolve` for scripts and agents:
+
+```bash
+shadcn-svelte preset decode b2D0wqNxT --json
+shadcn-svelte preset resolve --json
+```
+
+`preset resolve` reads `components.json` and returns a portable preset code for the current project. Some create-page values are not stored in `components.json`; those values are inferred from shipped defaults and listed in `fallbacks`.
+
+**Options**
+
+```bash
+Usage: shadcn-svelte preset [options] [command]
+
+manage presets
+
+Options:
+  -h, --help              display help for command
+
+Commands:
+  decode [options] <code> decode a preset code
+  resolve|info [options]  resolve a preset from your project
+  url <code>              get the create URL for a preset code
+  open <code>             open a preset code in the browser
 ```
 
 ---

@@ -243,6 +243,42 @@
     "pageTitle": "shadcn-svelte"
   },
   {
+    "title": "preset",
+    "description": "",
+    "content": "preset",
+    "href": "/docs/cli#preset",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "Use the preset command to decode preset codes, open them in the create page, and resolve the closest preset for the curr...",
+    "description": "",
+    "content": "Use the preset command to decode preset codes, open them in the create page, and resolve the closest preset for the current project.",
+    "href": "/docs/cli#preset",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "Use --json with decode and resolve for scripts and agents:",
+    "description": "",
+    "content": "Use --json with decode and resolve for scripts and agents:",
+    "href": "/docs/cli#preset",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "preset resolve reads components.json and returns a portable preset code for the current project. Some create-page values...",
+    "description": "",
+    "content": "preset resolve reads components.json and returns a portable preset code for the current project. Some create-page values are not stored in components.json; those values are inferred from shipped defaults and listed in fallbacks.",
+    "href": "/docs/cli#preset",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
     "title": "search",
     "description": "",
     "content": "search",

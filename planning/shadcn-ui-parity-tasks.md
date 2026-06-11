@@ -15,7 +15,7 @@ Rules: audit local code before porting; a task is complete only when local code 
 - [x] Re-diff component inventories: `git ls-tree upstream-ui/main:apps/v4/registry/bases/base/ui --name-only` vs `ls docs/src/lib/registry/ui`.
   - Result: no missing upstream base UI components after normalizing React `.tsx` files to local component directories. Local extras remain `data-table`, `form`, and `range-calendar`.
 - [x] Re-diff CLI commands: `git ls-tree -r upstream-ui/main:packages/shadcn/src/commands --name-only` vs `find packages/cli/src/commands -type f`.
-  - Result after adding `apply`: remaining upstream command gaps are `build`, `diff`, `eject`, `migrate`, `preset`, and `registry/add`. Local extras are `init/preflight`, `registry/deps-resolver`, and hidden `update`; `index` is the local command barrel file.
+  - Result after adding `preset`: remaining upstream command gaps are `build`, `diff`, `eject`, `migrate`, and `registry/add`. Local extras are `init/preflight`, `registry/deps-resolver`, and hidden `update`; `index` is the local command barrel file.
 - [x] Re-diff docs content: `git ls-tree -r upstream-ui/main:apps/v4/content/docs --name-only` vs `ls -R docs/content`.
   - Result after `.mdx` to `.md` normalization: 188 upstream-only docs paths and 72 local-only docs paths remain. The upstream-only set is dominated by React-specific, base/radix split, and historical changelog pages already covered by Phase 3 dispositions; local-only docs include Svelte installation, migration, Formsnap, and RTL pages.
 
@@ -169,7 +169,11 @@ Rules: audit local code before porting; a task is complete only when local code 
   - Implemented: `shadcn-svelte apply [preset]` accepts named presets, preset codes, copied `--preset <code>` values, and `/init?preset=` URLs; updates `components.json`; applies the existing `/init` registry payload; and optionally reinstalls existing components when style, icon library, or menu settings change.
   - Docs: `docs/content/cli.md` now lists and documents the `apply` command.
   - Verification: `pnpm -F shadcn-svelte exec vitest test/commands/apply.test.ts --run`, `pnpm -F shadcn-svelte check`, `pnpm -F shadcn-svelte build`, `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`, `node packages/cli/dist/index.mjs apply --help`, and a built CLI smoke test against a temporary Vite starter using a local registry server.
-- [ ] Wire `preset` command group (decode, url, open, resolve).
+- [x] Wire `preset` command group (decode, url, open, resolve).
+  - Implemented: `shadcn-svelte preset decode`, `preset url`, `preset open`, and `preset resolve` with the `preset info` alias. `decode` and `resolve` support `--json`.
+  - Note: `preset resolve` reconstructs the closest portable preset from `components.json`. Values not stored in the current config schema, such as chart color, font, heading font, and radius, are inferred from shipped defaults and returned in `fallbacks`.
+  - Docs: `docs/content/cli.md` now lists and documents the `preset` command group.
+  - Verification: `pnpm -F shadcn-svelte exec vitest test/commands/preset.test.ts --run`, `pnpm -F shadcn-svelte check`, `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`, `pnpm -F shadcn-svelte build`, `node packages/cli/dist/index.mjs preset --help`, `node packages/cli/dist/index.mjs preset decode a0 --json`, `node packages/cli/dist/index.mjs preset resolve --cwd packages/cli/test/fixtures/config-vite --json`.
 - [ ] Wire `registry add` command for adding namespace entries to `components.json`.
 - [ ] Decide `diff` vs unhiding and documenting the existing `update` command; implement the decision.
 - [ ] Evaluate `eject` semantics for the Svelte stack; implement or record `not-applicable`.
