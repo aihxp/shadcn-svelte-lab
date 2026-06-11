@@ -9,8 +9,7 @@
 	import BaseColorPicker from "./base-color-picker.svelte";
 	import IconLibraryPicker from "./icon-library-picker.svelte";
 	import FontPicker from "./font-picker.svelte";
-	import MenuColorPicker from "./menu-color-picker.svelte";
-	import MenuAccentPicker from "./menu-accent-picker.svelte";
+	import MenuPicker from "./menu-picker.svelte";
 	import RandomButton from "./random-button.svelte";
 	import CopyPreset from "./copy-preset.svelte";
 	import OpenPreset from "./open-preset.svelte";
@@ -19,19 +18,15 @@
 	import Ethical from "$lib/components/ethical.svelte";
 	import Separator from "$lib/registry/ui/separator/separator.svelte";
 	import { FONT_HEADING_OPTIONS, FONTS } from "$lib/fonts.js";
-	import { Button } from "$lib/registry/ui/button/index.js";
-	import SquareTerminal from "@lucide/svelte/icons/square-terminal";
-	import { InitializeProjectCtx } from "./initialize-project-context.svelte.js";
-
-	const initializeProjectCtx = InitializeProjectCtx.get();
+	import ProjectForm from "./project-form.svelte";
 </script>
 
 <Tooltip.Provider>
 	<div
-		class="top-24 right-12 isolate z-10 flex min-h-0 w-full flex-col gap-2 self-start md:w-(--customizer-width)"
+		class="top-24 right-12 isolate z-10 flex min-h-0 w-full shrink-0 flex-col gap-2 self-start md:h-full md:w-(--customizer-width)"
 	>
 		<Card.Root
-			class="dark bg-card/90 max-h-(--preview-height) min-h-0 w-full gap-0 rounded-2xl shadow-xl backdrop-blur-xl"
+			class="dark bg-card/90 max-h-[180px] min-h-0 w-full gap-0 rounded-2xl shadow-xl backdrop-blur-xl md:h-full md:max-h-(--preview-height)"
 			size="sm"
 		>
 			<Card.Header
@@ -63,8 +58,7 @@
 				</FieldGroup.Group>
 				<Separator />
 				<FieldGroup.Group class="flex-row gap-2.5 p-3 md:flex-col md:gap-3.25">
-					<MenuColorPicker />
-					<MenuAccentPicker />
+					<MenuPicker />
 				</FieldGroup.Group>
 			</Card.Content>
 			<Card.Footer class="flex min-w-0 gap-2 px-3! md:flex-col md:**:[button,a]:w-full">
@@ -73,10 +67,7 @@
 				<RandomButton />
 			</Card.Footer>
 			<Card.Footer class="flex min-w-0 gap-2 px-3! pt-2 md:flex-col md:**:[button,a]:w-full">
-				<Button variant="default" onclick={() => (initializeProjectCtx.open = true)}>
-					<SquareTerminal />
-					Initialize Project
-				</Button>
+				<ProjectForm />
 			</Card.Footer>
 		</Card.Root>
 		<div class="hidden w-full flex-1 flex-col gap-12 md:flex">

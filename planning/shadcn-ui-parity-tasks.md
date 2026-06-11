@@ -136,12 +136,15 @@ Rules: audit local code before porting; a task is complete only when local code 
   - Decision: documented the Svelte-native sync workflow in `templates/README.md` instead of porting upstream's React template copy script.
   - Verification: `pnpm exec prettier --write templates`, full template smoke loop above.
 - [x] Link templates from the `monorepo` docs page and create flow.
-  - Implemented: `docs/content/monorepo.md`, `docs/content/new.md`, and the create initialize dialog link.
+  - Implemented: `docs/content/monorepo.md`, `docs/content/new.md`, and the create Get Code dialog template links.
   - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`.
 
 ## Phase 6: Site Residuals
 
-- [ ] Port create page `menu-picker.svelte` and `project-form.svelte`; finish the `create/+page.svelte` mobile layout rewrite.
+- [x] Port create page `menu-picker.svelte` and `project-form.svelte`; finish the local create route mobile layout rewrite.
+  - Implemented: `docs/src/routes/(app)/(layout)/(create)/components/menu-picker.svelte`, `docs/src/routes/(app)/(layout)/(create)/components/project-form.svelte`, and responsive updates in `create/+layout.svelte` and `customizer.svelte`.
+  - Removed: stale initialize dialog/context flow after replacing it with the upstream-style get-code dialog.
+  - Verification: `pnpm -F docs check`, Playwright desktop and mobile visual pass at `/create/preview-02`, `pnpm -F docs build:registry`, `pnpm -F docs build:content`, `pnpm -F docs check`, `pnpm -F docs build:svelte`.
 - [ ] Port the `(styles)/sera/` demo route tree and example images.
   - Upstream reference: `apps/v4/app/(app)/(styles)/sera`.
 - [ ] Port `preview` and `preview-02` blocks from `registry/bases/base/blocks`.

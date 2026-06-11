@@ -1602,6 +1602,15 @@
     "pageTitle": "Monorepo"
   },
   {
+    "title": "The /create page shows the same template paths in the Get Code dialog.",
+    "description": "",
+    "content": "The /create page shows the same template paths in the Get Code dialog.",
+    "href": "/docs/monorepo#template-starters",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "Monorepo"
+  },
+  {
     "title": "Recommended Shape",
     "description": "",
     "content": "Recommended Shape",
@@ -1794,6 +1803,15 @@
     "title": "Use the single app templates for small projects. Use the monorepo templates when multiple apps should share the same UI ...",
     "description": "",
     "content": "Use the single app templates for small projects. Use the monorepo templates when multiple apps should share the same UI package. See Monorepo for the workspace layout.",
+    "href": "/docs/new#start-from-a-template",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "Your project is ready!"
+  },
+  {
+    "title": "The /create page also exposes these paths in the Get Code dialog. Use the Command tab to copy shadcn-svelte init --prese...",
+    "description": "",
+    "content": "The /create page also exposes these paths in the Get Code dialog. Use the Command tab to copy shadcn-svelte init --preset for the current design, or use the Template tab to copy a starter template path.",
     "href": "/docs/new#start-from-a-template",
     "category": "Getting Started",
     "type": "text",

@@ -11,6 +11,8 @@ Starter templates are available in the repository under `templates/` for SvelteK
 
 Use the single app templates for small projects. Use the monorepo templates when multiple apps should share the same UI package. See [Monorepo](/docs/monorepo#template-starters) for the workspace layout.
 
+The `/create` page also exposes these paths in the Get Code dialog. Use the Command tab to copy `shadcn-svelte init --preset <preset>` for the current design, or use the Template tab to copy a starter template path.
+
 ## Add Components
 
 Use the CLI to add components to your project.

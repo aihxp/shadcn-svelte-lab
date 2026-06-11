@@ -17,6 +17,8 @@ Starter templates are available in the repository under `templates/`. Use the mo
 
 Each monorepo template includes `apps/web`, `packages/ui`, a workspace `pnpm-workspace.yaml`, and matching `components.json` files. Run `pnpm install`, then run `pnpm check` and `pnpm build` from the template root.
 
+The `/create` page shows the same template paths in the Get Code dialog.
+
 ## Recommended Shape
 
 ```txt

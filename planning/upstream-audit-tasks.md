@@ -106,7 +106,7 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
   - Verification: `pnpm install`, `pnpm -F shadcn-svelte test`, `pnpm -F shadcn-svelte check`, and `pnpm -F docs check`.
 - [x] `partial` PR [#2679](https://github.com/huntabyte/shadcn-svelte/pull/2679): create docs: site infrastructure, layout, navigation, and routing.
   - Evidence: the paginated upstream file list contains 2,899 files, and 2,892 matching paths already exist locally, including the `(create)` docs route tree and most layout infrastructure.
-  - Remaining gap: local files are still missing for `docs/src/hooks.server.ts`, `docs/src/lib/components/setup-cards.svelte`, `docs/src/lib/types/block.ts`, `docs/src/lib/utils/search.ts`, `docs/src/routes/(app)/(layout)/(create)/components/menu-picker.svelte`, `docs/src/routes/(app)/(layout)/(create)/components/project-form.svelte`, and `docs/src/routes/rss.xml/+server.ts`.
+  - Remaining gap: local files are still missing for `docs/src/hooks.server.ts`, `docs/src/lib/components/setup-cards.svelte`, and `docs/src/lib/types/block.ts`.
   - Verification: upstream path inventory and `pnpm -F docs check`.
 - [x] `partial` PR [#2678](https://github.com/huntabyte/shadcn-svelte/pull/2678): create docs: update non-component docs, changelog, and velite config.
   - Evidence: `docs/velite.config.js` now defines a `changelog` collection; `docs/src/lib/docs.ts` exports sorted changelog pages; `/docs/changelog` renders a changelog index; the former single `docs/content/changelog.md` file is split into collection entries under `docs/content/changelog/`.
@@ -126,7 +126,7 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
   - Verification: `pnpm -F docs build:registry` and `pnpm -F docs check`.
 - [x] `partial` PR [#2674](https://github.com/huntabyte/shadcn-svelte/pull/2674): create docs: create layout tweaks and mobile optimizations.
   - Evidence: upstream touches 35 paths and 32 now exist locally. The CLI preset utility portion is covered by the `DEFAULT_PRESETS` export added in this batch.
-  - Remaining gap: the Create docs route still lacks `menu-picker.svelte`, `project-form.svelte`, and the updated `create/+page.svelte`, so the mobile layout rewrite is not fully ported.
+  - Remaining gap: the Svelte create route now has `menu-picker.svelte`, `project-form.svelte`, and the local mobile layout rewrite. Remaining create-docs parity should focus on route-specific behavior rather than the removed upstream `create/+page.svelte` file shape.
   - Verification: upstream path inventory, `pnpm -F docs build:registry`, `pnpm -F docs check`, and `pnpm -F shadcn-svelte check`.
 - [x] `partial` PR [#2673](https://github.com/huntabyte/shadcn-svelte/pull/2673): create docs: add Sera demo page and changelog.
   - Evidence: upstream touches 202 paths and 168 exist locally, mostly generated `sera` style registry JSON. The Sera changelog entry is now present in `docs/content/changelog/2026-04-sera.md`.
