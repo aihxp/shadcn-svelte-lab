@@ -103,7 +103,7 @@ Phases are ordered by leverage; each phase is independently shippable.
 2. Phase 2, agent surface: complete.
 3. Phase 3, docs parity: complete.
 4. Phase 4, directory: complete with a curated Svelte-compatible policy.
-5. Phase 5, templates: next. Add the six Svelte templates plus sync script and monorepo docs wiring.
+5. Phase 5, templates: complete. Six Svelte templates, sync workflow docs, monorepo docs wiring, and create flow links are in place.
 6. Phase 6, site residuals: create page components, sera demo route, preview blocks, `hooks.server.ts`, remaining files from Workstream F.
 7. Phase 7, long tail: `apply` and `preset` commands, `eject`, `migrate` (including the RTL migration from issue 2512), `diff` or unhidden `update`, top-level `build` alias, optional e2e fixture package.
 

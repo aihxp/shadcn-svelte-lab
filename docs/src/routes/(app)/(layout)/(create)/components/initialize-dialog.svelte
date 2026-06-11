@@ -52,7 +52,14 @@
 			>
 				installation docs
 			</a>
-			for framework setup before initializing shadcn-svelte with the command below.
+			for framework setup, or start from a
+			<a
+				href="/docs/new#start-from-a-template"
+				class="hover:text-primary font-medium underline underline-offset-4"
+			>
+				template
+			</a>
+			before initializing shadcn-svelte with the command below.
 		</Callout>
 		<Tooltip.Provider>
 			<PMExecute {command} />

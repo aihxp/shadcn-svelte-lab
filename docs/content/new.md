@@ -5,6 +5,12 @@ description: Start building with shadcn-svelte components, blocks, registries, a
 
 Here are a few things you can do after creating a new project with shadcn-svelte.
 
+## Start From A Template
+
+Starter templates are available in the repository under `templates/` for SvelteKit, Vite, and Astro. Each framework has a single app template and a monorepo template with a shared `packages/ui` workspace.
+
+Use the single app templates for small projects. Use the monorepo templates when multiple apps should share the same UI package. See [Monorepo](/docs/monorepo#template-starters) for the workspace layout.
+
 ## Add Components
 
 Use the CLI to add components to your project.

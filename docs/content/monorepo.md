@@ -5,7 +5,17 @@ description: Use shadcn-svelte components and the CLI in a workspace monorepo.
 
 The CLI can resolve aliases through `tsconfig` paths, `package.json#imports`, and workspace package exports. That makes it possible to install shared UI components into a package such as `packages/ui` while app-level blocks live in an app workspace.
 
-Template scaffolds for monorepos are tracked separately in the parity plan. Today, create the workspaces yourself, add a `components.json` file where the CLI should install files, and make the aliases point at the right workspace.
+Starter templates are available in the repository under `templates/`. Use the monorepo templates when you want the app workspace to consume shared UI from `packages/ui`.
+
+## Template Starters
+
+| Framework | Single app                | Monorepo                       |
+| --------- | ------------------------- | ------------------------------ |
+| SvelteKit | `templates/sveltekit-app` | `templates/sveltekit-monorepo` |
+| Vite      | `templates/vite-app`      | `templates/vite-monorepo`      |
+| Astro     | `templates/astro-app`     | `templates/astro-monorepo`     |
+
+Each monorepo template includes `apps/web`, `packages/ui`, a workspace `pnpm-workspace.yaml`, and matching `components.json` files. Run `pnpm install`, then run `pnpm check` and `pnpm build` from the template root.
 
 ## Recommended Shape
 

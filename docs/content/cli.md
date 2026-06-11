@@ -1,11 +1,30 @@
 ---
 title: shadcn-svelte
-description: Use the shadcn-svelte CLI to add components to your project.
+description: Use the shadcn-svelte CLI to initialize projects, add components, inspect registries, and run agent tools.
 ---
 
 <script>
 	import PMExecute from "$lib/components/pm-execute.svelte";
 </script>
+
+The CLI can initialize projects, add registry items, search and inspect registries, return docs links, start the MCP server, and help registry authors build or validate registry files.
+
+## Commands
+
+```txt
+Usage: shadcn-svelte [options] [command]
+
+Commands:
+  add [components...]          Add components to your project
+  docs <components...>         Get docs, API references, and usage examples
+  info                         Inspect project configuration
+  init                         Initialize your project and install dependencies
+  mcp                          Start the MCP server
+  registry build [registry]    Build registry JSON files
+  registry validate [registry] Validate a GitHub source registry
+  search [registries...]       Search items from registries
+  view <items...>              View registry items
+```
 
 ## init
 
@@ -182,38 +201,6 @@ Options:
   -h, --help        display help for command
 ```
 
----
-
-## mcp
-
-Use the `mcp` command to start the shadcn-svelte MCP server over stdio.
-
-```bash
-shadcn-svelte mcp
-```
-
-The server exposes tools for project info, configured registries, directory registry search, registry listing, item viewing, component docs links, init commands, add commands, and a component audit checklist.
-
-**Options**
-
-```bash
-Usage: shadcn-svelte mcp [options]
-
-start the shadcn-svelte MCP server
-
-Options:
-  -c, --cwd <path>   the working directory (default: the current directory)
-  -h, --help         display help for command
-```
-
-The deprecated `registry mcp` command prints a compatibility warning and points users to `mcp`:
-
-```bash
-shadcn-svelte registry mcp
-```
-
----
-
 ## view
 
 Use the `view` command to print registry item JSON. This is useful for scripts and agents that need item metadata, dependencies, docs, or file contents.
@@ -293,6 +280,31 @@ Options:
   -c, --cwd <path>     the working directory (default: the current directory)
   -o, --output <path>  destination directory for json files (default: ./static/r)
   -h, --help           display help for command
+```
+
+---
+
+## registry validate
+
+Use the `registry validate` command to check that a public GitHub source registry can be loaded and that declared item files are readable.
+
+```bash
+shadcn-svelte registry validate acme/toolkit
+shadcn-svelte registry validate acme/toolkit#main
+```
+
+**Options**
+
+```bash
+Usage: shadcn-svelte registry validate [options] [registry]
+
+validate a shadcn-svelte registry
+
+Arguments:
+  registry    GitHub registry source to validate, e.g. owner/repo or owner/repo#ref
+
+Options:
+  -h, --help  display help for command
 ```
 
 ---

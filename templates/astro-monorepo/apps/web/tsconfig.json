@@ -1,0 +1,15 @@
+{
+	"extends": "astro/tsconfigs/strict",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"$lib": ["src/lib"],
+			"$lib/*": ["src/lib/*"],
+			"@workspace/ui/components": ["../../packages/ui/src/lib/components/ui"],
+			"@workspace/ui/components/*": ["../../packages/ui/src/lib/components/ui/*"],
+			"@workspace/ui/hooks": ["../../packages/ui/src/lib/hooks"],
+			"@workspace/ui/hooks/*": ["../../packages/ui/src/lib/hooks/*"],
+			"@workspace/ui/lib/utils": ["../../packages/ui/src/lib/utils"]
+		}
+	}
+}

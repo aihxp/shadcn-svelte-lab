@@ -73,9 +73,9 @@ The CLI and create page only select from shipped base colors. For custom brand t
 
 ## aliases
 
-The CLI uses these values and the `alias` config from your `svelte.config.js` file to place generated components in the correct location.
+The CLI uses these values to place generated components in the correct location and to rewrite imports. Aliases can resolve through TypeScript paths, SvelteKit `kit.alias`, Vite aliases, `package.json#imports`, or workspace package exports.
 
-Path aliases have to be set up in your `svelte.config.js` file.
+For a standard SvelteKit app, `$lib` is enough. For custom aliases, configure the same roots in your app tooling and `components.json`. See [Package Imports](/docs/package-imports) and [Monorepo](/docs/monorepo) for workspace package examples.
 
 ### aliases.lib
 

@@ -117,6 +117,24 @@
     "pageTitle": "About"
   },
   {
+    "title": "shadcn-svelte",
+    "description": "Use the shadcn-svelte CLI to initialize projects, add components, inspect registries, and run agent tools.",
+    "content": "The CLI can initialize projects, add registry items, search and inspect registries, return docs links, start the MCP server, and help registry authors build or validate registry files.",
+    "href": "/docs/cli",
+    "category": "Getting Started",
+    "type": "page",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "Commands",
+    "description": "",
+    "content": "Commands",
+    "href": "/docs/cli#commands",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
     "title": "init",
     "description": "",
     "content": "init",
@@ -279,42 +297,6 @@
     "pageTitle": "shadcn-svelte"
   },
   {
-    "title": "mcp",
-    "description": "",
-    "content": "mcp",
-    "href": "/docs/cli#mcp",
-    "category": "Getting Started",
-    "type": "heading",
-    "pageTitle": "shadcn-svelte"
-  },
-  {
-    "title": "Use the mcp command to start the shadcn-svelte MCP server over stdio.",
-    "description": "",
-    "content": "Use the mcp command to start the shadcn-svelte MCP server over stdio.",
-    "href": "/docs/cli#mcp",
-    "category": "Getting Started",
-    "type": "text",
-    "pageTitle": "shadcn-svelte"
-  },
-  {
-    "title": "The server exposes tools for project info, configured registries, directory registry search, registry listing, item view...",
-    "description": "",
-    "content": "The server exposes tools for project info, configured registries, directory registry search, registry listing, item viewing, component docs links, init commands, add commands, and a component audit checklist.",
-    "href": "/docs/cli#mcp",
-    "category": "Getting Started",
-    "type": "text",
-    "pageTitle": "shadcn-svelte"
-  },
-  {
-    "title": "The deprecated registry mcp command prints a compatibility warning and points users to mcp:",
-    "description": "",
-    "content": "The deprecated registry mcp command prints a compatibility warning and points users to mcp:",
-    "href": "/docs/cli#mcp",
-    "category": "Getting Started",
-    "type": "text",
-    "pageTitle": "shadcn-svelte"
-  },
-  {
     "title": "view",
     "description": "",
     "content": "view",
@@ -400,6 +382,24 @@
     "description": "",
     "content": "This command reads the registry.json file and generates the registry JSON files into the static/r directory.",
     "href": "/docs/cli#registry-build",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "registry validate",
+    "description": "",
+    "content": "registry validate",
+    "href": "/docs/cli#registry-validate",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "Use the registry validate command to check that a public GitHub source registry can be loaded and that declared item fil...",
+    "description": "",
+    "content": "Use the registry validate command to check that a public GitHub source registry can be loaded and that declared item files are readable.",
+    "href": "/docs/cli#registry-validate",
     "category": "Getting Started",
     "type": "text",
     "pageTitle": "shadcn-svelte"
@@ -549,18 +549,18 @@
     "pageTitle": "components.json"
   },
   {
-    "title": "The CLI uses these values and the alias config from your svelte.config.js file to place generated components in the corr...",
+    "title": "The CLI uses these values to place generated components in the correct location and to rewrite imports. Aliases can reso...",
     "description": "",
-    "content": "The CLI uses these values and the alias config from your svelte.config.js file to place generated components in the correct location.",
+    "content": "The CLI uses these values to place generated components in the correct location and to rewrite imports. Aliases can resolve through TypeScript paths, SvelteKit kit.alias, Vite aliases, package.json#imports, or workspace package exports.",
     "href": "/docs/components-json#aliases",
     "category": "Getting Started",
     "type": "text",
     "pageTitle": "components.json"
   },
   {
-    "title": "Path aliases have to be set up in your svelte.config.js file.",
+    "title": "For a standard SvelteKit app, $lib is enough. For custom aliases, configure the same roots in your app tooling and compo...",
     "description": "",
-    "content": "Path aliases have to be set up in your svelte.config.js file.",
+    "content": "For a standard SvelteKit app, $lib is enough. For custom aliases, configure the same roots in your app tooling and components.json. See Package Imports and Monorepo for workspace package examples.",
     "href": "/docs/components-json#aliases",
     "category": "Getting Started",
     "type": "text",
@@ -1568,10 +1568,37 @@
   {
     "title": "Monorepo",
     "description": "Use shadcn-svelte components and the CLI in a workspace monorepo.",
-    "content": "The CLI can resolve aliases through tsconfig paths, package.json#imports, and workspace package exports. That makes it possible to install shared UI components into a package such as packages/ui while app-level blocks live in an app workspace. Template scaffolds for monorepos are tracked separately in the parity plan. Today, create the workspaces yourself, add a components.json file where the CLI should install files, and make the aliases point at the right workspace.",
+    "content": "The CLI can resolve aliases through tsconfig paths, package.json#imports, and workspace package exports. That makes it possible to install shared UI components into a package such as packages/ui while app-level blocks live in an app workspace. Starter templates are available in the repository under templates/. Use the monorepo templates when you want the app workspace to consume shared UI from packages/ui.",
     "href": "/docs/monorepo",
     "category": "Getting Started",
     "type": "page",
+    "pageTitle": "Monorepo"
+  },
+  {
+    "title": "Template Starters",
+    "description": "",
+    "content": "Template Starters",
+    "href": "/docs/monorepo#template-starters",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "Monorepo"
+  },
+  {
+    "title": "| Framework | Single app | Monorepo | | --------- | ------------------------- | ------------------------------ | | Svelt...",
+    "description": "",
+    "content": "| Framework | Single app | Monorepo | | --------- | ------------------------- | ------------------------------ | | SvelteKit | templates/sveltekit-app | templates/sveltekit-monorepo | | Vite | templates/vite-app | templates/vite-monorepo | | Astro | templates/astro-app | templates/astro-monorepo |",
+    "href": "/docs/monorepo#template-starters",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "Monorepo"
+  },
+  {
+    "title": "Each monorepo template includes apps/web, packages/ui, a workspace pnpm-workspace.yaml, and matching components.json fil...",
+    "description": "",
+    "content": "Each monorepo template includes apps/web, packages/ui, a workspace pnpm-workspace.yaml, and matching components.json files. Run pnpm install, then run pnpm check and pnpm build from the template root.",
+    "href": "/docs/monorepo#template-starters",
+    "category": "Getting Started",
+    "type": "text",
     "pageTitle": "Monorepo"
   },
   {
@@ -1743,6 +1770,33 @@
     "href": "/docs/new",
     "category": "Getting Started",
     "type": "page",
+    "pageTitle": "Your project is ready!"
+  },
+  {
+    "title": "Start From A Template",
+    "description": "",
+    "content": "Start From A Template",
+    "href": "/docs/new#start-from-a-template",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "Your project is ready!"
+  },
+  {
+    "title": "Starter templates are available in the repository under templates/ for SvelteKit, Vite, and Astro. Each framework has a ...",
+    "description": "",
+    "content": "Starter templates are available in the repository under templates/ for SvelteKit, Vite, and Astro. Each framework has a single app template and a monorepo template with a shared packages/ui workspace.",
+    "href": "/docs/new#start-from-a-template",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "Your project is ready!"
+  },
+  {
+    "title": "Use the single app templates for small projects. Use the monorepo templates when multiple apps should share the same UI ...",
+    "description": "",
+    "content": "Use the single app templates for small projects. Use the monorepo templates when multiple apps should share the same UI package. See Monorepo for the workspace layout.",
+    "href": "/docs/new#start-from-a-template",
+    "category": "Getting Started",
+    "type": "text",
     "pageTitle": "Your project is ready!"
   },
   {

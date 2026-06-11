@@ -1,0 +1,32 @@
+---
+import MainLayout from "../layouts/main.astro";
+
+const tasks = [
+	"Install shared UI with pnpm dlx shadcn-svelte@latest add button",
+	"Keep app blocks in apps/web/src/lib/components",
+	"Share reusable UI from packages/ui",
+];
+---
+
+<MainLayout title="Astro Monorepo Starter">
+	<main class="min-h-svh bg-background text-foreground">
+		<section class="mx-auto flex w-full max-w-3xl flex-col gap-8 px-6 py-12">
+			<div class="space-y-3">
+				<p class="text-sm font-medium text-muted-foreground">shadcn-svelte starter</p>
+				<h1 class="text-3xl font-semibold tracking-normal sm:text-4xl">Astro monorepo</h1>
+				<p class="max-w-2xl text-base text-muted-foreground">
+					A workspace setup with an Astro app, Svelte integration, and a shared UI package
+					ready for shadcn-svelte registry installs.
+				</p>
+			</div>
+
+			<div class="rounded-lg border bg-card p-5 text-card-foreground shadow-sm">
+				<h2 class="text-sm font-medium">Ready checks</h2>
+				<ul class="mt-4 grid gap-3 text-sm text-muted-foreground">
+					{tasks.map((task) => <li class="rounded-md border bg-background px-3 py-2">{task}</li>)}
+				</ul>
+			</div>
+		</section>
+	</main>
+</MainLayout>
+

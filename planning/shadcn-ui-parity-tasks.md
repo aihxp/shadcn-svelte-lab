@@ -85,7 +85,7 @@ Rules: audit local code before porting; a task is complete only when local code 
 - [x] Root docs: add `skills` page.
   - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`.
 - [x] Root docs: add `monorepo` page (coordinate with Phase 5 templates).
-  - Note: documented the current manual workspace setup and recorded that monorepo template scaffolds remain Phase 5 work.
+  - Note: monorepo docs now link the SvelteKit, Vite, and Astro template starters added in Phase 5.
   - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`.
 - [x] Root docs: adapt `package-imports` page to Svelte aliasing.
   - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`.
@@ -120,15 +120,24 @@ Rules: audit local code before porting; a task is complete only when local code 
 
 ## Phase 5: Templates
 
-- [ ] Add `templates/sveltekit-app`.
-- [ ] Add `templates/sveltekit-monorepo`.
-- [ ] Add `templates/vite-app`.
-- [ ] Add `templates/vite-monorepo`.
-- [ ] Add `templates/astro-app`.
-- [ ] Add `templates/astro-monorepo`.
-- [ ] Port `scripts/sync-templates.sh` or document the local sync workflow.
-- [ ] Link templates from the `monorepo` docs page and create flow.
-- Verification per template: scaffold, run the template's own `check` and `build`, then `shadcn-svelte add button` against it.
+- [x] Add `templates/sveltekit-app`.
+  - Verification: copied to a temporary directory, `pnpm install --no-lockfile`, `pnpm check`, `pnpm build`, `REGISTRY_URL=http://127.0.0.1:8124/registry node packages/cli/dist/index.mjs add button --cwd <tmp>/sveltekit-app --yes --overwrite --no-deps --skip-preflight`.
+- [x] Add `templates/sveltekit-monorepo`.
+  - Verification: copied to a temporary directory, `pnpm install --no-lockfile`, `pnpm check`, `pnpm build`, `REGISTRY_URL=http://127.0.0.1:8124/registry node packages/cli/dist/index.mjs add button --cwd <tmp>/sveltekit-monorepo/apps/web --yes --overwrite --no-deps --skip-preflight`.
+- [x] Add `templates/vite-app`.
+  - Verification: copied to a temporary directory, `pnpm install --no-lockfile`, `pnpm check`, `pnpm build`, `REGISTRY_URL=http://127.0.0.1:8124/registry node packages/cli/dist/index.mjs add button --cwd <tmp>/vite-app --yes --overwrite --no-deps --skip-preflight`.
+- [x] Add `templates/vite-monorepo`.
+  - Verification: copied to a temporary directory, `pnpm install --no-lockfile`, `pnpm check`, `pnpm build`, `REGISTRY_URL=http://127.0.0.1:8124/registry node packages/cli/dist/index.mjs add button --cwd <tmp>/vite-monorepo/apps/web --yes --overwrite --no-deps --skip-preflight`.
+- [x] Add `templates/astro-app`.
+  - Verification: copied to a temporary directory, `pnpm install --no-lockfile`, `pnpm check`, `pnpm build`, `REGISTRY_URL=http://127.0.0.1:8124/registry node packages/cli/dist/index.mjs add button --cwd <tmp>/astro-app --yes --overwrite --no-deps --skip-preflight`.
+- [x] Add `templates/astro-monorepo`.
+  - Verification: copied to a temporary directory, `pnpm install --no-lockfile`, `pnpm check`, `pnpm build`, `REGISTRY_URL=http://127.0.0.1:8124/registry node packages/cli/dist/index.mjs add button --cwd <tmp>/astro-monorepo/apps/web --yes --overwrite --no-deps --skip-preflight`.
+- [x] Port `scripts/sync-templates.sh` or document the local sync workflow.
+  - Decision: documented the Svelte-native sync workflow in `templates/README.md` instead of porting upstream's React template copy script.
+  - Verification: `pnpm exec prettier --write templates`, full template smoke loop above.
+- [x] Link templates from the `monorepo` docs page and create flow.
+  - Implemented: `docs/content/monorepo.md`, `docs/content/new.md`, and the create initialize dialog link.
+  - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`.
 
 ## Phase 6: Site Residuals
 

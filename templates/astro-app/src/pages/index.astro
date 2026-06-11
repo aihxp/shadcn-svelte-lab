@@ -1,0 +1,32 @@
+---
+import MainLayout from "../layouts/main.astro";
+
+const tasks = [
+	"Install a component with pnpm dlx shadcn-svelte@latest add button",
+	"Edit src/styles/global.css to tune tokens",
+	"Build your app flow in src/pages",
+];
+---
+
+<MainLayout title="Astro Starter">
+	<main class="min-h-svh bg-background text-foreground">
+		<section class="mx-auto flex w-full max-w-3xl flex-col gap-8 px-6 py-12">
+			<div class="space-y-3">
+				<p class="text-sm font-medium text-muted-foreground">shadcn-svelte starter</p>
+				<h1 class="text-3xl font-semibold tracking-normal sm:text-4xl">Astro app</h1>
+				<p class="max-w-2xl text-base text-muted-foreground">
+					An Astro project with Svelte integration, Tailwind CSS v4, shadcn-svelte theme
+					tokens, and CLI aliases ready for registry installs.
+				</p>
+			</div>
+
+			<div class="rounded-lg border bg-card p-5 text-card-foreground shadow-sm">
+				<h2 class="text-sm font-medium">Ready checks</h2>
+				<ul class="mt-4 grid gap-3 text-sm text-muted-foreground">
+					{tasks.map((task) => <li class="rounded-md border bg-background px-3 py-2">{task}</li>)}
+				</ul>
+			</div>
+		</section>
+	</main>
+</MainLayout>
+
