@@ -148,6 +148,7 @@ async function runUpdate(cwd: string, config: cliConfig.ResolvedConfig, options:
 		registryUrl,
 		registryIndex,
 		items: selectedComponents.map((comp) => comp.name),
+		config,
 	});
 
 	const payload = await registry.fetchRegistryItems({

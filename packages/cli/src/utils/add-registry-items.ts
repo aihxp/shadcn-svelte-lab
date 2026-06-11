@@ -47,6 +47,7 @@ export async function addRegistryItems(opts: AddRegistryItemsProps) {
 		registryUrl,
 		registryIndex,
 		items: Array.from(selectedItems),
+		config: opts.config,
 	});
 
 	const itemsWithContent = await registry.fetchRegistryItems({

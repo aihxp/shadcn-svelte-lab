@@ -188,21 +188,48 @@ The registry URL tells the CLI where to fetch the shadcn-svelte components/regis
 
 ### Multiple registries
 
-`shadcn-svelte` currently reads one `registry` URL from `components.json`. The `registries` map used by shadcn/ui is not a supported `components.json` field yet.
+Use `registries` to configure additional named registries. Add items from them with the `@namespace/item` syntax.
 
-To work with more than one registry source today, use one of these patterns:
-
-- Pass a full registry item URL to `add`.
-- Put full item URLs in `registryDependencies`.
-- Use a GitHub source registry with `include` to split one source repository across multiple `registry.json` files.
-- Set `REGISTRY_URL` when you want a different default registry for a command.
-
-```bash
-REGISTRY_URL="https://example.com/registry" pnpm dlx shadcn-svelte@latest add button
+```json title="components.json"
+{
+  "registries": {
+    "@acme": "https://acme.test/r/{name}.json"
+  }
+}
 ```
 
 ```bash
-pnpm dlx shadcn-svelte@latest add https://example.com/r/editor.json
+pnpm dlx shadcn-svelte@latest add @acme/editor
 ```
+
+Registry URLs must include a `{name}` placeholder. The CLI replaces it with the item name. You can also use `{style}` to reuse the current style name from your config.
+
+```json title="components.json"
+{
+  "registries": {
+    "@acme": "https://acme.test/r/{style}/{name}.json"
+  }
+}
+```
+
+For authenticated registries, use the object form with `headers` and `params`. Environment variables use `${VAR_NAME}` placeholders. Header variables are required, and the CLI fails before fetching when one is missing.
+
+```json title="components.json"
+{
+  "registries": {
+    "@private": {
+      "url": "https://registry.acme.test/{name}.json",
+      "headers": {
+        "Authorization": "Bearer ${ACME_TOKEN}"
+      },
+      "params": {
+        "workspace": "${ACME_WORKSPACE}"
+      }
+    }
+  }
+}
+```
+
+Bare item names still resolve through the default `registry` URL. Full item URLs and GitHub source registry addresses are still supported for one-off installs.
 
 See the [Custom Registries](/docs/registry/getting-started) and [GitHub Registries](/docs/registry/github) guides for details.

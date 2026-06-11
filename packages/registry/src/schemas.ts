@@ -1,5 +1,27 @@
 import { z } from "zod/v4";
 
+const registryConfigItemUrlSchema = z.string().refine((value) => value.includes("{name}"), {
+	message: "Registry URL must include {name} placeholder",
+});
+
+export const registryConfigItemSchema = z.union([
+	registryConfigItemUrlSchema,
+	z.object({
+		url: registryConfigItemUrlSchema,
+		params: z.record(z.string(), z.string()).optional(),
+		headers: z.record(z.string(), z.string()).optional(),
+	}),
+]);
+export type RegistryConfigItem = z.infer<typeof registryConfigItemSchema>;
+
+export const registryConfigSchema = z.record(
+	z.string().regex(/^@[a-zA-Z0-9](?:[a-zA-Z0-9-_]*[a-zA-Z0-9])?$/, {
+		message: "Registry names must start with @ and contain only letters, numbers, hyphens, or underscores",
+	}),
+	registryConfigItemSchema
+);
+export type RegistryConfig = z.infer<typeof registryConfigSchema>;
+
 const registryItemFileType = [
 	"registry:lib",
 	"registry:block",
@@ -20,7 +42,7 @@ const registryItemComplexType = ["registry:block"] as const;
 const registryItemInternalType = ["registry:example", "registry:internal"] as const;
 
 export type RegistryItemType = z.infer<typeof registryItemTypeSchema>;
-const registryItemTypeSchema = z
+export const registryItemTypeSchema = z
 	.enum([...registryItemFileType, ...registryItemComplexType, ...registryItemInternalType])
 	.describe(
 		"The type of the item. Used to determine the type and target path of the item when resolved for a project."
@@ -92,6 +114,8 @@ const baseIndexItemSchema = z.object({
 		),
 });
 
+export const registryCatalogItemSchema = baseIndexItemSchema.passthrough();
+
 export type RegistryIndexItem = z.infer<typeof registryIndexItemSchema>;
 /** Schema for registry items defined in the index */
 export const registryIndexItemSchema = baseIndexItemSchema.extend({
@@ -101,6 +125,40 @@ export const registryIndexItemSchema = baseIndexItemSchema.extend({
 export type RegistryIndex = z.infer<typeof registryIndexSchema>;
 /** Schema for the registry's index (e.g. `https://example.com/registry/index.json`) */
 export const registryIndexSchema = z.array(registryIndexItemSchema);
+
+export const registryCatalogSchema = z
+	.object({
+		name: z.string().optional(),
+		homepage: z.string().optional(),
+		items: z.array(registryCatalogItemSchema).default([]),
+	})
+	.passthrough();
+export type RegistryCatalog = z.infer<typeof registryCatalogSchema>;
+
+export const searchResultItemSchema = z.object({
+	name: z.string(),
+	type: z.string().optional(),
+	description: z.string().optional(),
+	registry: z.string(),
+	addCommandArgument: z.string(),
+});
+
+export const searchResultErrorSchema = z.object({
+	registry: z.string(),
+	message: z.string(),
+});
+
+export const searchResultsSchema = z.object({
+	pagination: z.object({
+		total: z.number(),
+		offset: z.number(),
+		limit: z.number(),
+		hasMore: z.boolean(),
+	}),
+	items: z.array(searchResultItemSchema),
+	errors: z.array(searchResultErrorSchema).optional(),
+});
+export type SearchResults = z.infer<typeof searchResultsSchema>;
 
 const colorSchema = z.record(z.string(), z.string());
 /** Schema for base color endpoints (e.g. `https://example.com/registry/colors/slate.json`) */
@@ -317,6 +375,11 @@ export const componentsJsonSchema = z.object({
 		.optional()
 		.describe(
 			"The registry URL tells the CLI where to fetch the shadcn-svelte components/registry from. You can pin this to a specific preview release or your own fork of the registry."
+		),
+	registries: registryConfigSchema
+		.optional()
+		.describe(
+			"Additional named registries. Use @namespace/item when adding items from these registries."
 		),
 	hooks: lifecycleHooksSchema,
 	typescript: z

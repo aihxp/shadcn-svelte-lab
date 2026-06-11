@@ -9,6 +9,7 @@ import {
 	resolveRegistryItems,
 	getItemAliasDir,
 	resolveItemFilePath,
+	getRegistryCatalog,
 } from "../../src/utils/registry/index.js";
 import { toPosixPath } from "./test-helpers.js";
 import type { ResolvedConfig } from "../../src/utils/config/index.js";
@@ -259,6 +260,126 @@ describe("Registry Utilities", () => {
 					items: ["nonexistent-item"],
 				})
 			).rejects.toThrow(/https:\/\/shadcn-svelte\.com\/registry/);
+		});
+
+		it("should resolve namespaced items with registry auth headers", async () => {
+			process.env.ACME_TOKEN = "secret";
+			const namespacedItem: RegistryItem = {
+				name: "calendar",
+				title: "Calendar",
+				type: "registry:ui",
+				files: [],
+				registryDependencies: ["@acme/theme"],
+			};
+			const namespacedTheme: RegistryItem = {
+				name: "theme",
+				title: "Theme",
+				type: "registry:theme",
+				files: [],
+			};
+			vi.mocked(fetch)
+				.mockResolvedValueOnce({
+					json: () => Promise.resolve(namespacedItem),
+					ok: true,
+					status: 200,
+					statusText: "OK",
+				} as Response)
+				.mockResolvedValueOnce({
+					json: () => Promise.resolve(namespacedTheme),
+					ok: true,
+					status: 200,
+					statusText: "OK",
+				} as Response);
+
+			const result = await resolveRegistryItems({
+				registryUrl,
+				registryIndex: mockRegistryIndex,
+				items: ["@acme/calendar"],
+				config: {
+					style: "nova",
+					registries: {
+						"@acme": {
+							url: "https://acme.test/r/{style}/{name}.json",
+							params: {
+								token: "${ACME_TOKEN}",
+							},
+							headers: {
+								Authorization: "Bearer ${ACME_TOKEN}",
+							},
+						},
+					},
+				},
+			});
+
+			expect(result.map((item) => item.name)).toEqual(["calendar", "theme"]);
+			expect(fetch).toHaveBeenNthCalledWith(
+				1,
+				"https://acme.test/r/nova/calendar.json?token=secret",
+				{ headers: { Authorization: "Bearer secret" } }
+			);
+			expect(fetch).toHaveBeenNthCalledWith(
+				2,
+				"https://acme.test/r/nova/theme.json?token=secret",
+				{ headers: { Authorization: "Bearer secret" } }
+			);
+			delete process.env.ACME_TOKEN;
+		});
+
+		it("should fail before fetching when registry auth env vars are missing", async () => {
+			delete process.env.ACME_TOKEN;
+
+			await expect(
+				resolveRegistryItems({
+					registryUrl,
+					registryIndex: mockRegistryIndex,
+					items: ["@acme/calendar"],
+					config: {
+						registries: {
+							"@acme": {
+								url: "https://acme.test/r/{name}.json",
+								headers: {
+									Authorization: "Bearer ${ACME_TOKEN}",
+								},
+							},
+						},
+					},
+				})
+			).rejects.toThrow("Missing environment variable ACME_TOKEN");
+
+			expect(fetch).not.toHaveBeenCalled();
+		});
+	});
+
+	describe("getRegistryCatalog", () => {
+		it("should fetch namespaced registry catalogs", async () => {
+			vi.mocked(fetch).mockResolvedValueOnce({
+				json: () =>
+					Promise.resolve({
+						name: "acme",
+						homepage: "https://acme.test",
+						items: [
+							{
+								name: "button",
+								type: "registry:ui",
+								description: "A button",
+							},
+						],
+					}),
+				ok: true,
+				status: 200,
+				statusText: "OK",
+			} as Response);
+
+			const result = await getRegistryCatalog("@acme", {
+				config: {
+					registries: {
+						"@acme": "https://acme.test/r/{name}.json",
+					},
+				},
+			});
+
+			expect(result.items.map((item) => item.name)).toEqual(["button"]);
+			expect(fetch).toHaveBeenCalledWith("https://acme.test/r/registry.json", {});
 		});
 	});
 

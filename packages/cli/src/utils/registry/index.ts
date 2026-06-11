@@ -3,13 +3,22 @@ import { fetch } from "node-fetch-native";
 import { createProxy } from "node-fetch-native/proxy";
 import { isUrl, resolveURL } from "../utils.js";
 import { CLIError, error } from "../errors.js";
-import { BASE_COLORS, type ResolvedConfig } from "../config/index.js";
+import { BASE_COLORS, DEFAULT_CONFIG, type ResolvedConfig } from "../config/index.js";
 import { getEnvProxy } from "../get-env-proxy.js";
 import { OFFICIAL_REGISTRY_URL } from "../../constants.js";
 import * as schemas from "../../schema/index.js";
 import { parse as parseCss } from "postcss";
-import { resolveGitHubItemAddress } from "./address.js";
+import {
+	parseRegistryAndItemFromString,
+	resolveGitHubItemAddress,
+	resolveGitHubRegistrySource,
+} from "./address.js";
 import { fetchGitHubRegistryCatalog, fetchGitHubRegistryItem } from "./github.js";
+import {
+	buildRegistryCatalogRequest,
+	buildUrlAndHeadersForRegistryItem,
+	type RegistryConfigContext,
+} from "./namespaces.js";
 
 export function getRegistryUrl(config: { registry: string; style?: string }) {
 	// so old URL's will still work
@@ -88,6 +97,7 @@ type ResolveRegistryItemsProps = {
 	registryUrl: string;
 	registryIndex: schemas.RegistryIndex;
 	items: string[];
+	config?: RegistryConfigContext;
 	parentUrl?: URL;
 	sourceCache?: Map<string, Promise<string>>;
 };
@@ -97,6 +107,7 @@ export async function resolveRegistryItems({
 	registryUrl,
 	registryIndex,
 	items,
+	config,
 	parentUrl,
 	sourceCache = new Map(),
 }: ResolveRegistryItemsProps): Promise<ResolvedRegistryItem[]> {
@@ -109,6 +120,17 @@ export async function resolveRegistryItems({
 		const githubAddress = resolveGitHubItemAddress(item);
 		if (githubAddress) {
 			resolvedItem = await fetchGitHubRegistryItem(githubAddress, { sourceCache });
+		} else if (parseRegistryAndItemFromString(item).registry) {
+			const request = buildUrlAndHeadersForRegistryItem(item, config ?? {}, {
+				defaultRegistryUrl: registryUrl,
+			});
+			if (request) {
+				remoteUrl = new URL(request.url);
+				const [result] = await fetchRegistry([request.url], {
+					headers: { [request.url]: request.headers },
+				});
+				resolvedItem = schemas.registryItemSchema.parse(result);
+			}
 		} else {
 			resolvedItem = registryIndex.find((entry) => entry.name === item);
 		}
@@ -147,6 +169,7 @@ export async function resolveRegistryItems({
 				registryUrl,
 				registryIndex,
 				items: resolvedItem.registryDependencies,
+				config,
 				parentUrl: remoteUrl,
 				sourceCache,
 			});
@@ -180,7 +203,6 @@ export async function fetchRegistryItems({
 }
 
 export async function getGitHubRegistryIndex(source: string) {
-	const { resolveGitHubRegistrySource } = await import("./address.js");
 	const githubSource = resolveGitHubRegistrySource(source);
 	if (!githubSource) {
 		throw error(
@@ -205,12 +227,84 @@ export async function getGitHubRegistryIndex(source: string) {
 	);
 }
 
-async function fetchRegistry(urls: Array<URL | string>): Promise<unknown[]> {
+export async function getRegistryCatalog(
+	registry: string,
+	options: {
+		config?: RegistryConfigContext;
+		registryUrl?: string;
+	} = {}
+) {
+	const config = { ...DEFAULT_CONFIG, ...(options.config ?? {}) };
+	const registryUrl = options.registryUrl ?? getRegistryUrl(config);
+
+	if (registry === "@shadcn") {
+		const index = await getRegistryIndex(registryUrl);
+		return schemas.registryCatalogSchema.parse({
+			name: "shadcn-svelte",
+			homepage: getSiteUrl(config),
+			items: index,
+		});
+	}
+
+	if (isUrl(registry)) {
+		const [result] = await fetchRegistry([registry]);
+		return parseRegistryCatalog(registry, result);
+	}
+
+	const githubSource = resolveGitHubRegistrySource(registry);
+	if (githubSource) {
+		const catalog = await fetchGitHubRegistryCatalog(githubSource);
+		return schemas.registryCatalogSchema.parse(catalog);
+	}
+
+	if (!registry.startsWith("@")) {
+		throw error(`Invalid registry "${registry}". Expected a URL, GitHub source, or namespace.`);
+	}
+
+	const request = buildRegistryCatalogRequest(registry, config, {
+		defaultRegistryUrl: registryUrl,
+	});
+	const [result] = await fetchRegistry([request.url], {
+		headers: { [request.url]: request.headers },
+	});
+	return parseRegistryCatalog(registry, result);
+}
+
+function parseRegistryCatalog(registry: string, result: unknown) {
+	const catalog = schemas.registryCatalogSchema.safeParse(result);
+	if (catalog.success) {
+		return catalog.data;
+	}
+
+	const index = schemas.registryIndexSchema.safeParse(result);
+	if (index.success) {
+		return schemas.registryCatalogSchema.parse({
+			name: registry,
+			items: index.data,
+		});
+	}
+
+	throw error(`Failed to parse registry catalog from ${registry}.`);
+}
+
+type FetchRegistryOptions = {
+	headers?: Record<string, Record<string, string>>;
+};
+
+export async function fetchRegistry(
+	urls: Array<URL | string>,
+	options: FetchRegistryOptions = {}
+): Promise<unknown[]> {
 	const proxyUrl = getEnvProxy();
 	const proxy = proxyUrl ? createProxy({ url: proxyUrl }) : {};
 
 	const loaders = urls.map(async (url) => {
-		const response = await fetch(url, { ...proxy });
+		const urlKey = url.toString();
+		const headers = options.headers?.[urlKey];
+		const response = await fetch(url, {
+			...proxy,
+			...(headers && Object.keys(headers).length ? { headers } : {}),
+		});
 		if (!response.ok) {
 			throw error(
 				`Failed to fetch registry from ${url}: ${response.status} ${response.statusText}`
@@ -286,3 +380,6 @@ export function resolveItemFilePath(
 
 	return path.resolve(aliasDir, file.target);
 }
+
+export * from "./namespaces.js";
+export * from "./search.js";

@@ -24,6 +24,28 @@ export type MenuAccent = (typeof MENU_ACCENTS)[number];
 export const MENU_COLORS = PRESET_MENU_COLORS;
 export type MenuColor = (typeof MENU_COLORS)[number];
 
+const registryConfigItemUrlSchema = z.string().refine((value) => value.includes("{name}"), {
+	message: "Registry URL must include {name} placeholder",
+});
+
+export const registryConfigItemSchema = z.union([
+	registryConfigItemUrlSchema,
+	z.object({
+		url: registryConfigItemUrlSchema,
+		params: z.record(z.string(), z.string()).optional(),
+		headers: z.record(z.string(), z.string()).optional(),
+	}),
+]);
+export type RegistryConfigItem = z.infer<typeof registryConfigItemSchema>;
+
+export const registryConfigSchema = z.record(
+	z.string().regex(/^@[a-zA-Z0-9](?:[a-zA-Z0-9-_]*[a-zA-Z0-9])?$/, {
+		message: "Registry names must start with @ and contain only letters, numbers, hyphens, or underscores",
+	}),
+	registryConfigItemSchema
+);
+export type RegistryConfig = z.infer<typeof registryConfigSchema>;
+
 export const DEFAULT_CONFIG = {
 	$schema: `${SITE_BASE_URL}/schema.json`,
 	aliases: {
@@ -98,6 +120,7 @@ export const newConfigSchema = baseConfigSchema.extend({
 		lib: aliasSchema("lib").default(DEFAULT_CONFIG.aliases.lib),
 	}),
 	registry: z.string().default(DEFAULT_CONFIG.registry),
+	registries: registryConfigSchema.optional(),
 	hooks: lifecycleHooksSchema,
 	// design system
 	style: z.string().optional(),

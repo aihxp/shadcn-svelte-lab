@@ -1,10 +1,41 @@
 import { describe, expect, it, vi } from "vitest";
 import { SITE_BASE_URL } from "../../src/constants";
+import { parseRawConfig } from "../../src/utils/config";
 import { getConf, resolvePath } from "./test-helpers";
 
 vi.mock("tinyexec");
 
 describe("getConfig", () => {
+	it("parses additional registry namespaces", () => {
+		const config = parseRawConfig({
+			tailwind: {
+				css: "src/app.css",
+				baseColor: "zinc",
+			},
+			aliases: {
+				components: "$lib/components",
+				utils: "$lib/utils",
+			},
+			registries: {
+				"@acme": {
+					url: "https://acme.test/r/{name}.json",
+					headers: {
+						Authorization: "Bearer ${ACME_TOKEN}",
+					},
+				},
+			},
+		});
+
+		expect(config.registries).toEqual({
+			"@acme": {
+				url: "https://acme.test/r/{name}.json",
+				headers: {
+					Authorization: "Bearer ${ACME_TOKEN}",
+				},
+			},
+		});
+	});
+
 	it("handles cases where no config is present", async () => {
 		expect(await getConf("config-none")).toEqual(undefined);
 	});

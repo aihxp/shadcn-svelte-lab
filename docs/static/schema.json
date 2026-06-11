@@ -66,6 +66,47 @@
 			"description": "The registry URL tells the CLI where to fetch the shadcn-svelte components/registry from. You can pin this to a specific preview release or your own fork of the registry.",
 			"type": "string"
 		},
+		"registries": {
+			"description": "Additional named registries. Use @namespace/item when adding items from these registries.",
+			"type": "object",
+			"propertyNames": {
+				"type": "string",
+				"pattern": "^@[a-zA-Z0-9](?:[a-zA-Z0-9-_]*[a-zA-Z0-9])?$"
+			},
+			"additionalProperties": {
+				"anyOf": [
+					{
+						"type": "string",
+						"pattern": "\\{name\\}"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"url": {
+								"type": "string",
+								"pattern": "\\{name\\}"
+							},
+							"params": {
+								"type": "object",
+								"additionalProperties": {
+									"type": "string"
+								}
+							},
+							"headers": {
+								"type": "object",
+								"additionalProperties": {
+									"type": "string"
+								}
+							}
+						},
+						"required": [
+							"url"
+						],
+						"additionalProperties": false
+					}
+				]
+			}
+		},
 		"hooks": {
 			"description": "Local lifecycle commands for the CLI.",
 			"type": "object",

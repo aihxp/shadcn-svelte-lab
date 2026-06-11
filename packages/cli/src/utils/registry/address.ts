@@ -6,6 +6,7 @@ const GITHUB_REPO_PATTERN = /^[a-zA-Z0-9._-]+$/;
 const INVALID_GITHUB_REPO_NAMES = new Set([".", ".."]);
 const WHITESPACE_PATTERN = /\s/;
 const GITHUB_REF_OPTION_PATTERN = /^-/;
+const REGISTRY_NAMESPACE_PATTERN = /^(@[a-zA-Z0-9](?:[a-zA-Z0-9-_]*[a-zA-Z0-9])?)\/(.+)$/;
 
 export type GitHubItemAddress = {
 	scheme: "github";
@@ -20,6 +21,19 @@ export type GitHubRegistrySource = {
 	repo: string;
 	ref?: string;
 };
+
+export function parseRegistryAndItemFromString(address: string) {
+	if (!address.startsWith("@")) {
+		return { registry: null, item: address };
+	}
+
+	const match = address.match(REGISTRY_NAMESPACE_PATTERN);
+	if (!match) {
+		return { registry: null, item: address };
+	}
+
+	return { registry: match[1]!, item: match[2]! };
+}
 
 export function resolveGitHubRegistrySource(source: string): GitHubRegistrySource | null {
 	const hashIndex = source.indexOf("#");
