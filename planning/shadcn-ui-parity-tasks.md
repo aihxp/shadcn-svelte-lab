@@ -150,7 +150,10 @@ Rules: audit local code before porting; a task is complete only when local code 
   - Implemented: Svelte `/sera` route under `docs/src/routes/(app)/(layout)/(styles)/sera/`, route-local preview components, and the upstream Sera light/dark image set under `docs/static/img/styles/`.
   - Decision: used the upstream screenshot previews instead of copying the React-only lazy preview internals; this keeps the public Sera showcase available in the Svelte site while avoiding a parallel React demo port.
   - Verification: Playwright desktop and mobile visual pass at `/sera`, `pnpm -F docs build:registry`, `pnpm -F docs build:content`, `pnpm -F docs check`, `pnpm -F docs build:svelte`, `pnpm -F docs build:search`.
-- [ ] Port `preview` and `preview-02` blocks from `registry/bases/base/blocks`.
+- [x] Port `preview` and `preview-02` blocks from `registry/bases/base/blocks`.
+  - Implemented: `album-card.svelte` and `catalog-toolbar.svelte` under `docs/src/lib/registry/examples/create/preview-02/cards/`, then wired both into `preview-02.svelte`.
+  - Confirmed: `preview` and `preview-02` card filename parity against upstream `registry/bases/base/blocks`, with upstream `bar-visualizer.tsx` represented locally as `bar-visualizer-card.svelte`.
+  - Verification: Playwright desktop and narrow viewport visual pass at `/create/preview-02` and `/preview/preview-02?fromPreview=true`, `pnpm -F docs build:registry`, `pnpm -F docs build:content`, `pnpm -F docs check`, `pnpm -F docs build:svelte`.
 - [ ] Evaluate and port `docs/src/hooks.server.ts`, `docs/src/lib/components/setup-cards.svelte`, `docs/src/lib/types/block.ts` (confirm each is still needed by the routes being ported before copying).
 - Verification: `pnpm -F docs build:registry`, `pnpm -F docs build:content`, `pnpm -F docs check`, `pnpm -F docs build:svelte`.
 

@@ -1,6 +1,8 @@
 <script lang="ts">
 	import AccountAccess from "./cards/account-access.svelte";
+	import AlbumCard from "./cards/album-card.svelte";
 	import CardOverview from "./cards/card-overview.svelte";
+	import CatalogToolbar from "./cards/catalog-toolbar.svelte";
 	import ClaimableBalance from "./cards/claimable-balance.svelte";
 	import ContributionHistory from "./cards/contribution-history.svelte";
 	import CoverArt from "./cards/cover-art.svelte";
@@ -76,6 +78,7 @@
 						<FrontDoor />
 					</div>
 				</div>
+				<CatalogToolbar />
 				<ReleaseCatalog />
 			</div>
 			<div
@@ -84,6 +87,7 @@
 				<AccountAccess />
 				<CardOverview />
 				<TransferFunds />
+				<AlbumCard />
 				<CoverArt />
 				<LoadingCard />
 			</div>

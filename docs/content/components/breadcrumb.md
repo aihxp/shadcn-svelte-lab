@@ -62,7 +62,7 @@ Copy and paste the following code into your project.
     </Breadcrumb.Item>
     <Breadcrumb.Separator />
     <Breadcrumb.Item>
-      <Breadcrumb.Link href="/components">Components</Breadcrumb.Link>
+      <Breadcrumb.Link href="/docs/components">Components</Breadcrumb.Link>
     </Breadcrumb.Item>
     <Breadcrumb.Separator />
     <Breadcrumb.Item>
@@ -99,7 +99,7 @@ Use a custom component in the `<slot>` of `<Breadcrumb.Separator />` to create a
       <SlashIcon />
     </Breadcrumb.Separator>
     <Breadcrumb.Item>
-      <Breadcrumb.Link href="/components">Components</Breadcrumb.Link>
+      <Breadcrumb.Link href="/docs/components">Components</Breadcrumb.Link>
     </Breadcrumb.Item>
   </Breadcrumb.List>
 </Breadcrumb.Root>
