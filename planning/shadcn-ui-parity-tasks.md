@@ -58,10 +58,12 @@ Rules: audit local code before porting; a task is complete only when local code 
   - Upstream reference: `packages/shadcn/src/commands/registry/mcp.ts`.
   - Note: implemented as a deprecated alias that points users to `shadcn-svelte mcp`, matching the upstream deprecation direction.
   - Verification: covered by `pnpm -F shadcn-svelte check` and `pnpm -F shadcn-svelte build`.
-- [ ] Sync the skill: add `skills/shadcn-svelte/mcp.md` and `skills/shadcn-svelte/registry.md`; decide whether a `rules/bits-ui.md` replaces upstream `rules/base-vs-radix.md`.
+- [x] Sync the skill: add `skills/shadcn-svelte/mcp.md` and `skills/shadcn-svelte/registry.md`; decide whether a `rules/bits-ui.md` replaces upstream `rules/base-vs-radix.md`.
+  - Note: added `rules/bits-ui.md` as the Svelte-specific disposition for upstream `rules/base-vs-radix.md`; shadcn-svelte has a single Bits UI primitive layer instead of React base/radix modes.
   - Verification: `pnpm exec prettier --check skills/shadcn-svelte`.
-- [ ] Add `.cursor-plugin/plugin.json`.
+- [x] Add `.cursor-plugin/plugin.json`.
   - Upstream reference: `.cursor-plugin/plugin.json`.
+  - Verification: `node -e 'JSON.parse(require("fs").readFileSync(".cursor-plugin/plugin.json", "utf8")); console.log("plugin json ok")'`.
 
 ## Phase 3: Docs Parity
 
