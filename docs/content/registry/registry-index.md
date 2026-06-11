@@ -5,7 +5,7 @@ description: Serve a searchable catalog for registry items.
 
 A registry index is the catalog used by `search`, MCP listing tools, and registry discovery. It describes what your registry contains without sending full file contents for every item.
 
-For namespace registries, the CLI builds the catalog URL by replacing `{name}` with `registry`.
+For configured namespace registries, the CLI builds the catalog URL by replacing `{name}` with `registry`.
 
 ```json title="components.json" showLineNumbers
 {
@@ -87,7 +87,7 @@ The CLI also accepts a registry index array for URL-based search. This shape use
 ]
 ```
 
-Use the catalog object for namespaced registries. Use the index array when you already publish a standalone URL such as `https://example.com/registry/index.json`.
+Use the catalog object for configured namespace registries. Use the index array when you already publish a standalone URL such as `https://example.com/registry/index.json`, or when a directory entry points at a dedicated catalog URL.
 
 ## GitHub Source Registries
 

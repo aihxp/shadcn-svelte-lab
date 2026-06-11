@@ -83,24 +83,49 @@ describe("Registry search", () => {
 		expect(results.errors?.[0]?.message).toContain("Failed to fetch registry.");
 	});
 
+	it("searches directory registries without local config", async () => {
+		vi.mocked(fetch).mockResolvedValueOnce({
+			json: () =>
+				Promise.resolve([
+					{
+						name: "status-badge",
+						type: "registry:ui",
+						description: "Status badge",
+						relativeUrl: "status-badge.json",
+					},
+				]),
+			ok: true,
+			status: 200,
+			statusText: "OK",
+		} as Response);
+
+		const results = await searchRegistries(["@ofkm"], {
+			query: "badge",
+		});
+
+		expect(results.items).toEqual([
+			{
+				name: "status-badge",
+				type: "registry:ui",
+				description: "Status badge",
+				registry: "@ofkm",
+				addCommandArgument: "@ofkm/status-badge",
+			},
+		]);
+		expect(fetch).toHaveBeenCalledWith("https://shadcn.ofkm.dev/r/index.json", {});
+	});
+
 	it("builds add command arguments for GitHub registries", () => {
-		expect(buildRegistryItemNameFromRegistry("button", "acme/ui#v1")).toBe(
-			"acme/ui/button#v1"
-		);
+		expect(buildRegistryItemNameFromRegistry("button", "acme/ui#v1")).toBe("acme/ui/button#v1");
 	});
 
 	it("builds add command arguments for URL registry indexes", () => {
 		expect(
-			buildRegistryItemNameFromRegistry(
-				"button",
-				"http://127.0.0.1:8123/registry/index.json"
-			)
+			buildRegistryItemNameFromRegistry("button", "http://127.0.0.1:8123/registry/index.json")
 		).toBe("http://127.0.0.1:8123/registry/button.json");
 	});
 
 	it("reports unknown search types", () => {
-		expect(findUnknownSearchTypes(["ui", "registry:block", "not-real"])).toEqual([
-			"not-real",
-		]);
+		expect(findUnknownSearchTypes(["ui", "registry:block", "not-real"])).toEqual(["not-real"]);
 	});
 });

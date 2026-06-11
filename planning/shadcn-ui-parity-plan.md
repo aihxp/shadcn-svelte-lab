@@ -8,9 +8,9 @@ Bridge the remaining gap between `shadcn-ui/ui` (the upstream React project) and
 
 - Snapshot date: 2026-06-11
 - Upstream remote: `upstream-ui` -> `https://github.com/shadcn-ui/ui.git`
-- Upstream `upstream-ui/main`: `1994caba0b2140d4d5aa765bb9d7d4412d6aaabb`
+- Upstream `upstream-ui/main`: `ea9d371a2dda3365a382ff361f96b55daeeab88d`
 - Upstream CLI: `shadcn` `4.11.0` (`packages/shadcn`)
-- Local branch: `main`, HEAD `3992ed61d`, clean working tree
+- Local branch: `main`
 - Local CLI: `shadcn-svelte` `1.3.0` (`packages/cli`)
 
 ## Verified Parity (do not redo)
@@ -24,51 +24,49 @@ These were verified against the upstream tree at the snapshot commit. Re-verify 
 - Styles: all 8 style sheets (`luma`, `lyra`, `maia`, `mira`, `nova`, `rhea`, `sera`, `vega`) match upstream `registry/styles/`.
 - Docs site infrastructure: `(view)` preview routes, `api/block`, `api/search.json`, `og`, `registry` routes, llms.txt generation (`docs/scripts/build-llms.ts`), FlexSearch-based search, changelog collection.
 - GitHub registries: `owner/repo/item#ref` installs, source registry `include`, `registry validate`, schema, and docs (ported during the previous audit cycle).
-- Skill: `skills/shadcn-svelte/` mirrors the upstream skill layout (gaps listed in Workstream C).
+- Skill: `skills/shadcn-svelte/` mirrors the upstream skill layout with Svelte-specific Bits UI guidance.
 
 ## Gap Inventory
 
 ### A. CLI command parity (`packages/cli` vs `packages/shadcn` 4.11.0)
 
-Upstream commands missing locally:
+Completed locally:
 
-| Command                  | Upstream description                                        | Notes for the Svelte port                                                                                                         |
-| ------------------------ | ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `mcp` and `registry mcp` | MCP server for agents                                       | No MCP code exists anywhere in this repo. Highest-leverage single gap.                                                            |
-| `search`                 | search items from registries                                | Needs the registry search module.                                                                                                 |
-| `view`                   | view items from the registry                                | Prints item files and metadata; agent-friendly.                                                                                   |
-| `info`                   | get information about your project                          | Reads `components.json` plus framework detection.                                                                                 |
-| `docs`                   | get docs, api references, and usage examples for components | Powers agent workflows; pairs with MCP.                                                                                           |
-| `diff`                   | check for component updates                                 | Local has a hidden `update` command that applies updates; decide whether to add `diff` semantics or unhide and document `update`. |
-| `apply`                  | apply a preset (theme, font) to an existing project         | Local preset utilities exist (`packages/cli/src/preset/`); no command wiring.                                                     |
-| `preset`                 | decode, resolve, and open preset codes                      | Same foundation as `apply`.                                                                                                       |
-| `eject`                  | inline tailwind.css and remove the shadcn dependency        | Confirm the Svelte equivalent semantics before porting.                                                                           |
-| `migrate`                | run codemod migrations                                      | Migration runner with `--list`.                                                                                                   |
-| `build` (top level)      | build registry JSON                                         | Local equivalent exists as `registry build`; consider a top-level alias for command-line compatibility.                           |
+- Registry engine foundation: `registries` map, `@namespace/item`, per-registry auth, search catalogs, and directory namespace fallback.
+- Agent-facing commands: `search`, `view`, `info`, `docs`, `mcp`, and the deprecated `registry mcp` alias.
+- Agent ecosystem files: `.cursor-plugin/plugin.json`, `skills/shadcn-svelte/mcp.md`, `skills/shadcn-svelte/registry.md`, and `skills/shadcn-svelte/rules/bits-ui.md`.
 
-Registry engine gaps behind those commands. Upstream refactored `packages/shadcn/src/registry/` into modules with per-module tests: `api`, `fetcher`, `loader`, `parser`, `resolver`, `builder`, `validator`, `namespaces`, `context`, `env`, `errors`, `search`. Local has a leaner set (`address`, `github`, `github-ref`, `schema`, `source`). The two concrete functional gaps:
+Remaining command gaps:
 
-1. Namespaced registries: the `registries` map in `components.json`, `@namespace/item` resolution, and per-registry auth (headers, env var expansion). Confirmed absent: no `registries` config key anywhere in `packages/cli/src` or `packages/registry/src`. This was also flagged as the remaining gap in discussion 2525 during the previous audit.
-2. Registry search and item-listing APIs that `search`, `view`, `docs`, MCP, and the directory page all consume.
+| Command             | Upstream description                                | Notes for the Svelte port                                                                                                         |
+| ------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `diff`              | check for component updates                         | Local has a hidden `update` command that applies updates; decide whether to add `diff` semantics or unhide and document `update`. |
+| `apply`             | apply a preset (theme, font) to an existing project | Local preset utilities exist (`packages/cli/src/preset/`); no command wiring.                                                     |
+| `preset`            | decode, resolve, and open preset codes              | Same foundation as `apply`.                                                                                                       |
+| `eject`             | inline tailwind.css and remove shadcn dependency    | Confirm the Svelte equivalent semantics before porting.                                                                           |
+| `migrate`           | run codemod migrations                              | Migration runner with `--list`.                                                                                                   |
+| `build` (top level) | build registry JSON                                 | Local equivalent exists as `registry build`; consider a top-level alias for command-line compatibility.                           |
 
 ### B. Registry platform
 
-- Registry directory: upstream ships `apps/v4/registry/directory.json` (a curated index of third-party registries with `@namespace` entries) plus a directory docs page. Local has none. Decide whether to mirror upstream entries that are framework-agnostic or curate a Svelte-ecosystem directory.
-- Registry docs missing locally (`docs/content/registry/` vs upstream): `api-reference`, `authentication`, `namespace`, `mcp`, `registry-index`. Local already has `getting-started`, `github`, `examples`, `faq`, `registry-json`, `registry-item-json`. Upstream `open-in-v0` is React-platform specific; record a disposition rather than porting.
+- Registry directory: implemented as a Svelte-compatible curated directory, currently seeded with `@ofkm`. Local files: `packages/cli/src/utils/registry/directory.ts`, `docs/static/registry/directory.json`, and `docs/content/directory.md`.
+- Registry docs: `api-reference`, `authentication`, `namespace`, `mcp`, and `registry-index` exist locally and have been updated for directory namespaces.
+- Upstream `open-in-v0` remains not applicable because it is React and v0 specific.
 
 ### C. MCP and agent ecosystem
 
-- `shadcn-svelte mcp` server exposing init, search, view, docs, and add flows to agents (upstream `commands/mcp.ts` and `commands/registry/mcp.ts`).
-- Docs pages: root `mcp.mdx` and `skills.mdx` equivalents.
-- Skill sync: `skills/shadcn-svelte/` is missing `mcp.md` and `registry.md`; upstream `rules/base-vs-radix.md` is not applicable (Bits UI is the only primitive layer here) but consider a `rules/bits-ui.md` covering the same decision space.
-- `.cursor-plugin/plugin.json`: small marketing surface for the Cursor plugin directory.
+- `shadcn-svelte mcp` server exists and exposes init, search, view, docs, add-command generation, project info, project registries, and audit checklist tools.
+- Root `mcp` and `skills` docs pages exist.
+- Skill sync is complete for the Svelte agent surface.
+- `.cursor-plugin/plugin.json` exists.
 
 ### D. Docs content parity (`docs/content/` vs `apps/v4/content/docs/`)
 
-- `forms/` section: upstream has `index`, `next`, `react-hook-form`, `tanstack-form`, `formisch`. Svelte adaptation: `index`, `sveltekit` (remote functions and progressive enhancement), `formsnap` (Superforms), and evaluate `tanstack-form` and `formisch` (both ship Svelte adapters). Existing scattered form guidance in `components/form.md` can seed the section.
-- `rtl/` section: upstream has `index`, `next`, `vite`, `start`. Svelte adaptation: `index`, `sveltekit`, `vite`, `astro`, building on the existing Direction component and provider. This also closes the remaining `partial` on issue 2512 (RTL docs; the CLI migration piece stays in Workstream A under `migrate`).
-- Root pages missing: `mcp`, `skills`, `directory`, `monorepo`, `package-imports` (adapt to Svelte aliasing), `new` (latest-additions page). Not applicable: `react-19`, `tailwind-v4` (local `migration/` covers the Svelte equivalents), `_v0`, `_blocks` (underscore drafts).
-- RSS feed: upstream serves `rss.xml`; local route is missing (changelog collection already exists to feed it).
+- Forms section exists with SvelteKit, Formsnap, TanStack Form, and Formisch coverage.
+- RTL section exists with SvelteKit, Vite, and Astro coverage. The CLI migration piece remains under `migrate`.
+- Root pages now include `mcp`, `skills`, `directory`, `monorepo`, `package-imports`, and `new`.
+- RSS route exists at `docs/src/routes/rss.xml/+server.ts`.
+- React-specific docs (`react-19`, `react-hook-form`, `open-in-v0`, `_v0`) remain not applicable.
 
 ### E. Templates
 
@@ -90,7 +88,6 @@ Carried over from the previous audit cycle, re-verified missing at this snapshot
 - `(styles)/sera/` demo route tree and example images (upstream `apps/v4/app/(app)/(styles)/sera`)
 - `preview` and `preview-02` blocks (internal create previews)
 - `docs/src/hooks.server.ts`, `docs/src/lib/components/setup-cards.svelte`, `docs/src/lib/types/block.ts`
-- `docs/src/routes/rss.xml/+server.ts` (also listed in Workstream D)
 
 ### G. Not applicable, watch only
 
@@ -102,11 +99,11 @@ Carried over from the previous audit cycle, re-verified missing at this snapshot
 
 Phases are ordered by leverage; each phase is independently shippable.
 
-1. Phase 1, registry engine foundation: namespaced registries (`registries` map, `@namespace/item`, auth headers and env expansion), then the search and item-listing modules. Everything in phases 2 and 4 sits on this.
-2. Phase 2, agent surface: `search`, `view`, `info`, `docs` commands, then the MCP server (`mcp`, `registry mcp`), `.cursor-plugin`, skill sync (`mcp.md`, `registry.md`).
-3. Phase 3, docs parity: registry docs (`authentication`, `namespace`, `api-reference`, `mcp`, `registry-index`) immediately after phase 1 lands so the features ship documented; then `forms/`, `rtl/`, root pages (`mcp`, `skills`, `monorepo`, `package-imports`, `new`), RSS.
-4. Phase 4, directory: `directory.json` curation and the directory docs page.
-5. Phase 5, templates: the six Svelte templates plus sync script and monorepo docs wiring.
+1. Phase 1, registry engine foundation: complete.
+2. Phase 2, agent surface: complete.
+3. Phase 3, docs parity: complete.
+4. Phase 4, directory: complete with a curated Svelte-compatible policy.
+5. Phase 5, templates: next. Add the six Svelte templates plus sync script and monorepo docs wiring.
 6. Phase 6, site residuals: create page components, sera demo route, preview blocks, `hooks.server.ts`, remaining files from Workstream F.
 7. Phase 7, long tail: `apply` and `preset` commands, `eject`, `migrate` (including the RTL migration from issue 2512), `diff` or unhidden `update`, top-level `build` alias, optional e2e fixture package.
 

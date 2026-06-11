@@ -1,6 +1,7 @@
 import { error } from "../errors.js";
 import type { RegistryConfig, RegistryConfigItem } from "../config/schema.js";
 import { parseRegistryAndItemFromString } from "./address.js";
+import { getDirectoryRegistry, getDirectoryRegistryConfig } from "./directory.js";
 
 const NAME_PLACEHOLDER = "{name}";
 const STYLE_PLACEHOLDER = "{style}";
@@ -43,9 +44,30 @@ export function buildRegistryCatalogRequest(
 	config: RegistryConfigContext,
 	options: { defaultRegistryUrl?: string } = {}
 ): RegistryFetchRequest {
-	const namespace = registry.startsWith("@") ? registry.split("/")[0] : registry;
-	const catalogItem = registry.includes("/") ? registry.split("/").slice(1).join("/") : "registry";
-	const request = buildUrlAndHeadersForRegistryItem(`${namespace}/${catalogItem}`, config, options);
+	const [rawNamespace] = registry.split("/");
+	const namespace = registry.startsWith("@") ? rawNamespace : registry;
+	if (!namespace) {
+		throw error(`Invalid registry namespace "${registry}". Expected a namespace like "@acme".`);
+	}
+
+	const catalogItem = registry.includes("/")
+		? registry.split("/").slice(1).join("/")
+		: "registry";
+	const hasConfiguredRegistry = Boolean(config.registries?.[namespace]);
+	const directoryRegistry = hasConfiguredRegistry ? undefined : getDirectoryRegistry(namespace);
+
+	if (catalogItem === "registry" && directoryRegistry?.catalogUrl) {
+		return {
+			url: directoryRegistry.catalogUrl,
+			headers: {},
+		};
+	}
+
+	const request = buildUrlAndHeadersForRegistryItem(
+		`${namespace}/${catalogItem}`,
+		config,
+		options
+	);
 
 	if (!request) {
 		throw error(`Invalid registry namespace "${registry}". Expected a namespace like "@acme".`);
@@ -92,7 +114,11 @@ export function buildHeadersFromRegistryConfig(
 
 	const headers: Record<string, string> = {};
 	for (const [key, value] of Object.entries(registryConfig.headers)) {
-		const expanded = expandEnvVars(value, { required: true, registry, label: `header "${key}"` });
+		const expanded = expandEnvVars(value, {
+			required: true,
+			registry,
+			label: `header "${key}"`,
+		});
 		if (expanded.trim()) {
 			headers[key] = expanded;
 		}
@@ -133,5 +159,5 @@ function getRegistryConfig(
 		return `${options.defaultRegistryUrl}/{name}.json`;
 	}
 
-	return config.registries?.[registry];
+	return config.registries?.[registry] ?? getDirectoryRegistryConfig(registry);
 }

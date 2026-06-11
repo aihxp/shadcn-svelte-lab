@@ -3,7 +3,7 @@ title: MCP
 description: Expose registry search, docs, and add guidance to coding agents.
 ---
 
-The `shadcn-svelte mcp` command starts a Model Context Protocol server for agents. It lets an agent inspect the current project, discover configured registries, search items, view item JSON, fetch docs links, and build the exact `add` command for selected items.
+The `shadcn-svelte mcp` command starts a Model Context Protocol server for agents. It lets an agent inspect the current project, discover configured registries, search directory registries, view item JSON, fetch docs links, and build the exact `add` command for selected items.
 
 ## Configure A Client
 
@@ -51,7 +51,7 @@ The MCP server reads the same `components.json` file as the CLI.
 }
 ```
 
-Agents can list configured registries with `get_project_registries`, then search or view items from those registries.
+Agents can list configured registries with `get_project_registries`, then search or view items from those registries. Agents can also pass a directory namespace, such as `@ofkm`, directly to search or listing tools.
 
 ## Tools
 
@@ -69,7 +69,7 @@ Returns the package-manager-specific init command for the current project.
 
 ### list_items_in_registries
 
-Lists registry catalog items from configured namespaces, explicit namespaces, URLs, or GitHub source registries.
+Lists registry catalog items from configured namespaces, directory namespaces, URLs, or GitHub source registries.
 
 ### search_items_in_registries
 
@@ -97,7 +97,7 @@ Good registry metadata makes agent results better.
 
 - Add clear `title` and `description` values to every item.
 - Keep `registryDependencies` complete so generated add commands install the full tree.
-- Serve a catalog at the namespace `registry` path so search and listing work.
+- Serve a catalog at the namespace `registry` path so search and listing work, unless the registry is added to the public directory with a dedicated catalog URL.
 - Keep private registry auth in `components.json` and environment variables.
 - Return precise HTTP status codes for missing items and auth failures.
 

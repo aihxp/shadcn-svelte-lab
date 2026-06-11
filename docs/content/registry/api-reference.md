@@ -33,7 +33,7 @@ See [registry-item.json](/docs/registry/registry-item-json) for the full schema.
 
 ## Registry Catalog
 
-Search, listing, and MCP registry discovery use a catalog request. For namespace registries, the CLI replaces `{name}` with `registry`.
+Search, listing, and MCP registry discovery use a catalog request. For configured namespace registries, the CLI replaces `{name}` with `registry`. Directory registries can provide a dedicated catalog URL.
 
 ```json title="registry.json" showLineNumbers
 {
@@ -74,6 +74,7 @@ List or search registry catalogs.
 ```bash
 pnpm dlx shadcn-svelte@latest search
 pnpm dlx shadcn-svelte@latest search @acme --query editor
+pnpm dlx shadcn-svelte@latest search @ofkm --query badge
 pnpm dlx shadcn-svelte@latest search https://example.com/r/registry.json --json
 ```
 

@@ -295,10 +295,9 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
   - Evidence: `docs/src/lib/registry/ui/sidebar/context.svelte.ts` already uses `Symbol.for("scn-sidebar")`; `docs/content/installation/sveltekit.md` now documents shared UI package peer dependencies, `resolve.dedupe`, and `ssr.noExternal`; `docs/content/components/sidebar.md` now documents the matching `useSidebar` monorepo failure mode.
   - Remaining gap: no Turborepo reproduction was added in this focused docs pass.
   - Verification: source review, `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
-- [x] `partial` Discussion [#2525](https://github.com/huntabyte/shadcn-svelte/discussions/2525): Add support for multiple registry setups.
-  - Evidence: this fork already supports custom registry item URLs, URL `registryDependencies`, environment registry overrides, and GitHub source registries with `include`; `docs/content/components-json.md` now documents these patterns and states that the shadcn/ui `registries` map is not supported yet.
-  - Remaining gap: a true multiple-registry `components.json` schema and resolver remains unimplemented.
-  - Verification: CLI schema and resolver review, `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
+- [x] `present-in-fork` Discussion [#2525](https://github.com/huntabyte/shadcn-svelte/discussions/2525): Add support for multiple registry setups.
+  - Evidence: this fork supports custom registry item URLs, URL `registryDependencies`, environment registry overrides, GitHub source registries with `include`, the `registries` map in `components.json`, `@namespace/item` resolution, per-registry auth, and directory namespace fallback. `docs/content/components-json.md`, `docs/content/registry/namespace.md`, and `docs/content/directory.md` document the current behavior.
+  - Verification: CLI schema and resolver review, `pnpm -F shadcn-svelte exec vitest test/utils/get-config.test.ts test/utils/registry.test.ts test/utils/registry-search.test.ts --run`, `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.
 - [x] `present-in-fork` Discussion [#1573](https://github.com/huntabyte/shadcn-svelte/discussions/1573): How to make Data Table header sticky?
   - Evidence: `docs/content/components/table.md` already documents the fixed header pattern, and `docs/content/components/data-table.md` now includes a TanStack Data Table sticky header section. The dashboard block also uses `Table.Header class="bg-muted sticky top-0 z-10"`.
   - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, and `pnpm -F docs check`.

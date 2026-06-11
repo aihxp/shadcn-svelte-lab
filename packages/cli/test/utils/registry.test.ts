@@ -382,6 +382,29 @@ describe("Registry Utilities", () => {
 			expect(result.items.map((item) => item.name)).toEqual(["button"]);
 			expect(fetch).toHaveBeenCalledWith("https://acme.test/r/registry.json", {});
 		});
+
+		it("should fetch directory registry catalogs without local config", async () => {
+			vi.mocked(fetch).mockResolvedValueOnce({
+				json: () =>
+					Promise.resolve([
+						{
+							name: "status-badge",
+							title: "Status Badge",
+							type: "registry:ui",
+							description: "Status badge",
+							relativeUrl: "status-badge.json",
+						},
+					]),
+				ok: true,
+				status: 200,
+				statusText: "OK",
+			} as Response);
+
+			const result = await getRegistryCatalog("@ofkm");
+
+			expect(result.items.map((item) => item.name)).toEqual(["status-badge"]);
+			expect(fetch).toHaveBeenCalledWith("https://shadcn.ofkm.dev/r/index.json", {});
+		});
 	});
 
 	describe("getRegistryItems", () => {
@@ -464,6 +487,54 @@ describe("Registry Utilities", () => {
 				headers: { Authorization: "Bearer secret" },
 			});
 			delete process.env.ACME_TOKEN;
+		});
+
+		it("should fetch exact items from directory registries", async () => {
+			const registryItem: RegistryItem = {
+				name: "status-badge",
+				title: "Status Badge",
+				type: "registry:ui",
+				files: [],
+			};
+			vi.mocked(fetch).mockResolvedValueOnce({
+				json: () => Promise.resolve(registryItem),
+				ok: true,
+				status: 200,
+				statusText: "OK",
+			} as Response);
+
+			const result = await getRegistryItems(["@ofkm/status-badge"]);
+
+			expect(result).toEqual([registryItem]);
+			expect(fetch).toHaveBeenCalledWith("https://shadcn.ofkm.dev/r/status-badge.json", {});
+		});
+
+		it("should prefer configured registries over directory registries", async () => {
+			const registryItem: RegistryItem = {
+				name: "status-badge",
+				title: "Status Badge",
+				type: "registry:ui",
+				files: [],
+			};
+			vi.mocked(fetch).mockResolvedValueOnce({
+				json: () => Promise.resolve(registryItem),
+				ok: true,
+				status: 200,
+				statusText: "OK",
+			} as Response);
+
+			await getRegistryItems(["@ofkm/status-badge"], {
+				config: {
+					registries: {
+						"@ofkm": "https://internal.example.com/ofkm/{name}.json",
+					},
+				},
+			});
+
+			expect(fetch).toHaveBeenCalledWith(
+				"https://internal.example.com/ofkm/status-badge.json",
+				{}
+			);
 		});
 	});
 

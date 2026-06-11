@@ -1,0 +1,10 @@
+[
+	{
+		"name": "@ofkm",
+		"homepage": "https://github.com/ofkm/shadcn-svelte-registry",
+		"url": "https://shadcn.ofkm.dev/r/{name}.json",
+		"catalogUrl": "https://shadcn.ofkm.dev/r/index.json",
+		"description": "A public shadcn-svelte registry with components, hooks, and utilities.",
+		"featured": true
+	}
+]

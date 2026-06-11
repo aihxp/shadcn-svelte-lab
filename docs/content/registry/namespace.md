@@ -7,7 +7,7 @@ description: Use @namespace/item addresses to install from multiple registries.
 	import PMExecute from "$lib/components/pm-execute.svelte";
 </script>
 
-Namespaces let a project install from more than one registry without replacing the default `registry` URL. Add each namespace to the `registries` map in `components.json`, then reference items with `@namespace/item`.
+Namespaces let a project install from more than one registry without replacing the default `registry` URL. Directory namespaces can be used directly. Add a namespace to the `registries` map in `components.json` when you need a private registry, custom auth, or a local override.
 
 ```json title="components.json" showLineNumbers
 {
@@ -103,6 +103,8 @@ https://registry.acme.com/r/registry.json
 ```
 
 See [Registry Index](/docs/registry/registry-index) for the catalog shape used by search and MCP listing tools.
+
+Directory registries can provide a dedicated catalog URL, such as `index.json`. In that case the CLI uses the directory catalog for search and MCP listing, and still uses the item URL template for `add` and `view`.
 
 ## Dependencies
 

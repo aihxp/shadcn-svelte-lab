@@ -207,9 +207,9 @@
     "pageTitle": "shadcn-svelte"
   },
   {
-    "title": "Search a configured namespace:",
+    "title": "Search a directory or configured namespace:",
     "description": "",
-    "content": "Search a configured namespace:",
+    "content": "Search a directory or configured namespace:",
     "href": "/docs/cli#search",
     "category": "Getting Started",
     "type": "text",
@@ -297,9 +297,9 @@
     "pageTitle": "shadcn-svelte"
   },
   {
-    "title": "The server exposes tools for project info, configured registries, registry search, registry listing, item viewing, compo...",
+    "title": "The server exposes tools for project info, configured registries, directory registry search, registry listing, item view...",
     "description": "",
-    "content": "The server exposes tools for project info, configured registries, registry search, registry listing, item viewing, component docs links, init commands, add commands, and a component audit checklist.",
+    "content": "The server exposes tools for project info, configured registries, directory registry search, registry listing, item viewing, component docs links, init commands, add commands, and a component audit checklist.",
     "href": "/docs/cli#mcp",
     "category": "Getting Started",
     "type": "text",
@@ -774,6 +774,168 @@
     "pageTitle": "components.json"
   },
   {
+    "title": "Directory",
+    "description": "Browse curated shadcn-svelte compatible registries.",
+    "content": "The directory is a curated list of public registries that publish Svelte-compatible registry items. Directory entries can be used by namespace without adding them to components.json. The upstream shadcn directory contains many React and Next.js registries. The shadcn-svelte directory is intentionally narrower: entries are included only after their catalog and item payloads are verified against Svelte registry shapes.",
+    "href": "/docs/directory",
+    "category": "Getting Started",
+    "type": "page",
+    "pageTitle": "Directory"
+  },
+  {
+    "title": "Included Registries",
+    "description": "",
+    "content": "Included Registries",
+    "href": "/docs/directory#included-registries",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "Directory"
+  },
+  {
+    "title": "| Namespace | Registry | Description | | --------- | -------------------------------------------------------------------...",
+    "description": "",
+    "content": "| Namespace | Registry | Description | | --------- | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------- | | @ofkm | ofkm/shadcn-svelte-registry | A public shadcn-svelte registry with components, hooks, and utilities. |",
+    "href": "/docs/directory#included-registries",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "Directory"
+  },
+  {
+    "title": "Search",
+    "description": "",
+    "content": "Search",
+    "href": "/docs/directory#search",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "Directory"
+  },
+  {
+    "title": "Use the namespace directly with the search command.",
+    "description": "",
+    "content": "Use the namespace directly with the search command.",
+    "href": "/docs/directory#search",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "Directory"
+  },
+  {
+    "title": "The same namespace works through MCP tools such as search_items_in_registries and list_items_in_registries.",
+    "description": "",
+    "content": "The same namespace works through MCP tools such as search_items_in_registries and list_items_in_registries.",
+    "href": "/docs/directory#search",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "Directory"
+  },
+  {
+    "title": "Add Items",
+    "description": "",
+    "content": "Add Items",
+    "href": "/docs/directory#add-items",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "Directory"
+  },
+  {
+    "title": "Install a directory item with its namespace and item name.",
+    "description": "",
+    "content": "Install a directory item with its namespace and item name.",
+    "href": "/docs/directory#add-items",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "Directory"
+  },
+  {
+    "title": "Directory namespaces can still be overridden in components.json. Add an explicit registries entry when you need a privat...",
+    "description": "",
+    "content": "Directory namespaces can still be overridden in components.json. Add an explicit registries entry when you need a private mirror, custom auth, or a different catalog host.",
+    "href": "/docs/directory#add-items",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "Directory"
+  },
+  {
+    "title": "Directory JSON",
+    "description": "",
+    "content": "Directory JSON",
+    "href": "/docs/directory#directory-json",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "Directory"
+  },
+  {
+    "title": "The public directory is available at:",
+    "description": "",
+    "content": "The public directory is available at:",
+    "href": "/docs/directory#directory-json",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "Directory"
+  },
+  {
+    "title": "Each entry includes a namespace, homepage, item URL template, optional catalog URL, and description.",
+    "description": "",
+    "content": "Each entry includes a namespace, homepage, item URL template, optional catalog URL, and description.",
+    "href": "/docs/directory#directory-json",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "Directory"
+  },
+  {
+    "title": "Curation Policy",
+    "description": "",
+    "content": "Curation Policy",
+    "href": "/docs/directory#curation-policy",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "Directory"
+  },
+  {
+    "title": "Directory entries should:",
+    "description": "",
+    "content": "Directory entries should:",
+    "href": "/docs/directory#curation-policy",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "Directory"
+  },
+  {
+    "title": "Publish Svelte registry items.",
+    "description": "",
+    "content": "Publish Svelte registry items.",
+    "href": "/docs/directory#curation-policy",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "Directory"
+  },
+  {
+    "title": "Expose either registry.json, index.json, or an equivalent catalog URL for search and MCP.",
+    "description": "",
+    "content": "Expose either registry.json, index.json, or an equivalent catalog URL for search and MCP.",
+    "href": "/docs/directory#curation-policy",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "Directory"
+  },
+  {
+    "title": "Use a URL template with {name} for exact item installs.",
+    "description": "",
+    "content": "Use a URL template with {name} for exact item installs.",
+    "href": "/docs/directory#curation-policy",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "Directory"
+  },
+  {
+    "title": "Avoid React-only or Next-only payloads unless they also include a verified Svelte target.",
+    "description": "",
+    "content": "Avoid React-only or Next-only payloads unless they also include a verified Svelte target.",
+    "href": "/docs/directory#curation-policy",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "Directory"
+  },
+  {
     "title": "Figma",
     "description": "Every component recreated in Figma. With customizable props, typography and icons.",
     "content": "The Figma UI Kit is open sourced by Pietro Schirano.",
@@ -1055,7 +1217,7 @@
   {
     "title": "MCP Server",
     "description": "Use the shadcn-svelte MCP server to browse, search, inspect, and install registry items with an AI assistant.",
-    "content": "The shadcn-svelte MCP server gives AI assistants structured access to your project and configured registries. Agents can inspect components.json, search registries, view registry item JSON, fetch component docs links, and generate the right add command for your package manager. Registries are configured in your project's components.json file. { \"registries\": { \"@acme\": \"https://registry.acme.com/r/{name}.json\" } }",
+    "content": "The shadcn-svelte MCP server gives AI assistants structured access to your project, configured registries, and directory registries. Agents can inspect components.json, search registries, view registry item JSON, fetch component docs links, and generate the right add command for your package manager. Private and team registries are configured in your project's components.json file. Directory namespaces can be searched directly. { \"registries\": { \"@acme\": \"https://registry.acme.com/r/{name}.json\" } }",
     "href": "/docs/mcp",
     "category": "Getting Started",
     "type": "page",
@@ -1251,9 +1413,9 @@
     "pageTitle": "MCP Server"
   },
   {
-    "title": "list_items_in_registries: list catalog items from configured registries, explicit namespaces, URLs, or GitHub source reg...",
+    "title": "list_items_in_registries: list catalog items from configured registries, directory namespaces, explicit namespaces, URLs...",
     "description": "",
-    "content": "list_items_in_registries: list catalog items from configured registries, explicit namespaces, URLs, or GitHub source registries.",
+    "content": "list_items_in_registries: list catalog items from configured registries, directory namespaces, explicit namespaces, URLs, or GitHub source registries.",
     "href": "/docs/mcp#tools",
     "category": "Getting Started",
     "type": "text",
@@ -1359,9 +1521,9 @@
     "pageTitle": "MCP Server"
   },
   {
-    "title": "Show me items from the @acme registry.",
+    "title": "Show me items from the @ofkm registry.",
     "description": "",
-    "content": "Show me items from the @acme registry.",
+    "content": "Show me items from the @ofkm registry.",
     "href": "/docs/mcp#example-prompts",
     "category": "Getting Started",
     "type": "text",
@@ -1395,9 +1557,9 @@
     "pageTitle": "MCP Server"
   },
   {
-    "title": "For registry details, see Namespaces, Authentication, and Registry MCP.",
+    "title": "For registry details, see Directory, Namespaces, Authentication, and Registry MCP.",
     "description": "",
-    "content": "For registry details, see Namespaces, Authentication, and Registry MCP.",
+    "content": "For registry details, see Directory, Namespaces, Authentication, and Registry MCP.",
     "href": "/docs/mcp#private-registries",
     "category": "Getting Started",
     "type": "text",
@@ -1701,9 +1863,9 @@
     "pageTitle": "Your project is ready!"
   },
   {
-    "title": "See Registry, Namespaces, and Authentication.",
+    "title": "See Directory, Registry, Namespaces, and Authentication.",
     "description": "",
-    "content": "See Registry, Namespaces, and Authentication.",
+    "content": "See Directory, Registry, Namespaces, and Authentication.",
     "href": "/docs/new#install-from-registries",
     "category": "Getting Started",
     "type": "text",
@@ -1757,7 +1919,7 @@
   {
     "title": "Recent parity work added the newer component set, registry namespaces, authenticated registries, GitHub source registrie...",
     "description": "",
-    "content": "Recent parity work added the newer component set, registry namespaces, authenticated registries, GitHub source registries, registry search, item viewing, docs links, project info, and MCP tools.",
+    "content": "Recent parity work added the newer component set, registry namespaces, authenticated registries, GitHub source registries, the curated directory, registry search, item viewing, docs links, project info, and MCP tools.",
     "href": "/docs/new#latest-additions",
     "category": "Getting Started",
     "type": "text",
@@ -1803,6 +1965,15 @@
     "title": "Spinner for loading states.",
     "description": "",
     "content": "Spinner for loading states.",
+    "href": "/docs/new#latest-additions",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "Your project is ready!"
+  },
+  {
+    "title": "Directory for curated Svelte-compatible registries.",
+    "description": "",
+    "content": "Directory for curated Svelte-compatible registries.",
     "href": "/docs/new#latest-additions",
     "category": "Getting Started",
     "type": "text",
@@ -15633,9 +15804,9 @@
     "pageTitle": "API Reference"
   },
   {
-    "title": "Search, listing, and MCP registry discovery use a catalog request. For namespace registries, the CLI replaces {name} wit...",
+    "title": "Search, listing, and MCP registry discovery use a catalog request. For configured namespace registries, the CLI replaces...",
     "description": "",
-    "content": "Search, listing, and MCP registry discovery use a catalog request. For namespace registries, the CLI replaces {name} with registry.",
+    "content": "Search, listing, and MCP registry discovery use a catalog request. For configured namespace registries, the CLI replaces {name} with registry. Directory registries can provide a dedicated catalog URL.",
     "href": "/docs/registry/api-reference#registry-catalog",
     "category": "Registry",
     "type": "text",
@@ -17030,7 +17201,7 @@
   {
     "title": "MCP",
     "description": "Expose registry search, docs, and add guidance to coding agents.",
-    "content": "The shadcn-svelte mcp command starts a Model Context Protocol server for agents. It lets an agent inspect the current project, discover configured registries, search items, view item JSON, fetch docs links, and build the exact add command for selected items.",
+    "content": "The shadcn-svelte mcp command starts a Model Context Protocol server for agents. It lets an agent inspect the current project, discover configured registries, search directory registries, view item JSON, fetch docs links, and build the exact add command for selected items.",
     "href": "/docs/registry/mcp",
     "category": "Registry",
     "type": "page",
@@ -17082,9 +17253,9 @@
     "pageTitle": "MCP"
   },
   {
-    "title": "Agents can list configured registries with get_project_registries, then search or view items from those registries.",
+    "title": "Agents can list configured registries with get_project_registries, then search or view items from those registries. Agen...",
     "description": "",
-    "content": "Agents can list configured registries with get_project_registries, then search or view items from those registries.",
+    "content": "Agents can list configured registries with get_project_registries, then search or view items from those registries. Agents can also pass a directory namespace, such as @ofkm, directly to search or listing tools.",
     "href": "/docs/registry/mcp#registry-discovery",
     "category": "Registry",
     "type": "text",
@@ -17163,9 +17334,9 @@
     "pageTitle": "MCP"
   },
   {
-    "title": "Lists registry catalog items from configured namespaces, explicit namespaces, URLs, or GitHub source registries.",
+    "title": "Lists registry catalog items from configured namespaces, directory namespaces, URLs, or GitHub source registries.",
     "description": "",
-    "content": "Lists registry catalog items from configured namespaces, explicit namespaces, URLs, or GitHub source registries.",
+    "content": "Lists registry catalog items from configured namespaces, directory namespaces, URLs, or GitHub source registries.",
     "href": "/docs/registry/mcp#list_items_in_registries",
     "category": "Registry",
     "type": "text",
@@ -17298,9 +17469,9 @@
     "pageTitle": "MCP"
   },
   {
-    "title": "Serve a catalog at the namespace registry path so search and listing work.",
+    "title": "Serve a catalog at the namespace registry path so search and listing work, unless the registry is added to the public di...",
     "description": "",
-    "content": "Serve a catalog at the namespace registry path so search and listing work.",
+    "content": "Serve a catalog at the namespace registry path so search and listing work, unless the registry is added to the public directory with a dedicated catalog URL.",
     "href": "/docs/registry/mcp#registry-author-tips",
     "category": "Registry",
     "type": "text",
@@ -17336,7 +17507,7 @@
   {
     "title": "Namespaces",
     "description": "Use @namespace/item addresses to install from multiple registries.",
-    "content": "Namespaces let a project install from more than one registry without replacing the default registry URL. Add each namespace to the registries map in components.json, then reference items with @namespace/item. { \"registries\": { \"@acme\": \"https://registry.acme.com/r/{name}.json\" } }",
+    "content": "Namespaces let a project install from more than one registry without replacing the default registry URL. Directory namespaces can be used directly. Add a namespace to the registries map in components.json when you need a private registry, custom auth, or a local override. { \"registries\": { \"@acme\": \"https://registry.acme.com/r/{name}.json\" } }",
     "href": "/docs/registry/namespace",
     "category": "Registry",
     "type": "page",
@@ -17487,6 +17658,15 @@
     "pageTitle": "Namespaces"
   },
   {
+    "title": "Directory registries can provide a dedicated catalog URL, such as index.json. In that case the CLI uses the directory ca...",
+    "description": "",
+    "content": "Directory registries can provide a dedicated catalog URL, such as index.json. In that case the CLI uses the directory catalog for search and MCP listing, and still uses the item URL template for add and view.",
+    "href": "/docs/registry/namespace#search-and-view",
+    "category": "Registry",
+    "type": "text",
+    "pageTitle": "Namespaces"
+  },
+  {
     "title": "Dependencies",
     "description": "",
     "content": "Dependencies",
@@ -17543,7 +17723,7 @@
   {
     "title": "Registry Index",
     "description": "Serve a searchable catalog for registry items.",
-    "content": "A registry index is the catalog used by search, MCP listing tools, and registry discovery. It describes what your registry contains without sending full file contents for every item. For namespace registries, the CLI builds the catalog URL by replacing {name} with registry. { \"registries\": { \"@acme\": \"https://registry.acme.com/r/{name}.json\" } } search @acme requests: https://registry.acme.com/r/registry.json",
+    "content": "A registry index is the catalog used by search, MCP listing tools, and registry discovery. It describes what your registry contains without sending full file contents for every item. For configured namespace registries, the CLI builds the catalog URL by replacing {name} with registry. { \"registries\": { \"@acme\": \"https://registry.acme.com/r/{name}.json\" } } search @acme requests: https://registry.acme.com/r/registry.json",
     "href": "/docs/registry/registry-index",
     "category": "Registry",
     "type": "page",
@@ -17622,9 +17802,9 @@
     "pageTitle": "Registry Index"
   },
   {
-    "title": "Use the catalog object for namespaced registries. Use the index array when you already publish a standalone URL such as ...",
+    "title": "Use the catalog object for configured namespace registries. Use the index array when you already publish a standalone UR...",
     "description": "",
-    "content": "Use the catalog object for namespaced registries. Use the index array when you already publish a standalone URL such as https://example.com/registry/index.json.",
+    "content": "Use the catalog object for configured namespace registries. Use the index array when you already publish a standalone URL such as https://example.com/registry/index.json, or when a directory entry points at a dedicated catalog URL.",
     "href": "/docs/registry/registry-index#index-array",
     "category": "Registry",
     "type": "text",

@@ -70,12 +70,13 @@ After installation, import the generated file from its target path in your proje
 Install items from the default registry, a namespace, a URL, or a public GitHub source registry.
 
 ```bash
+pnpm dlx shadcn-svelte@latest add @ofkm/status-badge
 pnpm dlx shadcn-svelte@latest add @acme/editor
 pnpm dlx shadcn-svelte@latest add https://example.com/r/editor.json
 pnpm dlx shadcn-svelte@latest add acme/toolkit/project-conventions
 ```
 
-See [Registry](/docs/registry), [Namespaces](/docs/registry/namespace), and [Authentication](/docs/registry/authentication).
+See [Directory](/docs/directory), [Registry](/docs/registry), [Namespaces](/docs/registry/namespace), and [Authentication](/docs/registry/authentication).
 
 ## Use Agent Tools
 
@@ -97,7 +98,7 @@ Learn more in [MCP Server](/docs/mcp) and [Skills](/docs/skills).
 
 ## Latest Additions
 
-Recent parity work added the newer component set, registry namespaces, authenticated registries, GitHub source registries, registry search, item viewing, docs links, project info, and MCP tools.
+Recent parity work added the newer component set, registry namespaces, authenticated registries, GitHub source registries, the curated directory, registry search, item viewing, docs links, project info, and MCP tools.
 
 Useful places to start:
 
@@ -105,4 +106,5 @@ Useful places to start:
 - [Input Group](/docs/components/input-group) for inputs with addons.
 - [Empty](/docs/components/empty) for empty states.
 - [Spinner](/docs/components/spinner) for loading states.
+- [Directory](/docs/directory) for curated Svelte-compatible registries.
 - [Registry Index](/docs/registry/registry-index) for searchable registries.

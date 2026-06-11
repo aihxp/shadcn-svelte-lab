@@ -7,6 +7,17 @@ import removeMd from "remove-markdown";
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const CONTENT_DIR = path.resolve(SCRIPT_DIR, "../content");
 const OUTPUT_PATH = path.resolve(SCRIPT_DIR, "../src/routes/api/search.json/search.json");
+const SECTION_ORDER = new Map([
+	["", 0],
+	["changelog", 1],
+	["dark-mode", 2],
+	["forms", 3],
+	["migration", 4],
+	["installation", 5],
+	["components", 6],
+	["rtl", 7],
+	["registry", 8],
+]);
 
 type SearchEntry = {
 	title: string;
@@ -113,6 +124,19 @@ function deriveCategory(filePath: string): string {
 	return categories[firstSegment] ?? "Getting Started";
 }
 
+function sortContentFiles(a: string, b: string): number {
+	const relativeA = path.relative(CONTENT_DIR, a);
+	const relativeB = path.relative(CONTENT_DIR, b);
+	const [firstSectionA] = relativeA.split("/");
+	const [firstSectionB] = relativeB.split("/");
+	const sectionA = relativeA.includes("/") ? (firstSectionA ?? "") : "";
+	const sectionB = relativeB.includes("/") ? (firstSectionB ?? "") : "";
+	const orderA = SECTION_ORDER.get(sectionA) ?? Number.MAX_SAFE_INTEGER;
+	const orderB = SECTION_ORDER.get(sectionB) ?? Number.MAX_SAFE_INTEGER;
+
+	return orderA === orderB ? relativeA.localeCompare(relativeB) : orderA - orderB;
+}
+
 function parseIntoSections(
 	body: string,
 	pageTitle: string,
@@ -199,7 +223,9 @@ function parseIntoSections(
 }
 
 async function main() {
-	const files = await globby("**/*.md", { cwd: CONTENT_DIR, absolute: true });
+	const files = (await globby("**/*.md", { cwd: CONTENT_DIR, absolute: true })).sort(
+		sortContentFiles
+	);
 	const entries: SearchEntry[] = [];
 
 	for (const file of files) {

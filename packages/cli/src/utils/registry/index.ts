@@ -442,4 +442,5 @@ export function resolveItemFilePath(
 }
 
 export * from "./namespaces.js";
+export * from "./directory.js";
 export * from "./search.js";

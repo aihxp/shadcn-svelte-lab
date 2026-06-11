@@ -95,9 +95,9 @@ Use the `search` command to list or search registry items.
 
 <PMExecute command="shadcn-svelte@latest search @shadcn --query button" />
 
-Search a configured namespace:
+Search a directory or configured namespace:
 
-<PMExecute command="shadcn-svelte@latest search @acme --type ui" />
+<PMExecute command="shadcn-svelte@latest search @ofkm --type ui" />
 
 Use `--json` for agent and script workflows:
 
@@ -192,7 +192,7 @@ Use the `mcp` command to start the shadcn-svelte MCP server over stdio.
 shadcn-svelte mcp
 ```
 
-The server exposes tools for project info, configured registries, registry search, registry listing, item viewing, component docs links, init commands, add commands, and a component audit checklist.
+The server exposes tools for project info, configured registries, directory registry search, registry listing, item viewing, component docs links, init commands, add commands, and a component audit checklist.
 
 **Options**
 

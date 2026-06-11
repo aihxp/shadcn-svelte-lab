@@ -97,6 +97,11 @@ function generateGetStartedNav(): SidebarNavItem[] {
 			items: [],
 		},
 		{
+			title: "Directory",
+			href: "/docs/directory",
+			items: [],
+		},
+		{
 			title: "JavaScript",
 			href: "/docs/javascript",
 			items: [],

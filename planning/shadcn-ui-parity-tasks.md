@@ -2,15 +2,16 @@
 
 Snapshot date: 2026-06-11.
 
-Upstream `upstream-ui/main`: `1994caba0b2140d4d5aa765bb9d7d4412d6aaabb` (`shadcn` CLI 4.11.0).
+Upstream `upstream-ui/main`: `ea9d371a2dda3365a382ff361f96b55daeeab88d` (`shadcn` CLI 4.11.0).
 
-Local: `main` at `3992ed61d` (`shadcn-svelte` CLI 1.3.0).
+Local: `main` (`shadcn-svelte` CLI 1.3.0).
 
 Rules: audit local code before porting; a task is complete only when local code or docs exist, generated output is rebuilt, and verification commands are recorded. Use the classification legend from `upstream-audit-tasks.md` (`present`, `present-in-fork`, `needs-work`, `blocked-upstream`, `needs-repro`, `support-signal`, `not-applicable`, `partial`).
 
 ## Refresh Commands
 
-- [ ] `git fetch upstream-ui main` and update the snapshot commit above if it moved.
+- [x] `git fetch upstream-ui main` and update the snapshot commit above if it moved.
+  - Verification: `git fetch upstream-ui main`, `git rev-parse upstream-ui/main`.
 - [ ] Re-diff component inventories: `git ls-tree upstream-ui/main:apps/v4/registry/bases/base/ui --name-only` vs `ls docs/src/lib/registry/ui`.
 - [ ] Re-diff CLI commands: `git ls-tree -r upstream-ui/main:packages/shadcn/src/commands --name-only` vs `find packages/cli/src/commands -type f`.
 - [ ] Re-diff docs content: `git ls-tree -r upstream-ui/main:apps/v4/content/docs --name-only` vs `ls -R docs/content`.
@@ -102,12 +103,20 @@ Rules: audit local code before porting; a task is complete only when local code 
 
 ## Phase 4: Registry Directory
 
-- [ ] Decide directory curation policy: mirror framework-agnostic upstream entries vs Svelte-ecosystem-only.
-- [ ] Add `directory.json` (or equivalent) and the loader.
+- [x] Decide directory curation policy: mirror framework-agnostic upstream entries vs Svelte-ecosystem-only.
+  - Decision: curate Svelte-compatible registries only. The upstream directory contains many React, Next.js, Radix, and Base UI registries that would install unusable payloads in Svelte projects. Entries must expose Svelte registry items and a searchable catalog.
+  - Evidence: upstream `ea9d371a2` updated `apps/v4/registry/directory.json`; `@ofkm` was verified with `curl -fsSL https://shadcn.ofkm.dev/r/index.json` and `curl -fsSL https://shadcn.ofkm.dev/r/status-badge.json`.
+- [x] Add `directory.json` (or equivalent) and the loader.
   - Upstream reference: `apps/v4/registry/directory.json`.
-- [ ] Add the `directory` docs page.
+  - Implemented: `packages/cli/src/utils/registry/directory.ts` and `docs/static/registry/directory.json`.
+  - Verification: `pnpm -F shadcn-svelte exec vitest test/utils/registry.test.ts test/utils/registry-search.test.ts --run`.
+- [x] Add the `directory` docs page.
   - Upstream reference: `apps/v4/content/docs/(root)/directory.mdx`.
-- [ ] Wire directory entries into `search` and MCP namespace resolution.
+  - Implemented: `docs/content/directory.md` and sidebar nav entry.
+  - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`.
+- [x] Wire directory entries into `search` and MCP namespace resolution.
+  - Implemented: namespace catalog and item resolution now fall back to curated directory entries when a registry is not configured locally; explicit user config still wins. MCP inherits this through shared search and view helpers.
+  - Verification: `pnpm -F shadcn-svelte exec vitest test/mcp/tools.test.ts test/commands/search.test.ts test/utils/registry.test.ts test/utils/registry-search.test.ts --run`, `pnpm -F shadcn-svelte check`, `pnpm -F shadcn-svelte build`, `node packages/cli/dist/index.mjs search @ofkm --query badge --limit 1 --json`.
 
 ## Phase 5: Templates
 
