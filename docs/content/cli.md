@@ -26,6 +26,7 @@ Commands:
   registry build [registry]    Build registry JSON files
   registry validate [registry] Validate a GitHub source registry
   search [registries...]       Search items from registries
+  update [components...]       Update installed components
   view <items...>              View registry items
 ```
 
@@ -423,6 +424,44 @@ Arguments:
 
 Options:
   -h, --help  display help for command
+```
+
+---
+
+## update
+
+Use the `update` command to refresh installed components from the registry.
+
+<PMExecute command="shadcn-svelte@latest update button" />
+
+You can update specific installed components or every installed component:
+
+```bash
+shadcn-svelte update button card
+shadcn-svelte update --all
+```
+
+The command overwrites matching component files, refreshes stylesheet tokens and fonts, and can install new dependencies. Commit your local changes before running it.
+
+**Options**
+
+```bash
+Usage: shadcn-svelte update [options] [components...]
+
+update components in your project
+
+Arguments:
+  components          name of components
+
+Options:
+  -c, --cwd <path>    the working directory (default: the current directory)
+  --skip-preflight    ignore preflight checks and continue (default: false)
+  --no-deps           skips adding & installing package dependencies
+  --no-hooks          skips running postUpdate hooks from components.json
+  -a, --all           update all existing components (default: false)
+  -y, --yes           skip confirmation prompt (default: false)
+  --proxy <proxy>     fetch components from registry using a proxy
+  -h, --help          display help for command
 ```
 
 ---

@@ -513,6 +513,42 @@
     "pageTitle": "shadcn-svelte"
   },
   {
+    "title": "update",
+    "description": "",
+    "content": "update",
+    "href": "/docs/cli#update",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "Use the update command to refresh installed components from the registry.",
+    "description": "",
+    "content": "Use the update command to refresh installed components from the registry.",
+    "href": "/docs/cli#update",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "You can update specific installed components or every installed component:",
+    "description": "",
+    "content": "You can update specific installed components or every installed component:",
+    "href": "/docs/cli#update",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "The command overwrites matching component files, refreshes stylesheet tokens and fonts, and can install new dependencies...",
+    "description": "",
+    "content": "The command overwrites matching component files, refreshes stylesheet tokens and fonts, and can install new dependencies. Commit your local changes before running it.",
+    "href": "/docs/cli#update",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
     "title": "Outgoing Requests",
     "description": "",
     "content": "Outgoing Requests",
