@@ -18,6 +18,7 @@ Commands:
   add [components...]          Add components to your project
   apply [preset]               Apply a preset to an existing project
   docs <components...>         Get docs, API references, and usage examples
+  eject                        Inline shadcn-svelte/tailwind.css
   info                         Inspect project configuration
   init                         Initialize your project and install dependencies
   mcp                          Start the MCP server
@@ -462,6 +463,37 @@ Options:
   -y, --yes           skip confirmation prompt (default: false)
   --proxy <proxy>     fetch components from registry using a proxy
   -h, --help          display help for command
+```
+
+---
+
+## eject
+
+Use the `eject` command to inline `shadcn-svelte/tailwind.css` into your configured stylesheet.
+
+<PMExecute command="shadcn-svelte@latest eject" />
+
+This command replaces the `@import "shadcn-svelte/tailwind.css"` line in your global CSS file with the current helper CSS shipped by the CLI. If `shadcn-svelte` is installed in your project dependencies, the command removes it with your detected package manager.
+
+```bash
+shadcn-svelte eject
+shadcn-svelte eject --yes
+```
+
+Run this only when you want to own future changes to the helper CSS yourself. Commit your local changes before running it.
+
+**Options**
+
+```bash
+Usage: shadcn-svelte eject [options]
+
+inline shadcn-svelte/tailwind.css and remove the shadcn-svelte dependency
+
+Options:
+  -c, --cwd <path>  the working directory (default: the current directory)
+  -y, --yes         skip confirmation prompt (default: false)
+  -s, --silent      mute output (default: false)
+  -h, --help        display help for command
 ```
 
 ---

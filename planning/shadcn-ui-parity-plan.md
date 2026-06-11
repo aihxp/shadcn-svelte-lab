@@ -33,16 +33,15 @@ These were verified against the upstream tree at the snapshot commit. Re-verify 
 Completed locally:
 
 - Registry engine foundation: `registries` map, `@namespace/item`, per-registry auth, search catalogs, and directory namespace fallback.
-- Agent-facing commands: `search`, `view`, `info`, `docs`, `mcp`, `apply`, `preset`, `registry add`, visible `update`, and the deprecated `registry mcp` alias.
+- Agent-facing commands: `search`, `view`, `info`, `docs`, `mcp`, `apply`, `preset`, `registry add`, visible `update`, `eject`, and the deprecated `registry mcp` alias.
 - Agent ecosystem files: `.cursor-plugin/plugin.json`, `skills/shadcn-svelte/mcp.md`, `skills/shadcn-svelte/registry.md`, and `skills/shadcn-svelte/rules/bits-ui.md`.
 
 Remaining command gaps:
 
-| Command             | Upstream description                             | Notes for the Svelte port                                                                               |
-| ------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
-| `eject`             | inline tailwind.css and remove shadcn dependency | Confirm the Svelte equivalent semantics before porting.                                                 |
-| `migrate`           | run codemod migrations                           | Migration runner with `--list`.                                                                         |
-| `build` (top level) | build registry JSON                              | Local equivalent exists as `registry build`; consider a top-level alias for command-line compatibility. |
+| Command             | Upstream description   | Notes for the Svelte port                                                                               |
+| ------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------- |
+| `migrate`           | run codemod migrations | Migration runner with `--list`.                                                                         |
+| `build` (top level) | build registry JSON    | Local equivalent exists as `registry build`; consider a top-level alias for command-line compatibility. |
 
 ### B. Registry platform
 
@@ -104,7 +103,7 @@ Phases are ordered by leverage; each phase is independently shippable.
 4. Phase 4, directory: complete with a curated Svelte-compatible policy.
 5. Phase 5, templates: complete. Six Svelte templates, sync workflow docs, monorepo docs wiring, and create flow links are in place.
 6. Phase 6, site residuals: complete. Create page components, the Sera showcase, preview blocks, and historical carry-over file dispositions are recorded.
-7. Phase 7, long tail: `apply`, `preset`, `registry add`, and visible `update` are complete; remaining work is `eject`, `migrate` (including the RTL migration from issue 2512), top-level `build` alias, optional e2e fixture package.
+7. Phase 7, long tail: `apply`, `preset`, `registry add`, visible `update`, and `eject` are complete; remaining work is `migrate` (including the RTL migration from issue 2512), top-level `build` alias, optional e2e fixture package.
 
 ## Priority Rules
 

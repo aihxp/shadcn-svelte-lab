@@ -549,6 +549,42 @@
     "pageTitle": "shadcn-svelte"
   },
   {
+    "title": "eject",
+    "description": "",
+    "content": "eject",
+    "href": "/docs/cli#eject",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "Use the eject command to inline shadcn-svelte/tailwind.css into your configured stylesheet.",
+    "description": "",
+    "content": "Use the eject command to inline shadcn-svelte/tailwind.css into your configured stylesheet.",
+    "href": "/docs/cli#eject",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "This command replaces the @import \"shadcn-svelte/tailwind.css\" line in your global CSS file with the current helper CSS ...",
+    "description": "",
+    "content": "This command replaces the @import \"shadcn-svelte/tailwind.css\" line in your global CSS file with the current helper CSS shipped by the CLI. If shadcn-svelte is installed in your project dependencies, the command removes it with your detected package manager.",
+    "href": "/docs/cli#eject",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
+    "title": "Run this only when you want to own future changes to the helper CSS yourself. Commit your local changes before running i...",
+    "description": "",
+    "content": "Run this only when you want to own future changes to the helper CSS yourself. Commit your local changes before running it.",
+    "href": "/docs/cli#eject",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "shadcn-svelte"
+  },
+  {
     "title": "Outgoing Requests",
     "description": "",
     "content": "Outgoing Requests",

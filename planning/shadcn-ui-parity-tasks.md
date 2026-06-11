@@ -15,7 +15,7 @@ Rules: audit local code before porting; a task is complete only when local code 
 - [x] Re-diff component inventories: `git ls-tree upstream-ui/main:apps/v4/registry/bases/base/ui --name-only` vs `ls docs/src/lib/registry/ui`.
   - Result: no missing upstream base UI components after normalizing React `.tsx` files to local component directories. Local extras remain `data-table`, `form`, and `range-calendar`.
 - [x] Re-diff CLI commands: `git ls-tree -r upstream-ui/main:packages/shadcn/src/commands --name-only` vs `find packages/cli/src/commands -type f`.
-  - Result after adding `registry add` and making `update` visible: remaining upstream command gaps are `build`, `eject`, and `migrate`. Local extras are `init/preflight`, `registry/deps-resolver`, and visible `update`; `index` is the local command barrel file.
+  - Result after adding `eject`: remaining upstream command gaps are `build` and `migrate`. Local extras are `init/preflight`, `registry/deps-resolver`, and visible `update`; `index` is the local command barrel file.
 - [x] Re-diff docs content: `git ls-tree -r upstream-ui/main:apps/v4/content/docs --name-only` vs `ls -R docs/content`.
   - Result after `.mdx` to `.md` normalization: 188 upstream-only docs paths and 72 local-only docs paths remain. The upstream-only set is dominated by React-specific, base/radix split, and historical changelog pages already covered by Phase 3 dispositions; local-only docs include Svelte installation, migration, Formsnap, and RTL pages.
 
@@ -184,7 +184,11 @@ Rules: audit local code before porting; a task is complete only when local code 
   - Implemented: `shadcn-svelte update [components...]` now appears in root help and remains the command that updates installed components, stylesheet tokens, fonts, dependencies, and `postUpdate` hooks.
   - Docs: `docs/content/cli.md` now lists and documents the `update` command.
   - Verification: `pnpm -F shadcn-svelte exec vitest test/commands/update.test.ts --run`, `pnpm -F shadcn-svelte check`, `pnpm -F shadcn-svelte build`, `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`, `node packages/cli/dist/index.mjs --help`, `node packages/cli/dist/index.mjs update --help`.
-- [ ] Evaluate `eject` semantics for the Svelte stack; implement or record `not-applicable`.
+- [x] Evaluate `eject` semantics for the Svelte stack; implement or record `not-applicable`.
+  - Decision: implement the Svelte equivalent. Local projects import `shadcn-svelte/tailwind.css`, so `eject` inlines that helper CSS into the configured stylesheet and removes the `shadcn-svelte` dependency when present.
+  - Implemented: `shadcn-svelte eject` supports `--cwd`, `--yes`, and `--silent`, resolves the configured `tailwind.css` path from `components.json`, and falls back to editing `package.json` directly when no package manager is detected.
+  - Docs: `docs/content/cli.md` now lists and documents the `eject` command.
+  - Verification: `pnpm -F shadcn-svelte exec vitest test/commands/eject.test.ts --run`, `pnpm -F shadcn-svelte check`, `pnpm -F shadcn-svelte build`, `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`, `node packages/cli/dist/index.mjs --help`, `node packages/cli/dist/index.mjs eject --help`, and a built CLI smoke test against a temporary Vite fixture with `shadcn-svelte` removed from package dependencies.
 - [ ] Add `migrate` runner; include an RTL migration to close the remaining `partial` on issue 2512.
 - [ ] Add top-level `build` alias for `registry build` (command-line compatibility with upstream).
 - [ ] Stretch: fixture-based e2e package mirroring `packages/tests` with SvelteKit fixtures.
