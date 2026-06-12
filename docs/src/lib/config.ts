@@ -1,5 +1,5 @@
 export const siteConfig = {
-	name: "shadcn-svelte",
+	name: "shadcn-svelte-lab",
 	url: "https://shadcn-svelte.com",
 	ogImage: {
 		url: "https://shadcn-svelte.com/opengraph-image.png",
@@ -7,7 +7,7 @@ export const siteConfig = {
 		height: "630",
 	},
 	description:
-		"A set of beautifully-designed, accessible components and a code distribution platform. Open Source. Open Code.",
+		"Documentation for shadcn-svelte-lab, an experimental Svelte registry, CLI, and agent workflow fork.",
 	keywords: [
 		"shadcn-svelte",
 		"svelte components",
@@ -37,6 +37,6 @@ export const siteConfig = {
 	],
 	links: {
 		x: "https://x.com/huntabyte",
-		github: "https://github.com/huntabyte/shadcn-svelte",
+		github: "https://github.com/aihxp/shadcn-svelte",
 	},
 };

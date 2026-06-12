@@ -1,21 +1,93 @@
 [
   {
-    "title": "About",
+    "title": "About This Lab",
     "description": "",
-    "content": "About",
-    "href": "/docs/about#about",
+    "content": "About This Lab",
+    "href": "/docs/about#about-this-lab",
     "category": "Getting Started",
     "type": "heading",
-    "pageTitle": "About"
+    "pageTitle": "About shadcn-svelte-lab"
   },
   {
-    "title": "shadcn-svelte is a port of shadcn/ui for Svelte/SvelteKit. It's maintained by Huntabyte, CokaKoala, and Aidan Bleser and...",
+    "title": "This documentation describes shadcn-svelte-lab, a heavily modified fork of huntabyte/shadcn-svelte, the Svelte port of s...",
     "description": "",
-    "content": "shadcn-svelte is a port of shadcn/ui for Svelte/SvelteKit. It's maintained by Huntabyte, CokaKoala, and Aidan Bleser and has received countless contributions from the community.",
-    "href": "/docs/about#about",
+    "content": "This documentation describes shadcn-svelte-lab, a heavily modified fork of huntabyte/shadcn-svelte, the Svelte port of shadcn/ui.",
+    "href": "/docs/about#about-this-lab",
     "category": "Getting Started",
     "type": "text",
-    "pageTitle": "About"
+    "pageTitle": "About shadcn-svelte-lab"
+  },
+  {
+    "title": "This lab is not the canonical shadcn-svelte project, is not affiliated with shadcn, and is not affiliated with the upstr...",
+    "description": "",
+    "content": "This lab is not the canonical shadcn-svelte project, is not affiliated with shadcn, and is not affiliated with the upstream shadcn-svelte maintainers. It is not expected to be maintained regularly.",
+    "href": "/docs/about#about-this-lab",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "About shadcn-svelte-lab"
+  },
+  {
+    "title": "Use the canonical projects when you need the maintained upstream path:",
+    "description": "",
+    "content": "Use the canonical projects when you need the maintained upstream path:",
+    "href": "/docs/about#about-this-lab",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "About shadcn-svelte-lab"
+  },
+  {
+    "title": "shadcn/ui for React and the original registry model.",
+    "description": "",
+    "content": "shadcn/ui for React and the original registry model.",
+    "href": "/docs/about#about-this-lab",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "About shadcn-svelte-lab"
+  },
+  {
+    "title": "shadcn-svelte for the maintained Svelte port.",
+    "description": "",
+    "content": "shadcn-svelte for the maintained Svelte port.",
+    "href": "/docs/about#about-this-lab",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "About shadcn-svelte-lab"
+  },
+  {
+    "title": "Feature Comparison",
+    "description": "",
+    "content": "Feature Comparison",
+    "href": "/docs/about#feature-comparison",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "About shadcn-svelte-lab"
+  },
+  {
+    "title": "| Feature | shadcn/ui | shadcn-svelte | shadcn-svelte-lab | | ----------------------------------- | --------------------...",
+    "description": "",
+    "content": "| Feature | shadcn/ui | shadcn-svelte | shadcn-svelte-lab | | ----------------------------------- | --------------------------- | ------------------------------------------- | ---------------------------------------------- | | Ecosystem | React and Next.js | Svelte and SvelteKit | Svelte and SvelteKit | | Project role | Canonical shadcn project | Canonical community Svelte port | Experimental lab fork | | Component model | Copy-paste React components | Copy-paste Svelte components | Copy-paste Svelte components | | Registry installs | Yes | Yes | Yes | | Registry namespaces | Yes | Limited or upstream-dependent | Yes | | Private registry auth | Yes | Limited or upstream-dependent | Yes | | Search, view, and docs CLI commands | Yes | Limited or upstream-dependent | Yes | | MCP and agent tooling | Yes | Limited or upstream-dependent | Yes | | Starter templates | React framework templates | Svelte starter coverage depends on upstream | SvelteKit, Vite, Astro, and monorepo templates | | Maintenance expectation | Canonical React source | Canonical Svelte source | Not maintained regularly |",
+    "href": "/docs/about#feature-comparison",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "About shadcn-svelte-lab"
+  },
+  {
+    "title": "What This Lab Explores",
+    "description": "",
+    "content": "What This Lab Explores",
+    "href": "/docs/about#what-this-lab-explores",
+    "category": "Getting Started",
+    "type": "heading",
+    "pageTitle": "About shadcn-svelte-lab"
+  },
+  {
+    "title": "This lab keeps the Svelte component model and adapts additional upstream registry platform ideas, including namespaces, ...",
+    "description": "",
+    "content": "This lab keeps the Svelte component model and adapts additional upstream registry platform ideas, including namespaces, private registry authentication, registry search and view commands, docs lookup, MCP tools, templates, migrations, and fixture-based e2e tests.",
+    "href": "/docs/about#what-this-lab-explores",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "About shadcn-svelte-lab"
   },
   {
     "title": "Credits",
@@ -24,79 +96,88 @@
     "href": "/docs/about#credits",
     "category": "Getting Started",
     "type": "heading",
-    "pageTitle": "About"
+    "pageTitle": "About shadcn-svelte-lab"
   },
   {
-    "title": "shadcn - The brilliant mind behind the designs, methodology, and implementation of the original shadcn/ui.",
+    "title": "shadcn and shadcn/ui for the original designs, methodology, registry model, and React implementation.",
     "description": "",
-    "content": "shadcn - The brilliant mind behind the designs, methodology, and implementation of the original shadcn/ui.",
+    "content": "shadcn and shadcn/ui for the original designs, methodology, registry model, and React implementation.",
     "href": "/docs/about#credits",
     "category": "Getting Started",
     "type": "text",
-    "pageTitle": "About"
+    "pageTitle": "About shadcn-svelte-lab"
   },
   {
-    "title": "Bits UI - The headless components that power this project.",
+    "title": "Hunter Johnston, CokaKoala, Aidan Bleser, and the shadcn-svelte contributors for the Svelte port.",
     "description": "",
-    "content": "Bits UI - The headless components that power this project.",
+    "content": "Hunter Johnston, CokaKoala, Aidan Bleser, and the shadcn-svelte contributors for the Svelte port.",
     "href": "/docs/about#credits",
     "category": "Getting Started",
     "type": "text",
-    "pageTitle": "About"
+    "pageTitle": "About shadcn-svelte-lab"
   },
   {
-    "title": "Formsnap - The form components that power this project.",
+    "title": "Bits UI for the headless components that power the Svelte implementation.",
     "description": "",
-    "content": "Formsnap - The form components that power this project.",
+    "content": "Bits UI for the headless components that power the Svelte implementation.",
     "href": "/docs/about#credits",
     "category": "Getting Started",
     "type": "text",
-    "pageTitle": "About"
+    "pageTitle": "About shadcn-svelte-lab"
   },
   {
-    "title": "Paneforge - The resizable components that power this project.",
+    "title": "Formsnap for form primitives.",
     "description": "",
-    "content": "Paneforge - The resizable components that power this project.",
+    "content": "Formsnap for form primitives.",
     "href": "/docs/about#credits",
     "category": "Getting Started",
     "type": "text",
-    "pageTitle": "About"
+    "pageTitle": "About shadcn-svelte-lab"
   },
   {
-    "title": "Vaul Svelte - The drawer components that power this project.",
+    "title": "Paneforge for resizable primitives.",
     "description": "",
-    "content": "Vaul Svelte - The drawer components that power this project.",
+    "content": "Paneforge for resizable primitives.",
     "href": "/docs/about#credits",
     "category": "Getting Started",
     "type": "text",
-    "pageTitle": "About"
+    "pageTitle": "About shadcn-svelte-lab"
   },
   {
-    "title": "Radix UI - The headless components and examples that the original shadcn/ui was built on.",
+    "title": "Vaul Svelte for drawer primitives.",
     "description": "",
-    "content": "Radix UI - The headless components and examples that the original shadcn/ui was built on.",
+    "content": "Vaul Svelte for drawer primitives.",
     "href": "/docs/about#credits",
     "category": "Getting Started",
     "type": "text",
-    "pageTitle": "About"
+    "pageTitle": "About shadcn-svelte-lab"
   },
   {
-    "title": "Shu Ding - The typography style is adapted from his work on Nextra.",
+    "title": "Radix UI for the headless component work and examples that influenced the original shadcn/ui project.",
     "description": "",
-    "content": "Shu Ding - The typography style is adapted from his work on Nextra.",
+    "content": "Radix UI for the headless component work and examples that influenced the original shadcn/ui project.",
     "href": "/docs/about#credits",
     "category": "Getting Started",
     "type": "text",
-    "pageTitle": "About"
+    "pageTitle": "About shadcn-svelte-lab"
   },
   {
-    "title": "Cal - Where shad copied the styles for the first component: the Button.",
+    "title": "Shu Ding for typography work adapted through the upstream projects.",
     "description": "",
-    "content": "Cal - Where shad copied the styles for the first component: the Button.",
+    "content": "Shu Ding for typography work adapted through the upstream projects.",
     "href": "/docs/about#credits",
     "category": "Getting Started",
     "type": "text",
-    "pageTitle": "About"
+    "pageTitle": "About shadcn-svelte-lab"
+  },
+  {
+    "title": "Cal for the first component style inspiration in the original shadcn/ui project.",
+    "description": "",
+    "content": "Cal for the first component style inspiration in the original shadcn/ui project.",
+    "href": "/docs/about#credits",
+    "category": "Getting Started",
+    "type": "text",
+    "pageTitle": "About shadcn-svelte-lab"
   },
   {
     "title": "License",
@@ -105,21 +186,21 @@
     "href": "/docs/about#license",
     "category": "Getting Started",
     "type": "heading",
-    "pageTitle": "About"
+    "pageTitle": "About shadcn-svelte-lab"
   },
   {
-    "title": "MIT shadcn & huntabyte",
+    "title": "This repository remains under the MIT license. Keep LICENSE.md, package license files, and upstream notices intact when ...",
     "description": "",
-    "content": "MIT shadcn & huntabyte",
+    "content": "This repository remains under the MIT license. Keep LICENSE.md, package license files, and upstream notices intact when redistributing this lab or substantial portions of it.",
     "href": "/docs/about#license",
     "category": "Getting Started",
     "type": "text",
-    "pageTitle": "About"
+    "pageTitle": "About shadcn-svelte-lab"
   },
   {
     "title": "shadcn-svelte",
     "description": "Use the shadcn-svelte CLI to initialize projects, apply presets, add components, inspect registries, and run agent tools.",
-    "content": "The CLI can initialize projects, apply presets, add registry items, search and inspect registries, return docs links, start the MCP server, and help registry authors build or validate registry files.",
+    "content": "This page documents the CLI as it exists in shadcn-svelte-lab. Command examples still use the inherited shadcn-svelte package name. If this lab is published under a scoped package, replace the package name in examples with the package you actually use. The CLI can initialize projects, apply presets, add registry items, search and inspect registries, return docs links, start the MCP server, and help registry authors build or validate registry files.",
     "href": "/docs/cli",
     "category": "Getting Started",
     "type": "page",
@@ -1271,7 +1352,7 @@
   {
     "title": "Introduction",
     "description": "Re-usable components built with Bits UI and Tailwind CSS.",
-    "content": "An unofficial, community-led Svelte port of shadcn/ui. We are not affiliated with shadcn, but we did get his blessing before creating a Svelte version of his work. This project was born out of the need for a similar project for the Svelte ecosystem. This is not a component library. It is how you build your component library. You know how most traditional component libraries work: you install a package from NPM, import the components, and use them in your app. This approach works well until you need to customize a component to fit your design system or require one that isn’t included in the library. Often, you end up wrapping library components, writing workarounds to override styles, or mixing components from different libraries with incompatible APIs. This is what shadcn-svelte aims to solve. It is built around the following principles: Open Code: The top layer of your component code is open for modification. Composition: Every component uses a common, composable interface, making them predictable. Distribution: A flat-file schema and command-line tool make it easy to distribute components. Beautiful Defaults: Carefully chosen default styles, so you get great design out-of-the-box. AI-Ready: Open code for LLMs to read, understand, and improve.",
+    "content": "This documentation describes shadcn-svelte-lab, a heavily modified fork of huntabyte/shadcn-svelte. It is not the canonical Svelte port, it is not affiliated with shadcn or the upstream shadcn-svelte maintainers, and it is not expected to be maintained regularly. This lab adapts shadcn/ui ideas for Svelte, then adds broader registry, CLI, template, and agent workflow experiments. Use shadcn/ui for the canonical React project and shadcn-svelte for the maintained Svelte port. This is not a component library. It is how you build your component library. You know how most traditional component libraries work: you install a package from NPM, import the components, and use them in your app. This approach works well until you need to customize a component to fit your design system or require one that isn’t included in the library. Often, you end up wrapping library components, writing workarounds to override styles, or mixing components from different libraries with incompatible APIs. This is what the shadcn approach aims to solve. This lab is built around the following principles: Open Code: The top layer of your component code is open for modification. Composition: Every component uses a common, composable interface, making them predictable. Distribution: A flat-file schema and command-line tool make it easy to distribute components. Beautiful Defaults: Carefully chosen default styles, so you get great design out-of-the-box. AI-Ready: Open code for LLMs to read, understand, and improve.",
     "href": "/docs",
     "category": "Getting Started",
     "type": "page",
@@ -1287,9 +1368,9 @@
     "pageTitle": "Introduction"
   },
   {
-    "title": "shadcn-svelte hands you the actual component code. You have full control to customize and extend the components to your ...",
+    "title": "The CLI hands you the actual component code. You have full control to customize and extend the components to your needs....",
     "description": "",
-    "content": "shadcn-svelte hands you the actual component code. You have full control to customize and extend the components to your needs. This means:",
+    "content": "The CLI hands you the actual component code. You have full control to customize and extend the components to your needs. This means:",
     "href": "/docs#open-code",
     "category": "Getting Started",
     "type": "text",
@@ -1323,9 +1404,9 @@
     "pageTitle": "Introduction"
   },
   {
-    "title": "In a typical library, if you need to change a button’s behavior, you have to override styles or wrap the component. With...",
+    "title": "In a typical library, if you need to change a button's behavior, you have to override styles or wrap the component. With...",
     "description": "",
-    "content": "In a typical library, if you need to change a button’s behavior, you have to override styles or wrap the component. With shadcn-svelte, you simply edit the button code directly.",
+    "content": "In a typical library, if you need to change a button's behavior, you have to override styles or wrap the component. With this approach, you simply edit the button code directly.",
     "href": "/docs#open-code",
     "category": "Getting Started",
     "type": "text",
@@ -1368,9 +1449,9 @@
     "pageTitle": "Introduction"
   },
   {
-    "title": "Every component in shadcn-svelte shares a common, composable interface. If a component does not exist, we bring it in, m...",
+    "title": "Every component in this lab shares a common, composable interface. If a component does not exist, the lab workflow bring...",
     "description": "",
-    "content": "Every component in shadcn-svelte shares a common, composable interface. If a component does not exist, we bring it in, make it composable, and adjust its style to match and work with the rest of the design system.",
+    "content": "Every component in this lab shares a common, composable interface. If a component does not exist, the lab workflow brings it in, makes it composable, and adjusts its style to match the rest of the design system.",
     "href": "/docs#composition",
     "category": "Getting Started",
     "type": "text",
@@ -1395,9 +1476,9 @@
     "pageTitle": "Introduction"
   },
   {
-    "title": "shadcn-svelte is also a code distribution system. It defines a schema for components and a CLI to distribute them.",
+    "title": "This lab is also a code distribution system. It defines a schema for components and a CLI to distribute them.",
     "description": "",
-    "content": "shadcn-svelte is also a code distribution system. It defines a schema for components and a CLI to distribute them.",
+    "content": "This lab is also a code distribution system. It defines a schema for components and a CLI to distribute them.",
     "href": "/docs#distribution",
     "category": "Getting Started",
     "type": "text",
@@ -1440,9 +1521,9 @@
     "pageTitle": "Introduction"
   },
   {
-    "title": "shadcn-svelte comes with a large collection of components that have carefully chosen default styles. They are designed t...",
+    "title": "The registry comes with a large collection of components that have carefully chosen default styles. They are designed to...",
     "description": "",
-    "content": "shadcn-svelte comes with a large collection of components that have carefully chosen default styles. They are designed to look good on their own and to work well together as a consistent system:",
+    "content": "The registry comes with a large collection of components that have carefully chosen default styles. They are designed to look good on their own and to work well together as a consistent system:",
     "href": "/docs#beautiful-defaults",
     "category": "Getting Started",
     "type": "text",
@@ -1485,9 +1566,9 @@
     "pageTitle": "Introduction"
   },
   {
-    "title": "The design of shadcn-svelte makes it easy for AI tools to work with your code. Its open code and consistent API allow AI...",
+    "title": "The design of this lab makes it easy for AI tools to work with your code. Its open code, registry schemas, CLI commands,...",
     "description": "",
-    "content": "The design of shadcn-svelte makes it easy for AI tools to work with your code. Its open code and consistent API allow AI models to read, understand, and even generate new components.",
+    "content": "The design of this lab makes it easy for AI tools to work with your code. Its open code, registry schemas, CLI commands, and MCP server allow AI models to read, understand, and generate components.",
     "href": "/docs#ai-ready",
     "category": "Getting Started",
     "type": "text",
@@ -2295,9 +2376,9 @@
     "pageTitle": "Your project is ready!"
   },
   {
-    "title": "Recent parity work added the newer component set, registry namespaces, authenticated registries, GitHub source registrie...",
+    "title": "Recent lab work added the newer component set, registry namespaces, authenticated registries, GitHub source registries, ...",
     "description": "",
-    "content": "Recent parity work added the newer component set, registry namespaces, authenticated registries, GitHub source registries, the curated directory, registry search, item viewing, docs links, project info, and MCP tools.",
+    "content": "Recent lab work added the newer component set, registry namespaces, authenticated registries, GitHub source registries, the curated directory, registry search, item viewing, docs links, project info, and MCP tools.",
     "href": "/docs/new#latest-additions",
     "category": "Getting Started",
     "type": "text",
@@ -4590,9 +4671,9 @@
     "pageTitle": "Tailwind v4"
   },
   {
-    "title": "If you find any bugs, please us know on GitHub.",
+    "title": "If you find a bug in this lab, report it against the lab. Only report it upstream if it also reproduces in the canonical...",
     "description": "",
-    "content": "If you find any bugs, please us know on GitHub.",
+    "content": "If you find a bug in this lab, report it against the lab. Only report it upstream if it also reproduces in the canonical shadcn-svelte project.",
     "href": "/docs/migration/tailwind-v4#see-it-live",
     "category": "Migration",
     "type": "text",
@@ -17093,7 +17174,7 @@
   {
     "title": "Getting Started",
     "description": "Learn how to get setup and run your own component registry.",
-    "content": "This guide will walk you through the process of setting up your own component registry. It assumes you already have a project with components and would like to turn it into a registry. If you're starting a new registry project, you can use the registry template as a starting point. It's already configured for you.",
+    "content": "This guide will walk you through the process of setting up your own component registry. It assumes you already have a project with components and would like to turn it into a registry. If you're starting a new registry project, you can use the local registry-template package as a starting point. The canonical upstream template is available in huntabyte/shadcn-svelte.",
     "href": "/docs/registry/getting-started",
     "category": "Registry",
     "type": "page",
@@ -17579,7 +17660,7 @@
   {
     "title": "Registry",
     "description": "Run your own component registry.",
-    "content": "Note: This feature is currently experimental. Help us improve it by testing it out and sending feedback. If you have any questions, please reach out to us. You can use the shadcn-svelte CLI to create your own component registry. Creating your own registry allows you to distribute your own custom components, hooks, pages, and other files to any Svelte project. Registry items are automatically compatible with the shadcn-svelte CLI.",
+    "content": "Note: This feature is experimental in shadcn-svelte-lab. Do not send lab-specific registry feedback to upstream unless the issue also reproduces in the canonical shadcn-svelte project. You can use the shadcn-svelte CLI to create your own component registry. Creating your own registry allows you to distribute your own custom components, hooks, pages, and other files to any Svelte project. Registry items are automatically compatible with the shadcn-svelte CLI.",
     "href": "/docs/registry",
     "category": "Registry",
     "type": "page",
@@ -17604,9 +17685,9 @@
     "pageTitle": "Registry"
   },
   {
-    "title": "If you'd like to see an example of a registry, we have a template project for you to use as a starting point.",
+    "title": "If you want to see an example of a registry, this repository includes registry-template as a starting point. The canonic...",
     "description": "",
-    "content": "If you'd like to see an example of a registry, we have a template project for you to use as a starting point.",
+    "content": "If you want to see an example of a registry, this repository includes registry-template as a starting point. The canonical upstream template is available in huntabyte/shadcn-svelte.",
     "href": "/docs/registry#requirements",
     "category": "Registry",
     "type": "text",

@@ -1,6 +1,6 @@
 ---
 title: Dropdown Menu
-description: Displays a menu to the user — such as a set of actions or functions — triggered by a button.
+description: Displays a menu to the user, such as a set of actions or functions, triggered by a button.
 component: true
 links:
   source: https://github.com/huntabyte/shadcn-svelte/tree/next/sites/docs/src/lib/registry/ui/dropdown-menu

@@ -4,8 +4,15 @@ description: Use the shadcn-svelte CLI to initialize projects, apply presets, ad
 ---
 
 <script>
+	import Callout from "$lib/components/callout.svelte";
 	import PMExecute from "$lib/components/pm-execute.svelte";
 </script>
+
+<Callout class="mt-6">
+
+This page documents the CLI as it exists in `shadcn-svelte-lab`. Command examples still use the inherited `shadcn-svelte` package name. If this lab is published under a scoped package, replace the package name in examples with the package you actually use.
+
+</Callout>
 
 The CLI can initialize projects, apply presets, add registry items, search and inspect registries, return docs links, start the MCP server, and help registry authors build or validate registry files.
 

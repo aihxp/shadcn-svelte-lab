@@ -1,43 +1,64 @@
-# shadcn-svelte
+# shadcn-svelte CLI In shadcn-svelte-lab
 
-A CLI for adding shadcn components to your project.
+> [!WARNING]
+> This package lives inside `shadcn-svelte-lab`, a heavily modified fork of [huntabyte/shadcn-svelte](https://github.com/huntabyte/shadcn-svelte). It is not the canonical upstream CLI and this lab is not expected to be maintained regularly.
 
-## Usage
+The CLI installs Svelte registry items, manages `components.json`, searches and inspects registries, starts the MCP server, applies presets, runs migrations, and builds registry JSON.
 
-Use the `init` command to initialize dependencies for a new project.
+## Common Commands
 
-The `init` command installs dependencies, adds the `cn` util, configures, and sets up CSS variables for the project.
+Initialize a project:
 
 ```bash
 npx shadcn-svelte init
 ```
 
-## add
-
-Use the `add` command to add components to your project.
-
-The `add` command adds a component to your project and installs all required dependencies.
+Add a component:
 
 ```bash
-npx shadcn-svelte add [component]
+npx shadcn-svelte add button
 ```
 
-### Example
+Search a registry namespace:
 
 ```bash
-npx shadcn-svelte add alert-dialog
+npx shadcn-svelte search @shadcn --query button
 ```
 
-You can also run the command without any arguments to view a list of all available components:
+Inspect a project:
 
 ```bash
-npx shadcn-svelte add
+npx shadcn-svelte info --json
 ```
 
-## Documentation
+Start the MCP server:
 
-Visit https://shadcn-svelte.com to view the documentation.
+```bash
+npx shadcn-svelte mcp
+```
+
+When working from this repository locally, build the CLI first:
+
+```bash
+pnpm build:cli
+```
+
+Then run the built CLI from `packages/cli/dist/index.mjs` or through the package scripts.
+
+## Verification
+
+Run CLI unit tests:
+
+```bash
+pnpm test
+```
+
+Run fixture-based e2e tests:
+
+```bash
+pnpm test:e2e
+```
 
 ## License
 
-Licensed under the [MIT license](https://github.com/huntabyte/shadcn-svelte/blob/main/LICENSE.md).
+Licensed under the [MIT license](../../LICENSE.md). This lab retains upstream notices from `shadcn/ui` and `huntabyte/shadcn-svelte`.

@@ -1,8 +1,8 @@
-# shadcn-ui/ui Parity Plan
+# shadcn-svelte-lab Upstream Comparison Plan
 
 ## Purpose
 
-Bridge the remaining gap between `shadcn-ui/ui` (the upstream React project) and this fork (`aihxp/shadcn-svelte`). The previous audit cycle (`upstream-audit-plan.md`) tracked `huntabyte/shadcn-svelte`; this plan tracks the React original directly via the `upstream-ui` remote. For each upstream feature the question is: is it already present here, does it need a Svelte port, or is it intentionally not applicable to a Bits UI based ecosystem?
+Track how `shadcn-svelte-lab` compares with `shadcn-ui/ui` (the upstream React project) without presenting this lab as a replacement for either upstream project. The previous audit cycle (`upstream-audit-plan.md`) tracked `huntabyte/shadcn-svelte`; this plan tracks the React original directly via the `upstream-ui` remote. For each upstream feature the question is: is it already present here, does it need a Svelte adaptation, or is it intentionally not applicable to a Bits UI based ecosystem?
 
 ## Baseline
 
@@ -11,9 +11,10 @@ Bridge the remaining gap between `shadcn-ui/ui` (the upstream React project) and
 - Upstream `upstream-ui/main`: `ea9d371a2dda3365a382ff361f96b55daeeab88d`
 - Upstream CLI: `shadcn` `4.11.0` (`packages/shadcn`)
 - Local branch: `main`
-- Local CLI: `shadcn-svelte` `1.3.0` (`packages/cli`)
+- Local project: `shadcn-svelte-lab`
+- Inherited CLI package: `shadcn-svelte` `1.3.0` (`packages/cli`)
 
-## Verified Parity (do not redo)
+## Verified Coverage (do not redo)
 
 These were verified against the upstream tree at the snapshot commit. Re-verify only when refreshing the snapshot.
 
@@ -28,7 +29,7 @@ These were verified against the upstream tree at the snapshot commit. Re-verify 
 
 ## Gap Inventory
 
-### A. CLI command parity (`packages/cli` vs `packages/shadcn` 4.11.0)
+### A. CLI command coverage (`packages/cli` vs `packages/shadcn` 4.11.0)
 
 Completed locally:
 
@@ -36,7 +37,7 @@ Completed locally:
 - Agent-facing commands: `search`, `view`, `info`, `docs`, `mcp`, `apply`, `preset`, `registry add`, visible `update`, `eject`, `migrate`, top-level `build`, and the deprecated `registry mcp` alias.
 - Agent ecosystem files: `.cursor-plugin/plugin.json`, `skills/shadcn-svelte/mcp.md`, `skills/shadcn-svelte/registry.md`, and `skills/shadcn-svelte/rules/bits-ui.md`.
 
-Remaining command gaps: none. The optional SvelteKit fixture-based e2e package remains listed as stretch hardening.
+Remaining command gaps: none. The optional SvelteKit fixture-based e2e package is complete.
 
 ### B. Registry platform
 
@@ -51,7 +52,7 @@ Remaining command gaps: none. The optional SvelteKit fixture-based e2e package r
 - Skill sync is complete for the Svelte agent surface.
 - `.cursor-plugin/plugin.json` exists.
 
-### D. Docs content parity (`docs/content/` vs `apps/v4/content/docs/`)
+### D. Docs content coverage (`docs/content/` vs `apps/v4/content/docs/`)
 
 - Forms section exists with SvelteKit, Formsnap, TanStack Form, and Formisch coverage.
 - RTL section exists with SvelteKit, Vite, and Astro coverage. The CLI now includes `migrate rtl`, which rewrites common physical Tailwind utilities to logical utilities and writes `rtl: true` to `components.json`.
@@ -83,8 +84,8 @@ After evaluation, there are no remaining site residuals from this phase.
 
 ### G. Not applicable, watch only
 
-- `registry/bases/{base,radix}` multi-primitive architecture: upstream now builds every component twice (Base UI and Radix). This fork has a single primitive layer (Bits UI), so the architecture itself does not port. Watch for schema and `components.json` changes leaking out of it (`bases.ts`, `config.ts`, `eject`, `apply`) that affect cross-ecosystem registry compatibility.
-- `packages/tests` fixture-based e2e suite: optional hardening; a SvelteKit fixture equivalent is listed as a stretch task.
+- `registry/bases/{base,radix}` multi-primitive architecture: upstream now builds every component twice (Base UI and Radix). This lab has a single primitive layer (Bits UI), so the architecture itself does not port. Watch for schema and `components.json` changes leaking out of it (`bases.ts`, `config.ts`, `eject`, `apply`) that affect cross-ecosystem registry compatibility.
+- `packages/tests` fixture-based e2e suite: complete. The suite covers SvelteKit app and monorepo component installs, `migrate rtl`, and top-level registry `build` against a local static registry server.
 - React-specific docs (`react-19`, `react-hook-form`, `open-in-v0`, `_v0`): record dispositions, do not port.
 - Historical carry-over files from the older Svelte audit (`docs/src/hooks.server.ts`, `docs/src/lib/components/setup-cards.svelte`, `docs/src/lib/types/block.ts`): record as not applicable for the current site. They do not exist in the current `upstream-ui/main` tree, local cookie state is handled by `docs/src/routes/(app)/+layout.server.ts`, install setup cards are covered by `docs/src/lib/components/install-cards.svelte`, and block typing is covered by `docs/src/lib/blocks.ts` plus `docs/src/routes/api/block/[block]/+server.ts`.
 
@@ -94,18 +95,18 @@ Phases are ordered by leverage; each phase is independently shippable.
 
 1. Phase 1, registry engine foundation: complete.
 2. Phase 2, agent surface: complete.
-3. Phase 3, docs parity: complete.
+3. Phase 3, docs coverage: complete.
 4. Phase 4, directory: complete with a curated Svelte-compatible policy.
 5. Phase 5, templates: complete. Six Svelte templates, sync workflow docs, monorepo docs wiring, and create flow links are in place.
 6. Phase 6, site residuals: complete. Create page components, the Sera showcase, preview blocks, and historical carry-over file dispositions are recorded.
-7. Phase 7, long tail: `apply`, `preset`, `registry add`, visible `update`, `eject`, `migrate`, and top-level `build` are complete; remaining work is the optional e2e fixture package.
+7. Phase 7, long tail: complete. `apply`, `preset`, `registry add`, visible `update`, `eject`, `migrate`, top-level `build`, and the optional e2e fixture package are complete.
 
 ## Priority Rules
 
 1. Features that unblock agents and third-party registries (namespaces, search, MCP) come first; they are the widest ecosystem gap and everything else consumes them.
 2. Docs for a feature ship in the same phase as the feature.
 3. Pure React-platform features get a recorded `not-applicable` disposition instead of silent omission.
-4. Site polish (create page, demos, RSS) trails functional parity.
+4. Site polish (create page, demos, RSS) trails functional coverage.
 
 ## Verification Expectations
 
@@ -120,4 +121,4 @@ Phases are ordered by leverage; each phase is independently shippable.
 - Refresh the snapshot with `git fetch upstream-ui main` before each working session; update the baseline commit here when it moves.
 - Diff inventories with `git ls-tree upstream-ui/main:<path>` against the local trees rather than relying on memory; upstream moves fast.
 - Re-check Workstream G watch items when upstream changes `packages/shadcn/src/registry/config.ts`, `bases.ts`, or the registry item schema.
-- Track work in `shadcn-ui-parity-tasks.md` using the same evidence-based completion rules as the previous audit cycle: a task is done only when code or docs exist locally, generated output is rebuilt, and verification commands are recorded.
+- Track work in `shadcn-svelte-lab-tasks.md` using the same evidence-based completion rules as the previous audit cycle: a task is done only when code or docs exist locally, generated output is rebuilt, and verification commands are recorded.

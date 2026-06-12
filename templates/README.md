@@ -1,6 +1,9 @@
 # shadcn-svelte Templates
 
-These starters cover the framework shapes tracked in the shadcn-ui parity plan. They are Svelte-native templates, not direct copies from the upstream React templates.
+These starters cover the framework shapes tracked by `shadcn-svelte-lab`. They are Svelte-native templates, not direct copies from the upstream React templates.
+
+> [!WARNING]
+> These templates belong to `shadcn-svelte-lab`. They are useful for local checks and experiments, but they should not be treated as the canonical maintained shadcn-svelte starter set.
 
 ## Available Templates
 
@@ -17,10 +20,16 @@ These starters cover the framework shapes tracked in the shadcn-ui parity plan. 
 
 Use this workflow when refreshing templates after framework, Tailwind, or CLI changes:
 
-1. Refresh upstream parity context with `git fetch upstream-ui main`.
+1. Refresh upstream comparison context with `git fetch upstream-ui main`.
 2. Compare the root catalog and `docs/package.json` dependency ranges against the template packages.
 3. Keep each `components.json` aligned with the repo defaults for `style`, `tailwind.css`, `baseColor`, and aliases.
 4. Copy each template to a temporary directory, install dependencies, run `pnpm check`, run `pnpm build`, then run the local CLI smoke test with `add button`.
 5. Do not commit generated lockfiles, build output, `node_modules`, `.svelte-kit`, or `.astro` directories from template verification.
 
 For monorepos, run the CLI from `apps/web` when testing app-level installation. The `ui` and `utils` aliases resolve into `packages/ui`, matching the documented shared package layout.
+
+The repository e2e suite copies these templates into `packages/tests/temp` and verifies key CLI flows against a local registry:
+
+```bash
+pnpm test:e2e
+```

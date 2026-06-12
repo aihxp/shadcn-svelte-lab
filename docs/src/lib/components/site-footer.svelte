@@ -27,7 +27,15 @@
 					class="font-medium underline underline-offset-4"
 				>
 					CokaKoala
-				</a>.
+				</a>. shadcn-svelte-lab is kept as an experiment by
+				<a
+					href="https://github.com/aihxp"
+					target="_blank"
+					rel="noreferrer"
+					class="font-medium underline underline-offset-4"
+				>
+					aihxp</a
+				>.
 			</div>
 		</div>
 	</div>

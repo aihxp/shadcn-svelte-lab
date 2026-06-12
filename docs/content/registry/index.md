@@ -10,9 +10,7 @@ description: Run your own component registry.
 
 <Callout>
 
-**Note:** This feature is currently experimental. Help us improve it by
-testing it out and sending feedback. If you have any questions, please [reach
-out to us](https://github.com/huntabyte/shadcn-svelte/discussions).
+**Note:** This feature is experimental in `shadcn-svelte-lab`. Do not send lab-specific registry feedback to upstream unless the issue also reproduces in the canonical [shadcn-svelte](https://github.com/huntabyte/shadcn-svelte) project.
 
 </Callout>
 
@@ -24,7 +22,7 @@ Registry items are automatically compatible with the `shadcn-svelte` CLI.
 
 You are free to design and host your custom registry as you see fit. The only requirement is that your registry items must be valid JSON files that conform to the [registry-item schema specification](/docs/registry/registry-item-json).
 
-If you'd like to see an example of a registry, we have a [template project](https://github.com/huntabyte/shadcn-svelte/tree/main/registry-template) for you to use as a starting point.
+If you want to see an example of a registry, this repository includes `registry-template` as a starting point. The canonical upstream template is available in [huntabyte/shadcn-svelte](https://github.com/huntabyte/shadcn-svelte/tree/main/registry-template).
 
 You can clone it using `degit`
 

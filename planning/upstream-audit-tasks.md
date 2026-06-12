@@ -14,7 +14,7 @@ Use this checklist to track review and implementation work from `huntabyte/shadc
 - Remaining unchecked items after this batch: 0.
 - Remaining unchecked open pull request intake items after this batch: 0.
 - Remaining `needs-work` dispositions after this batch: 1.
-- Drift note: the former carry-over gap for `docs/src/hooks.server.ts`, `docs/src/lib/components/setup-cards.svelte`, and `docs/src/lib/types/block.ts` is superseded by `planning/shadcn-ui-parity-tasks.md` Phase 6. Current `upstream-ui/main` no longer includes those paths, and local coverage is recorded in the parity checklist.
+- Drift note: the former carry-over gap for `docs/src/hooks.server.ts`, `docs/src/lib/components/setup-cards.svelte`, and `docs/src/lib/types/block.ts` is superseded by `planning/shadcn-svelte-lab-tasks.md` Phase 6. Current `upstream-ui/main` no longer includes those paths, and local coverage is recorded in the lab comparison checklist.
 
 ## Refresh Commands
 

@@ -1,10 +1,10 @@
-# shadcn-ui/ui Parity Tasks
+# shadcn-svelte-lab Upstream Comparison Tasks
 
 Snapshot date: 2026-06-11.
 
 Upstream `upstream-ui/main`: `ea9d371a2dda3365a382ff361f96b55daeeab88d` (`shadcn` CLI 4.11.0).
 
-Local: `main` (`shadcn-svelte` CLI 1.3.0).
+Local: `main` (`shadcn-svelte-lab`, inherited `shadcn-svelte` CLI 1.3.0).
 
 Rules: audit local code before porting; a task is complete only when local code or docs exist, generated output is rebuilt, and verification commands are recorded. Use the classification legend from `upstream-audit-tasks.md` (`present`, `present-in-fork`, `needs-work`, `blocked-upstream`, `needs-repro`, `support-signal`, `not-applicable`, `partial`).
 
@@ -69,7 +69,7 @@ Rules: audit local code before porting; a task is complete only when local code 
   - Upstream reference: `.cursor-plugin/plugin.json`.
   - Verification: `node -e 'JSON.parse(require("fs").readFileSync(".cursor-plugin/plugin.json", "utf8")); console.log("plugin json ok")'`.
 
-## Phase 3: Docs Parity
+## Phase 3: Docs Coverage
 
 - [x] Registry docs: add `docs/content/registry/authentication.md`.
   - Verification: `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`.
@@ -155,7 +155,7 @@ Rules: audit local code before porting; a task is complete only when local code 
   - Verification: Playwright desktop and mobile visual pass at `/sera`, `pnpm -F docs build:registry`, `pnpm -F docs build:content`, `pnpm -F docs check`, `pnpm -F docs build:svelte`, `pnpm -F docs build:search`.
 - [x] Port `preview` and `preview-02` blocks from `registry/bases/base/blocks`.
   - Implemented: `album-card.svelte` and `catalog-toolbar.svelte` under `docs/src/lib/registry/examples/create/preview-02/cards/`, then wired both into `preview-02.svelte`.
-  - Confirmed: `preview` and `preview-02` card filename parity against upstream `registry/bases/base/blocks`, with upstream `bar-visualizer.tsx` represented locally as `bar-visualizer-card.svelte`.
+  - Confirmed: `preview` and `preview-02` card filenames match upstream `registry/bases/base/blocks`, with upstream `bar-visualizer.tsx` represented locally as `bar-visualizer-card.svelte`.
   - Verification: Playwright desktop and narrow viewport visual pass at `/create/preview-02` and `/preview/preview-02?fromPreview=true`, `pnpm -F docs build:registry`, `pnpm -F docs build:content`, `pnpm -F docs check`, `pnpm -F docs build:svelte`.
 - [x] Evaluate and port `docs/src/hooks.server.ts`, `docs/src/lib/components/setup-cards.svelte`, `docs/src/lib/types/block.ts` (confirm each is still needed by the routes being ported before copying).
   - Decision: no source port required. These paths are historical carry-over items from the older Svelte audit and do not exist in current `upstream-ui/main`.
@@ -197,11 +197,14 @@ Rules: audit local code before porting; a task is complete only when local code 
   - Implemented: `shadcn-svelte build [registry]` reuses the existing registry build implementation through a command factory, while keeping `shadcn-svelte registry build [registry]` available. The shared builder now resolves registry item file paths relative to `--cwd`.
   - Docs: `docs/content/cli.md` now lists and documents the top-level alias.
   - Verification: `pnpm -F shadcn-svelte exec vitest test/commands/build.test.ts test/commands/migrate.test.ts --run`, `pnpm -F shadcn-svelte check`, `pnpm -F shadcn-svelte build`, `pnpm -F docs build:content`, `pnpm -F docs build:search`, `pnpm -F docs check`, `node packages/cli/dist/index.mjs --help`, `node packages/cli/dist/index.mjs build --help`, and a built CLI smoke test against a temporary registry project.
-- [ ] Stretch: fixture-based e2e package mirroring `packages/tests` with SvelteKit fixtures.
+- [x] Stretch: fixture-based e2e package mirroring `packages/tests` with SvelteKit fixtures.
+  - Implemented: `packages/tests` copies SvelteKit app and monorepo templates into a temp workspace, serves `docs/static` as a local registry, and exercises the built CLI against `add`, `migrate rtl`, and top-level `build`.
+  - Docs: root `README.md`, `templates/README.md`, and `packages/tests/README.md` now document `pnpm test:e2e`.
+  - Verification: `pnpm -F @shadcn-svelte/e2e-tests typecheck`, `pnpm test:e2e`.
 
 ## Not Applicable (record only)
 
 - [x] Record disposition: `registry/bases/{base,radix}` multi-primitive architecture (Bits UI is the single primitive layer here); add a watch note for schema changes in `bases.ts` and `config.ts`.
-  - Recorded in `planning/shadcn-ui-parity-plan.md` under "Not applicable, watch only".
+  - Recorded in `planning/shadcn-svelte-lab-plan.md` under "Not applicable, watch only".
 - [x] Record disposition: `react-19.mdx`, `react-hook-form.mdx`, `_v0.mdx`, `_blocks.mdx`.
-  - Recorded in `planning/shadcn-ui-parity-plan.md` under "Docs content parity" and "Not applicable, watch only".
+  - Recorded in `planning/shadcn-svelte-lab-plan.md` under "Docs content coverage" and "Not applicable, watch only".

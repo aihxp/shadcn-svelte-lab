@@ -106,7 +106,7 @@ Learn more in [MCP Server](/docs/mcp) and [Skills](/docs/skills).
 
 ## Latest Additions
 
-Recent parity work added the newer component set, registry namespaces, authenticated registries, GitHub source registries, the curated directory, registry search, item viewing, docs links, project info, and MCP tools.
+Recent lab work added the newer component set, registry namespaces, authenticated registries, GitHub source registries, the curated directory, registry search, item viewing, docs links, project info, and MCP tools.
 
 Useful places to start:
 

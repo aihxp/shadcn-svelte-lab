@@ -1,9 +1,11 @@
 # @shadcn-svelte/registry
 
 > [!WARNING]
-> This package is deprecated. Please use `shadcn-svelte/schema` instead.
+> This package is deprecated. Use `shadcn-svelte/schema` instead.
 
 This package provides TypeScript types and Zod schemas for building a custom shadcn-svelte registry.
+
+This copy lives inside `shadcn-svelte-lab`, a heavily modified fork of [huntabyte/shadcn-svelte](https://github.com/huntabyte/shadcn-svelte). It is kept for compatibility with existing package structure and should not be treated as a new maintained registry package.
 
 ## Installation
 
@@ -13,4 +15,4 @@ npm install @shadcn-svelte/registry
 
 ## License
 
-MIT
+MIT. Keep the package license and upstream notices intact when redistributing this package or copied schema code.

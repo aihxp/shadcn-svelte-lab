@@ -34,7 +34,7 @@ This documentation site is now running Tailwind v4. If you're looking for the ol
 
 This documentation site is now using Tailwind v4 and Svelte 5, but for a more complete example, checkout the demo site here: [https://v4.shadcn-svelte.com](https://v4.shadcn-svelte.com).
 
-If you find any bugs, please us know on [GitHub](https://github.com/huntabyte/shadcn-svelte/issues).
+If you find a bug in this lab, report it against the lab. Only report it upstream if it also reproduces in the canonical shadcn-svelte project.
 
 ## Try It Out
 

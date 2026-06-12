@@ -1,62 +1,60 @@
-# Contributing to shadcn-svelte
+# Contributing To shadcn-svelte-lab
 
-We appreciate your interest in contributing. This guide will help you get started with the contribution process.
+`shadcn-svelte-lab` is a heavily modified fork of [huntabyte/shadcn-svelte](https://github.com/huntabyte/shadcn-svelte). It is not the canonical Svelte port and is not expected to be maintained regularly.
 
-## Table of Contents
+Use this guide for changes to this lab only. Please do not send lab-specific support requests, bug reports, or feature requests to `huntabyte/shadcn-svelte` or `shadcn/ui` unless the issue also reproduces in those upstream projects.
 
-- [Contributing to shadcn-svelte](#contributing-to-shadcn-svelte)
-  - [Table of Contents](#table-of-contents)
-  - [Ways to contribute](#ways-to-contribute)
-  - [How to contribute](#how-to-contribute)
-  - [Responsible use of AI](#responsible-use-of-ai)
-  - [Questions](#questions)
-  - [License](#license)
+## Contribution Scope
 
-## Ways to contribute
+Small, focused contributions are the best fit here:
 
-We welcome all kinds of contributions:
+- Documentation corrections that clarify this lab's status or behavior.
+- Tests that make the fork easier to evaluate locally.
+- Fixes for regressions introduced by this lab's registry, CLI, agent, template, or docs changes.
+- Comparison notes that explain how this lab differs from `shadcn/ui` or canonical `shadcn-svelte`.
 
-- **Feedback** - have suggestions or ideas? [Open a discussion](https://github.com/huntabyte/shadcn-svelte/discussions) to discuss it. Just note that this project is a port of [shadcn/ui](https://github.com/shadcn/ui), meaning if a feature is not in [shadcn/ui](https://github.com/shadcn/ui), it will not be considered here.
-- **Help & Support** - if you enjoy helping others, join the [Discord](https://shadcn-svelte.com/discord) and help out in the `libs` -> `shadcn-support` channel, or answer questions asked in [Discussions](https://github.com/huntabyte/shadcn-svelte/discussions)
-- **Bug reports** - please [open an issue](https://github.com/huntabyte/shadcn-svelte/issues/new) to report a bug.
-- **Docs fixes** - spot a typo or broken link? Open a PR. If it's a larger change, please start a discussion first.
-- **Code improvements** - For anything more involved than a quick fix, start a discussion first so we can align before you dive in.
+Large feature work should start with a short written plan so the tradeoffs are visible before code changes begin.
 
-## How to contribute
+## Local Verification
 
-We try to keep the process simple to avoid wasted effort:
+Install dependencies:
 
-### 1. Reporting bugs
+```bash
+pnpm install
+```
 
-Open an issue [here](https://github.com/huntabyte/shadcn-svelte/issues/new?template=3-bug_report.yml). Make sure to provide a minimal reproduction of the issue to save our contributors time triaging your issue.
+Run the core CLI tests:
 
-> If your bug is a typo or small tweak, feel free to skip the discussion and just open a PR.
+```bash
+pnpm test
+```
 
-### 2. Requesting missing features from `shadcn/ui`
+Run the fixture-based e2e tests:
 
-Before requesting a feature please check if it is already in [shadcn/ui](https://github.com/shadcn/ui). If it is, please open an issue [here](https://github.com/huntabyte/shadcn-svelte/issues/new?template=2-feature_request.yml) to request it. Feel free to attach the PR, announcement or any other material that might be helpful to the maintainers.
+```bash
+pnpm test:e2e
+```
 
-> Maintainers will tag these issues with the `parity` label.
+Run checks before sharing larger changes:
 
-### 3. Opening PRs
+```bash
+pnpm check
+pnpm lint
+```
 
-Thanks for contributing to `shadcn-svelte`!
+## Upstream First
 
-We ask that you follow these guidelines to help make it easier for us to review your PR:
+If a change belongs in the canonical projects, contribute there instead:
 
-- Your PR should fix a _single issue_ linked in the PR description (e.g. `Fixes #123`)
-- Your PR should pass all CI checks and show a checkmark (Maintainers won't review PRs on red, or in draft)
+- React and registry model changes: [shadcn/ui](https://github.com/shadcn-ui/ui)
+- Maintained Svelte port changes: [huntabyte/shadcn-svelte](https://github.com/huntabyte/shadcn-svelte)
 
-## Responsible use of AI
+This lab may intentionally diverge from both projects, so not every local change is a good upstream candidate.
 
-We take no issue with you using AI to help you contribute to `shadcn-svelte`. However we ask that when creating an issue, and writing PR descriptions you refrain from using AI to generate the content. AI is very good at writing code but often far too verbose when writing documentation, writing your own description will help us parse your contributions more easily.
+## Responsible Use Of AI
 
-> If you are using AI to help you contribute from another language than English we ask that you translate your own description of the issue or PR.
-
-## Questions
-
-If you're looking to contribute and have questions about the process or the codebase in general, feel free to ask in the [Discord](https://shadcn-svelte.com/discord) in the `Questions`->`shadcn-svelte` channel!
+AI tools are fine for local exploration, tests, and implementation help. For issues, plans, and PR descriptions, keep the final text concise and specific to the change. Maintainers and future readers should be able to see what changed, why it changed, and how it was verified.
 
 ## License
 
-By contributing to this project, you agree that your contributions will be licensed under the [LICENSE](LICENSE.md) of the project.
+By contributing to `shadcn-svelte-lab`, you agree that your contributions are licensed under the repository's [MIT license](LICENSE.md). Keep upstream license notices intact when moving, copying, or redistributing code from this repository.

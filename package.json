@@ -1,7 +1,7 @@
 {
-	"name": "@shadcn-svelte/monorepo",
-	"version": "0.0.1",
-	"description": "monorepo for shadcn-svelte",
+	"name": "shadcn-svelte-lab",
+	"version": "0.1.0",
+	"description": "experimental lab fork of shadcn-svelte",
 	"author": {
 		"name": "huntabyte",
 		"url": "https://twitter.com/huntabyte"
@@ -15,6 +15,7 @@
 		"dev:cli": "pnpm -F  \"./packages/**\" --parallel --reporter append-only --color dev",
 		"preview": "pnpm -F docs preview",
 		"test": "pnpm -F shadcn-svelte test",
+		"test:e2e": "pnpm build:cli && pnpm -F docs build:registry && pnpm -F @shadcn-svelte/e2e-tests test",
 		"build:registry-template": "pnpm build:cli && pnpm -F registry-template build:registry",
 		"check": "pnpm -F docs check && pnpm -F \"./packages/**\" check",
 		"lint": "prettier --check . && eslint . --no-config-lookup --config eslint.config.js",

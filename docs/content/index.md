@@ -8,7 +8,13 @@ description: Re-usable components built with Bits UI and Tailwind CSS.
   import Callout from '$lib/components/callout.svelte';
 </script>
 
-An unofficial, community-led [Svelte](https://svelte.dev) port of [shadcn/ui](https://ui.shadcn.com). We are not affiliated with [shadcn](https://x.com/shadcn), but we did get his blessing before creating a Svelte version of his work. This project was born out of the need for a similar project for the Svelte ecosystem.
+<Callout class="mt-6">
+
+This documentation describes `shadcn-svelte-lab`, a heavily modified fork of [huntabyte/shadcn-svelte](https://github.com/huntabyte/shadcn-svelte). It is not the canonical Svelte port, it is not affiliated with shadcn or the upstream shadcn-svelte maintainers, and it is not expected to be maintained regularly.
+
+</Callout>
+
+This lab adapts [shadcn/ui](https://ui.shadcn.com) ideas for [Svelte](https://svelte.dev), then adds broader registry, CLI, template, and agent workflow experiments. Use [shadcn/ui](https://ui.shadcn.com/docs) for the canonical React project and [shadcn-svelte](https://www.shadcn-svelte.com/docs) for the maintained Svelte port.
 
 **This is not a component library. It is how you build your component library.**
 
@@ -16,7 +22,7 @@ You know how most traditional component libraries work: you install a package fr
 
 This approach works well until you need to customize a component to fit your design system or require one that isn’t included in the library. **Often, you end up wrapping library components, writing workarounds to override styles, or mixing components from different libraries with incompatible APIs.**
 
-This is what shadcn-svelte aims to solve. It is built around the following principles:
+This is what the shadcn approach aims to solve. This lab is built around the following principles:
 
 - **Open Code:** The top layer of your component code is open for modification.
 - **Composition:** Every component uses a common, composable interface, making them predictable.
@@ -26,13 +32,13 @@ This is what shadcn-svelte aims to solve. It is built around the following princ
 
 ## Open Code
 
-shadcn-svelte hands you the actual component code. You have full control to customize and extend the components to your needs. This means:
+The CLI hands you the actual component code. You have full control to customize and extend the components to your needs. This means:
 
 - **Full Transparency:** You see exactly how each component is built.
 - **Easy Customization:** Modify any part of a component to fit your design and functionality requirements.
 - **AI Integration:** Access to the code makes it straightforward for LLMs to read, understand, and even improve your components.
 
-_In a typical library, if you need to change a button’s behavior, you have to override styles or wrap the component. With shadcn-svelte, you simply edit the button code directly._
+_In a typical library, if you need to change a button's behavior, you have to override styles or wrap the component. With this approach, you simply edit the button code directly._
 
 <Accordion.Root type="single">
 
@@ -57,13 +63,13 @@ The topmost layer, i.e., the one closest to your design system, is not
 
 ## Composition
 
-Every component in shadcn-svelte shares a common, composable interface. **If a component does not exist, we bring it in, make it composable, and adjust its style to match and work with the rest of the design system.**
+Every component in this lab shares a common, composable interface. **If a component does not exist, the lab workflow brings it in, makes it composable, and adjusts its style to match the rest of the design system.**
 
 _A shared, composable interface means it's predictable for both your team and LLMs. You are not learning different APIs for every new component. Even for third-party ones._
 
 ## Distribution
 
-shadcn-svelte is also a code distribution system. It defines a schema for components and a CLI to distribute them.
+This lab is also a code distribution system. It defines a schema for components and a CLI to distribute them.
 
 - **Schema:** A flat-file structure that defines the components, their dependencies, and properties.
 - **CLI:** A command-line tool to distribute and install components across projects with cross-framework support.
@@ -72,7 +78,7 @@ _You can use the schema to distribute your components to other projects or have 
 
 ## Beautiful Defaults
 
-shadcn-svelte comes with a large collection of components that have carefully chosen default styles. They are designed to look good on their own and to work well together as a consistent system:
+The registry comes with a large collection of components that have carefully chosen default styles. They are designed to look good on their own and to work well together as a consistent system:
 
 - **Good Out-of-the-Box:** Your UI has a clean and minimal look without extra work.
 - **Unified Design:** Components naturally fit with one another. Each component is built to match the others, keeping your UI consistent.
@@ -80,6 +86,6 @@ shadcn-svelte comes with a large collection of components that have carefully ch
 
 ## AI-Ready
 
-The design of shadcn-svelte makes it easy for AI tools to work with your code. Its open code and consistent API allow AI models to read, understand, and even generate new components.
+The design of this lab makes it easy for AI tools to work with your code. Its open code, registry schemas, CLI commands, and MCP server allow AI models to read, understand, and generate components.
 
 _An AI model can learn how your components work and suggest improvements or even create new components that integrate with your existing design._
